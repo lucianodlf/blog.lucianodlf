@@ -1,0 +1,62 @@
+baseURL = "https://lucianodlf.github.io/blog.hugo/"
+theme = "risotto"
+title = "--verbose"
+author = "Luciano Delfino"
+copyright = "© Luciano Delfino"
+languageCode = "es"
+DefaultContentLanguage = "es"
+enableInlineShortcodes = true
+
+# Agrega automáticamente las secciones de content al menú principal
+sectionPagesMenu = "main"
+
+[pagination]
+pagerSize = 10
+
+[params]
+noindex = false
+
+[params.theme]
+palette = "dracula"
+
+# Sidebar: bio
+[params.about]
+title = "--verbose"
+description = "Proyectos, notas, reflexiones y otras salidas estándar de Luciano"
+logo = ">"
+
+# Sidebar: links sociales
+[[params.socialLinks]]
+icon = "fa-brands fa-github"
+title = "GitHub"
+url = "https://github.com/lucianodlf"
+
+[[params.socialLinks]]
+icon = "fa-brands fa-linkedin"
+title = "LinkedIn"
+url = "https://www.linkedin.com/in/lucianodelfino"
+
+[[params.socialLinks]]
+icon = "fa-solid fa-envelope"
+title = "Email"
+url = "mailto:luciano.dlf@gmail.com"
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+# Habilita HTML inline en markdown (necesario para algunos shortcodes)
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel   = 3
+    ordered    = true
+
+[privacy]
+  [privacy.youtube]
+    disabled = false
+    privacyEnhanced = true

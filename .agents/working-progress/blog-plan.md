@@ -8,63 +8,15 @@
 ## Contexto del proyecto
 
 - Vault de Obsidian existente con wikilinks activos globalmente (`[[...]]`)
-- Plugin **Attachment Management** activo: las imágenes se guardan en `assets/<NombreNota>/` al nivel de la nota
+- Plugin **Attachment Management** activo: las imágenes se guardan en `posts/assets/<NombreNota>/` (dentro de la carpeta `posts/`, al nivel de la nota)
 - Wikilinks se mantienen en todo el vault — **no se desactivan**
 - Contenido del blog organizado en un subdirectorio específico dentro del vault
 - Deploy gratuito en GitHub Pages vía GitHub Actions
 - Objetivo: escribir/editar `.md` en Obsidian → push → blog actualizado automáticamente
 
 ---
-
-## Análisis de themes seleccionados
-
-### 🥇 Recomendación principal: **Congo**
-- GitHub: https://github.com/jpanther/congo
-- Múltiples color schemes intercambiables sin tocar CSS (Tailwind CSS 3.0)
-- Dark mode auto-switch con toggle manual
-- Búsqueda client-side con Fuse.js (fuzzy search)
-- Lighthouse 100/100 en todas las categorías
-- Minimalista, limpio, orientado al contenido
-- Personalización de paleta via variables CSS sin compilar
-- Activamente mantenido (2025)
-- **Limitación:** no tiene estética terminal/retro por defecto, pero es altamente customizable
-
-### 🥈 Alternativa retro/terminal: **re-Terminal**
-- GitHub: https://github.com/mirus-ua/hugo-theme-re-terminal
-- Fork activo del legendario `hugo-theme-terminal` (abandonado)
-- Estética retro terminal auténtica, Fira Code como fuente por defecto
-- Sistema de accent colors con CSS variables — cambio de paleta sin recompilar
-- Dark/Light mode nativo
-- Syntax highlighting con PrismJS
-- **Limitación:** búsqueda básica (no fuzzy/Fuse.js), menos features que Congo
-
-### 🥉 Alternativa moderna: **Blowfish**
-- GitHub: https://github.com/nunocoracao/blowfish
-- Tailwind CSS 3, dark mode, Fuse.js search
-- Zen reading mode, image galleries, timeline layouts
-- Más "moderno" que terminal, menos minimalista
-- Uno de los más activamente desarrollados en 2026
-
-### 💡 Sugerencia adicional: **PaperMod**
-- GitHub: https://github.com/adityatelange/hugo-PaperMod
-- El más popular del ecosistema Hugo (11k+ stars)
-- Ultra-minimalista, dark mode, búsqueda nativa, muy rápido
-- Sin estética terminal, pero excelente base si se quiere customizar desde cero
-- 178 contribuidores, extremadamente estable
-
-### Tabla comparativa
-
-| Feature | Congo | re-Terminal | Blowfish | PaperMod |
-|---|---|---|---|---|
-| Dark/Light mode | ✅ auto+toggle | ✅ | ✅ auto+toggle | ✅ |
-| Fuzzy search (Fuse.js) | ✅ | ❌ básica | ✅ | ✅ |
-| Cambio de paleta/scheme | ✅ múltiples | ✅ accent vars | ✅ múltiples | ❌ limitado |
-| Estética terminal/retro | ❌ | ✅ auténtica | ❌ | ❌ |
-| Fira Code / monospace | configurable | ✅ default | configurable | configurable |
-| Keyboard navigation | básico | básico | básico | básico |
-| Ligaduras de fuente | via config CSS | ✅ nativo | via config CSS | via config CSS |
-| Mantenimiento activo 2025 | ✅ | ✅ | ✅ | ✅ |
-| Documentación | ✅ excelente | ✅ buena | ✅ excelente | ✅ buena |
+## Tema seleccionado
+- Risotto: https://github.com/joeroe/risotto
 
 > **Nota sobre keyboard navigation:** Ningún theme de Hugo tiene keybindings vim-style nativos.
 > Esto se puede agregar como feature custom en Etapa 5 (JS liviano con `j/k` para navegar posts,
@@ -76,19 +28,21 @@
 
 ```
 Obsidian Vault
-  └── blog/                        ← contenido del blog (subdirectorio dedicado)
+  └── blog/                              ← contenido del blog
         ├── posts/
-        │     ├── mi-post.md       ← share: true en frontmatter
+        │     ├── assets/                ← Attachment Management genera assets DENTRO de posts/
+        │     │     └── mi-post/
+        │     │           └── imagen.png
+        │     ├── mi-post.md             ← share: true en frontmatter
         │     └── otro-post.md
-        └── assets/
-              └── mi-post/
-                    └── imagen.jpg  ← Attachment Management genera esta estructura
+        └── posts-ideas/                 ← borradores, NO se publican (sin share: true)
 
-GitHub Repo (blog)
+GitHub Repo (blog.hugo) — Hugo en la raíz del repo
   ├── .github/workflows/deploy.yml  ← GitHub Actions build+deploy
+  ├── .agents/                      ← documentación interna del proyecto
   ├── content/                      ← Enveloppe copia aquí los posts marcados
   ├── static/                       ← Enveloppe copia aquí las imágenes
-  ├── themes/congo/                 ← theme como git submodule
+  ├── themes/risotto/               ← theme Risotto como git submodule
   └── hugo.toml
 
 GitHub Pages
@@ -107,6 +61,49 @@ GitHub Pages
 4. GitHub Actions detecta el push → build Hugo → deploy a Pages
 5. Blog actualizado en ~1-2 minutos
 ```
+
+---
+
+---
+
+## TODO — Seguimiento de hitos
+
+### Etapa 1 — Repositorio Hugo base
+- [x] 1. Crear repositorio GitHub `blog.hugo`
+- [x] 2. Instalar Hugo extended localmente
+- [x] 3. Crear sitio Hugo y mover archivos a raíz del repo
+- [x] 4. Agregar theme Risotto como git submodule
+- [x] 5. Configurar `hugo.toml` (baseURL, title, theme, dark mode, búsqueda)
+- [x] 6. Crear `content/posts/_index.md` y post de prueba
+- [x] 7. Verificar `hugo server` local funciona
+- [ ] PENDIENTE: Revisar `logo` en sidebar — `>` aparece concatenado con el título (`> --verbose`); evaluar usar emoji, imagen, o eliminar
+
+### Etapa 2 — GitHub Actions + GitHub Pages
+- [ ] 1. Crear `.github/workflows/deploy.yml`
+- [ ] 2. Configurar GitHub Pages → Source: "GitHub Actions"
+- [ ] 3. Verificar workflow en verde
+- [ ] 4. Confirmar URL pública
+
+### Etapa 3 — Configuración de Enveloppe
+- [ ] 1. Instalar plugin Enveloppe en Obsidian
+- [ ] 2. Generar GitHub Personal Access Token (scope: `repo`)
+- [ ] 3. Configurar Enveloppe (GitHub, upload path `content/posts/`, attachment path `static/images/`, wikilinks)
+- [ ] 4. Configurar regla de imágenes
+- [ ] 5. Test end-to-end completo
+
+### Etapa 4 — Obsidian Git + automatización
+- [ ] 1. Instalar plugin Obsidian Git
+- [ ] 2. Configurar auto-commit/push
+- [ ] 3. Decidir estrategia de automatización
+- [ ] 4. Crear template Templater para nuevos posts
+- [ ] 5. Documentar workflow en `WORKFLOW.md`
+
+### Etapa 5 — Pulido y features opcionales
+- [ ] 5a. Tipografía y paleta
+- [ ] 5b. Keyboard navigation custom (j/k, /, gg)
+- [ ] 5c. SEO y sharing
+- [ ] 5d. Features de contenido (Giscus, ToC, reading time)
+- [ ] 5e. Dominio personalizado (opcional)
 
 ---
 
@@ -174,8 +171,9 @@ GitHub Pages
    - **Wikilinks:** activar conversión automática a markdown estándar
    - **Folder structure:** mapear `blog/posts/` del vault a `content/posts/` del repo
 4. Configurar regla de imágenes:
-   - Source path: `blog/assets/<NombreNota>/` (estructura de Attachment Management)
-   - Destination path: `static/images/<NombreNota>/`
+   - Source path: `blog/posts/assets/<NombreNota>/` (estructura real de Attachment Management)
+   - Destination path: `static/assets/<NombreNota>/`
+   - **NOTA:** `assets/` puede contener múltiples formatos (png, jpg, pdf, mp4, etc.) — verificar en Enveloppe que la regla no esté limitada solo a imágenes; puede requerir wildcard o reglas por extensión
 5. Test end-to-end: nota con `share: true` + imagen → upload → verificar repo → verificar Pages
 
 **Frontmatter mínimo de un post:**
@@ -264,9 +262,8 @@ tags: ["tag1", "tag2"]
 
 ## Decisiones pendientes antes de empezar Etapa 1
 
-- [ ] **¿Qué theme arrancamos?** Congo (recomendado) o re-Terminal (más retro)
-- [ ] **¿Nombre del repo?** `<usuario>.github.io` (URL limpia) o `blog` (URL con subpath)
-- [ ] **¿Color scheme inicial?** Congo tiene: `congo`, `slate`, `ocean`, `fire`, `forest`, `princess`, `neon`, `cherry`, `sapphire`, `rose`
+- [x] **¿Nombre del repo?** `<usuario>.github.io` (URL limpia) o `blog` (URL con subpath)
+> #git@github.com:lucianodlf/blog.hugo.git
 
 ---
 
