@@ -3,7 +3,7 @@ title: Herramientas que uso todos los días (y por qué) (Un test)
 date: 2026-03-10
 draft: false
 share: true
-featured: false
+featured: true
 toc: true
 tags:
   - tooling
@@ -11,7 +11,7 @@ tags:
   - productividad
   - desarrollo
 created: 10-03-2026T09:07
-updated: 10-03-2026T19:05
+updated: 10-03-2026T19:06
 ---
 
 > [!NOTE]
