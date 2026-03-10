@@ -13,9 +13,9 @@
   "important" "Importante"
 -}}
 
-{{- if .Type -}}
-  {{- /* Hugo 0.132+ detecta GFM alerts y setea .Type automáticamente */ -}}
-  {{- $type  := .Type -}}
+{{- if eq .Type "alert" -}}
+  {{- /* Hugo 0.132+: .Type="alert" para cualquier GFM alert, .AlertType tiene el subtipo específico */ -}}
+  {{- $type  := .AlertType -}}
   {{- $icon  := index $icons  $type | default "fa-solid fa-circle-info" -}}
   {{- $label := index $labels $type | default ($type | title) -}}
   <div class="callout callout--{{ $type }}">
@@ -27,7 +27,7 @@
     </div>
   </div>
 {{- else -}}
-  {{- /* Fallback: blockquote estándar — callouts.js maneja [!TYPE] en local/versiones viejas */ -}}
+  {{- /* Blockquote estándar — callouts.js maneja [!TYPE] como fallback */ -}}
   <blockquote>
     {{- .Text | safeHTML -}}
   </blockquote>
