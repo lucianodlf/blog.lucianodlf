@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on --verbose</title>
-    <link>http://localhost:1313/blog.hugo/posts/</link>
-    <description>Recent content in Posts on --verbose</description>
+    <title>Posts on lucianodlf --verbose</title>
+    <link>http://localhost:1313/blog.lucianodlf/posts/</link>
+    <description>Recent content in Posts on lucianodlf --verbose</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>© Luciano Delfino</copyright>
-    <lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog.hugo/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog.lucianodlf/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello, World</title>
-      <link>http://localhost:1313/blog.hugo/posts/hello-world/</link>
+      <title>Herramientas que uso todos los días (y por qué)</title>
+      <link>http://localhost:1313/blog.lucianodlf/posts/la-segunda-nota-con-template/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog.lucianodlf/posts/la-segunda-nota-con-template/</guid>
+      <description>[!NOTE] Este post usa callout boxes de ejemplo. La sintaxis &amp;gt; [!TYPE] funciona igual en Obsidian y en Hugo.&#xA;Hay herramientas que usás una vez por semana y herramientas que usás sin darte cuenta. Este post es sobre las segundas: las que ya son parte del músculo, las que extrañás cuando no están, las que recomendás sin que te pregunten.&#xA;No es una lista exhaustiva ni objetiva. Es lo que funciona para mí, en este momento, con este stack.</description>
+    </item>
+    <item>
+      <title>Mi primer post</title>
+      <link>http://localhost:1313/blog.lucianodlf/posts/mi-primer-post/</link>
       <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog.hugo/posts/hello-world/</guid>
-      <description>Primera salida estándar.&#xA;Este es un post de prueba para verificar que el stack funciona: Hugo compila, el theme Risotto carga, y el pipeline está listo.&#xA;$ echo &amp;#34;blog online&amp;#34; blog online </description>
+      <guid>http://localhost:1313/blog.lucianodlf/posts/mi-primer-post/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

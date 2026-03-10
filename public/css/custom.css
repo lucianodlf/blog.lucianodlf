@@ -1,1 +1,295 @@
-/* Override this file to customise the theme's CSS for your site */
+/* ============================================================
+   --verbose · custom.css
+   Overrides sobre el theme Risotto
+   ============================================================ */
+
+/* --- Tipografía: JetBrains Mono --- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+:root {
+    --font-monospace: "JetBrains Mono", "Fira Mono", monospace;
+}
+
+/* --- Light mode (clase html.light) --- */
+
+/* Fix: bloques de código (estilos inline hardcodeados de dracula → filtro CSS) */
+html.light .highlight,
+html.light pre {
+    filter: invert(0.88) hue-rotate(195deg) saturate(0.75);
+    border-radius: 3px;
+}
+
+/* Código inline: no aplicar filtro, usar variables del tema */
+html.light :not(pre) > code {
+    filter: none;
+    background: var(--inner-bg) !important;
+    color: var(--base05) !important;
+}
+
+html.light {
+    --base00: #f8f8f8;
+    --base01: #e8e8e8;
+    --base02: #d8d8d8;
+    --base03: #b8b8b8;
+    --base04: #585858;
+    --base05: #2d2d2d;
+    --base06: #282828;
+    --base07: #181818;
+    --base08: #c94436;
+    --base09: #c97a2a;
+    --base0A: #b08800;
+    --base0B: #5a8a3c;
+    --base0C: #2a8a80;
+    --base0D: #3a7ab8;
+    --base0E: #8a4aaf;
+    --base0F: #8a4a2a;
+}
+
+/* Habilitar ligaduras tipográficas */
+body, code, pre, kbd, samp {
+    font-feature-settings: "liga" 1, "calt" 1;
+    font-size: 15px;
+    line-height: 1.6rem;
+}
+
+/* --- Keyboard navigation --- */
+.kb-selected {
+    background-color: var(--highlight);
+    color: var(--bg);
+    outline: none;
+    padding: 0 0.2em;
+}
+
+/* --- Sidebar keybinding hints --- */
+.aside__keyhints {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.aside__keyhints kbd {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.aside__keyhints-sep {
+    margin: 0 0.2rem;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.85em;
+    padding: 0;
+    opacity: 0.7;
+    transition: opacity 0.15s, color 0.15s;
+    line-height: 1;
+}
+
+.theme-toggle:hover {
+    opacity: 1;
+    color: var(--fg);
+}
+
+/* --- Search modal --- */
+#search-modal, #help-modal {
+    border: 1px solid var(--muted);
+    background: var(--bg);
+    color: var(--fg);
+    padding: 0;
+    border-radius: 4px;
+    max-width: min(680px, 92vw);
+    width: 100%;
+}
+
+#search-modal::backdrop, #help-modal::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.search-modal__inner {
+    padding: 1.5rem;
+}
+
+/* Pagefind UI — variables propias para que respete Dracula */
+#search-modal {
+    --pagefind-ui-text:        var(--fg);
+    --pagefind-ui-background:  var(--bg);
+    --pagefind-ui-border:      var(--muted);
+    --pagefind-ui-primary:     var(--base0D);
+    --pagefind-ui-font:        var(--font-monospace);
+}
+
+.pagefind-ui__search-input {
+    background: var(--inner-bg) !important;
+    color: var(--fg) !important;
+    border: 1px solid var(--muted) !important;
+    border-radius: 3px !important;
+    font-family: var(--font-monospace) !important;
+}
+
+.pagefind-ui__result {
+    border-bottom: 1px solid var(--inner-bg) !important;
+    padding: 0.75rem 0 !important;
+}
+
+/* Excerpt y texto secundario — forzar contraste */
+.pagefind-ui__result-excerpt,
+.pagefind-ui__result-nested .pagefind-ui__result-title,
+.pagefind-ui__result-link {
+    color: var(--fg) !important;
+    opacity: 0.85;
+}
+
+.pagefind-ui__result mark {
+    background: transparent !important;
+    color: var(--base0D) !important;
+    font-weight: 600;
+}
+
+.pagefind-ui__result.kb-selected {
+    background: var(--inner-bg);
+    padding: 0.75rem 0.5rem !important;
+    border-radius: 3px;
+}
+
+.pagefind-ui__result-title a {
+    color: var(--link) !important;
+}
+
+.pagefind-ui__message {
+    color: var(--fg) !important;
+    opacity: 0.7;
+    font-family: var(--font-monospace) !important;
+}
+
+/* Botón "Limpiar" → ícono fa-xmark (FontAwesome ya cargado) */
+.pagefind-ui__search-clear {
+    font-size: 0 !important;
+    width: 2rem !important;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+    background: transparent !important;
+}
+
+.pagefind-ui__search-clear::before {
+    content: "\f00d";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--fg);
+}
+
+.pagefind-ui__search-clear:hover {
+    opacity: 1;
+}
+
+/* --- Help modal --- */
+.help-modal__inner {
+    padding: 1.5rem;
+    min-width: 320px;
+}
+
+.help-modal__inner table {
+    width: 100%;
+}
+
+.help-modal__inner td {
+    padding: 0.3rem 0.75rem 0.3rem 0;
+    vertical-align: middle;
+}
+
+.help-modal__inner td:first-child {
+    white-space: nowrap;
+    color: var(--link);
+}
+
+.help-modal__close {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.9em;
+}
+
+kbd {
+    background: var(--inner-bg);
+    border: 1px solid var(--muted);
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+    font-size: 0.85em;
+    font-family: var(--font-monospace);
+}
+
+/* --- Callout boxes (admonitions) --- */
+/* Dracula: cyan=base0D, green=base0A, yellow=base0B, pink=base08, purple=base0E */
+.callout {
+    border-left: 3px solid;
+    margin: 0 0 1.5rem 0;
+    padding: 0.75rem 1rem;
+    background: var(--inner-bg);
+    border-radius: 0 3px 3px 0;
+}
+
+.callout__title {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.callout__body > *:last-child { margin-bottom: 0; }
+
+.callout--note      { border-color: var(--base0D); }
+.callout--note      .callout__title { color: var(--base0D); }
+
+.callout--tip       { border-color: var(--base0A); }
+.callout--tip       .callout__title { color: var(--base0A); }
+
+.callout--warning   { border-color: var(--base0B); }
+.callout--warning   .callout__title { color: var(--base0B); }
+
+.callout--caution   { border-color: var(--base08); }
+.callout--caution   .callout__title { color: var(--base08); }
+
+.callout--important { border-color: var(--base0E); }
+.callout--important .callout__title { color: var(--base0E); }
+
+/* --- Tags en posts --- */
+.post__tags {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.post__tag {
+    color: var(--muted);
+    font-size: 0.85em;
+    text-decoration: none;
+    border: 1px solid var(--inner-bg);
+    padding: 0.1em 0.5em;
+    border-radius: 3px;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.post__tag:hover {
+    color: var(--link);
+    border-color: var(--link);
+}
+
+/* Toggle dark/light — tamaño aumentado */
+.theme-toggle {
+    font-size: 1rem;
+}
+
+/* Código inline levemente diferenciado */
+code {
+    font-size: 0.92em;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
