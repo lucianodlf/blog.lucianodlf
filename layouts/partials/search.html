@@ -1,0 +1,34 @@
+{{/* Pagefind search modal + help modal */}}
+
+<link href="{{ "pagefind/pagefind-ui.css" | absURL }}" rel="stylesheet">
+<script src="{{ "pagefind/pagefind-ui.js" | absURL }}"></script>
+
+<dialog id="search-modal" aria-label="Búsqueda">
+  <div class="search-modal__inner">
+    <div id="search"></div>
+  </div>
+</dialog>
+
+<dialog id="help-modal" aria-label="Atajos de teclado">
+  <div class="help-modal__inner">
+    <p>## atajos de teclado</p>
+    <table>
+      <tr><td><kbd>/</kbd> <kbd>Ctrl+K</kbd></td><td>Abrir búsqueda</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Cerrar</td></tr>
+      <tr><td><kbd>↓</kbd> / <kbd>↑</kbd></td><td>Navegar resultados</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>Abrir resultado seleccionado</td></tr>
+      <tr><td><kbd>gg</kbd></td><td>Ir al inicio de la página</td></tr>
+      <tr><td><kbd>G</kbd></td><td>Ir al final de la página</td></tr>
+      <tr><td><kbd>?</kbd></td><td>Esta ayuda</td></tr>
+    </table>
+    <p class="help-modal__close"><kbd>Esc</kbd> para cerrar</p>
+  </div>
+</dialog>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof PagefindUI !== 'undefined') {
+    new PagefindUI({ element: "#search", showImages: false, resetStyles: false });
+  }
+});
+</script>

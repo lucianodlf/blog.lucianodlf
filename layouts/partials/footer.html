@@ -1,0 +1,13 @@
+{{- partial "search.html" . -}}
+{{ $recent := first 3 (where .Site.RegularPages "Type" "posts") }}
+{{ if $recent }}
+<nav class="footer__recent">
+    <p>$ ls -t posts/ | head -3</p>
+    <ul>
+        {{ range $recent }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+</nav>
+{{ end }}
+<p class="copyright">{{ .Site.Copyright | markdownify }}</p>

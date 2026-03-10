@@ -1,6 +1,6 @@
 baseURL = "https://lucianodlf.github.io/blog.lucianodlf/"
 theme = "risotto"
-title = "--verbose"
+title = "lucianodlf --verbose"
 author = "Luciano Delfino"
 copyright = "© Luciano Delfino"
 languageCode = "es"
@@ -21,8 +21,8 @@ palette = "dracula"
 
 # Sidebar: bio
 [params.about]
-title = "--verbose"
-description = "Proyectos, notas, reflexiones y otras salidas estándar de Luciano"
+title = "lucianodlf --verbose"
+description = "Proyectos, notas, reflexiones y otras salidas estándar"
 logo = ">"
 
 # Sidebar: links sociales
@@ -51,6 +51,13 @@ series = "series"
 unsafe = true
 
 [markup]
+  [markup.highlight]
+    style              = "dracula"
+    lineNos            = false
+    noClasses          = true
+    tabWidth           = 2
+    guessSyntax        = true
+
   [markup.tableOfContents]
     startLevel = 2
     endLevel   = 3

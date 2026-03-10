@@ -104,15 +104,24 @@ Backup del vault (independiente de publicación):
   - Obsidian Git no tiene hook nativo post-push para disparar otros plugins
   - Los hotkeys son independientes: se puede hacer backup sin publicar y viceversa
   - Vault privado repo configurado con remote
-- [ ] 4. Crear template Templater para nuevos posts
-- [ ] 5. Documentar workflow en nota del vault (`Proyectos/blog/WORKFLOW.md`)
+- [x] 4. Crear template Templater para nuevos posts → `Templates/blog-nuevo-post.md`
+- [x] 5. Documentar workflow en nota del vault → `Proyectos/blog/WORKFLOW.md`
 
 ### Etapa 5 — Pulido y features opcionales
-- [ ] 5a. Tipografía y paleta
-- [ ] 5b. Keyboard navigation custom (j/k, /, gg)
-- [ ] 5c. SEO y sharing
-- [ ] 5d. Features de contenido (Giscus, ToC, reading time)
-- [ ] 5e. Dominio personalizado (opcional)
+- [x] 5a. Tipografía: JetBrains Mono + ligaduras (`static/css/custom.css`)
+- [x] 5b. Búsqueda Pagefind (`/` o `Ctrl+K`) + keybindings (`gg`, `G`, `?`) + `static/js/keybindings.js`
+- [ ] 5c. SEO y sharing (og:image, favicon) — pendiente
+- [x] 5d. Reading time, ToC (`toc: true`), syntax highlighting Dracula, callout boxes (`> [!TYPE]`), tags en posts
+- [ ] 5e. Dominio personalizado — pendiente
+
+**Features implementadas en Etapa 5:**
+- Paleta dracula (dark) + toggle light/dark con localStorage (`static/js/keybindings.js`)
+- Callout boxes vía JS post-processing (`static/js/callouts.js`): NOTE, TIP, WARNING, CAUTION, IMPORTANT
+- Tags en posts como chips con link a página de taxonomía
+- Keybinding hints en sidebar + botón toggle tema
+- Búsqueda Pagefind: modal con `<dialog>`, índice generado en CI
+- Makefile para desarrollo local (`make dev`, `make serve`, `make build`)
+- PENDIENTE: Logo `>` en sidebar concatenado con título — evaluar cambio
 
 ---
 
@@ -231,12 +240,82 @@ tags: ["tag1", "tag2"]
 - Ajustar color scheme activo (si Congo: probar `congo`, `slate`, `ocean`, crear custom)
 - Revisar contraste light/dark para legibilidad
 
-#### 5b — Keyboard navigation custom
-- Agregar JS liviano para keybindings:
-  - `j/k` → navegar entre posts en lista
-  - `/` → focus en barra de búsqueda (como Ctrl+K en Obsidian)
-  - `g g` → ir al inicio
-- Implementar via partial override de Hugo (sin modificar theme)
+#### 5b — Búsqueda + Keyboard navigation
+
+**Estado actual:** `keybindings.js` creado pero no funcional — reemplazar con implementación integrada a búsqueda.
+
+**Objetivos:**
+- `/` o `Ctrl+K` → abre modal de búsqueda difusa
+- `?` → popup con ayuda de keybindings configurados
+- `gg` → scroll al inicio
+- `G` → scroll al final
+- `j/k` → navegar resultados de búsqueda (dentro del modal)
+
+---
+
+## Análisis: Búsqueda + Keybindings (5b)
+
+### Opciones de búsqueda evaluadas
+
+#### Opción A — Pagefind (recomendada)
+- **Cómo funciona:** Post-build, genera índice comprimido corriendo `pagefind --site public` después de `hugo`. El browser carga solo los chunks necesarios por query.
+- **Instalación:** Agregar paso en GitHub Actions (`hugo && npx pagefind --site public`), inyectar widget via partial.
+- **Calidad de búsqueda:** Excelente — índice full-text real, no Fuse.js.
+- **Teclado built-in:** ❌ No tiene `/` ni `Ctrl+K` nativos. Se agrega con ~20 líneas de JS custom usando `<dialog>` nativo HTML.
+- **GitHub Pages:** ✅ Totalmente estático.
+- **Estabilidad:** ✅ Activamente mantenido.
+- **Contra:** Sin modal nativo — hay que construirlo.
+
+#### Opción B — hugo-fuse-search (Theys96)
+- **Cómo funciona:** Módulo Hugo. Genera JSON index en build. Fuse.js hace búsqueda difusa client-side.
+- **Repo:** https://github.com/Theys96/hugo-fuse-search
+- **Instalación:** Media — copiar `assets/` y `layouts/` al proyecto, configurar outputs en `hugo.toml`.
+- **Calidad de búsqueda:** Buena (Fuse.js). Suficiente para cientos de posts.
+- **Teclado built-in:** ✅ Tiene `keyboardControlled` con modo fullscreen overlay. Default `Cmd+/`, configurable.
+- **GitHub Pages:** ✅ Totalmente estático.
+- **Estabilidad:** ⚠️ "Under construction", activo pero no production-ready.
+- **Contra:** Menos preciso que Pagefind; requiere merge manual de archivos.
+
+#### Opción C — hugofastsearch (Craig Mod)
+- ❌ El gist original está eliminado (404). Sus descendientes son Theys96 y otras forks.
+
+#### Otras opciones descartadas
+- **Algolia:** Excelente UX y `Ctrl+K` nativo, pero es servicio externo. Overkill para blog personal.
+- **lunr.js / Grunt:** Agrega complejidad de build innecesaria.
+
+---
+
+### Comparativa
+
+| Criterio | Pagefind | hugo-fuse-search |
+|----------|----------|-----------------|
+| Calidad búsqueda | ⭐⭐⭐ Full-text | ⭐⭐ Fuzzy (Fuse.js) |
+| Modal/overlay nativo | ❌ (custom) | ✅ fullscreen mode |
+| `/` o `Ctrl+K` nativo | ❌ (custom ~20 líneas) | ✅ configurable |
+| j/k en resultados | ❌ (custom) | ❌ (arrows, modificable) |
+| GitHub Pages | ✅ | ✅ |
+| Estabilidad | ✅ producción | ⚠️ en construcción |
+| Complejidad install | Baja | Media |
+
+---
+
+### Decisión recomendada
+
+**Pagefind + JS custom para keybindings** — mejor calidad de búsqueda y más estable.
+
+**Plan de implementación:**
+1. Agregar `npx pagefind --site public` al workflow de GitHub Actions
+2. Crear partial `layouts/partials/search.html` con `<dialog>` nativo como modal
+3. Inyectar CSS + JS (~50 líneas) para:
+   - `/` y `Ctrl+K` → abrir modal
+   - `Escape` → cerrar modal
+   - `j/k` → navegar resultados dentro del modal
+   - `Enter` → abrir post seleccionado
+   - `gg` / `G` → scroll (fuera del modal)
+   - `?` → popup de ayuda con keybindings
+4. Reemplazar `keybindings.js` actual por el nuevo script unificado
+
+---
 
 #### 5c — SEO y sharing
 - Configurar `og:image` default y por post

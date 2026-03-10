@@ -1,0 +1,40 @@
+{{ with .Site.Params.about }}
+<div class="aside__about">
+    {{ with .logo }}<span class="about__logo" role="img">{{ . }}</span>&nbsp;{{ end }}
+    {{ with .logo_image }}<img class="about__logo" src="{{ . | absURL }}" alt="Logo">{{ end }}
+<h1 class="about__title">{{ .title }}</h1>
+{{ with .description }}<p class="about__description">{{ . | markdownify }}</p>{{ end }}
+</div>
+{{ end }}
+
+<ul class="aside__social-links">
+    {{ range $item := .Site.Params.socialLinks }}
+    <li>
+        <a href="{{ $item.url }}" rel="me" aria-label="{{ $item.title }}" title="{{ $item.title }}"><i class="{{ $item.icon }}" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    {{ end }}
+</ul>
+
+<p class="aside__keyhints">
+    <span title="Buscar"><kbd>/</kbd></span>
+    <span title="Buscar">Ctrl+<kbd>K</kbd></span>
+    <span class="aside__keyhints-sep">·</span>
+    <span title="Ayuda de teclado"><kbd>?</kbd></span>
+    <span class="aside__keyhints-sep">·</span>
+    <button id="theme-toggle" class="theme-toggle" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+        <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+    </button>
+</p>
+
+{{ $featured := where .Site.RegularPages "Params.featured" true }}
+{{ if $featured }}
+<hr>
+<div class="aside__featured">
+    <p>$ cat destacados.txt</p>
+    <ul>
+        {{ range $featured }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}
