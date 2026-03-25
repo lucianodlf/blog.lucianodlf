@@ -22,7 +22,7 @@ palette = "dracula"
 # Sidebar: bio
 [params.about]
 title = "lucianodlf --verbose"
-description = "Proyectos, notas, reflexiones y otras salidas estándar"
+description = "Proyectos, notas, reflexiones, pensamiento y otras cosas que quiero comportir "
 logo = ">"
 
 # Sidebar: links sociales
