@@ -3,14 +3,14 @@ title: Sin título
 date: 2026-03-25
 draft: false
 share: true
-featured: false
+featured: true
 toc: false
 tags:
   - Escritos
   - Filosofía
   - Poemas
 created: 10-03-2026T12:09
-updated: 25-03-2026T20:33
+updated: 25-03-2026T20:46
 ---
 # No soy "Yo" quien escribe
 
