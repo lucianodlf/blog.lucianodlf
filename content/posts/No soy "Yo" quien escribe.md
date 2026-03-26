@@ -1,5 +1,5 @@
 ---
-title: Sin título
+title: No soy "Yo" quien escribe
 date: 2026-03-25
 draft: false
 share: true
@@ -10,7 +10,7 @@ tags:
   - Filosofía
   - Poemas
 created: 10-03-2026T12:09
-updated: 25-03-2026T20:46
+updated: 25-03-2026T21:01
 ---
 # No soy "Yo" quien escribe
 
