@@ -10,9 +10,8 @@ tags:
   - Filosofía
   - Poemas
 created: 10-03-2026T12:09
-updated: 25-03-2026T21:01
+updated: 25-03-2026T21:27
 ---
-# No soy "Yo" quien escribe
 
 ![center|686](../../static/assets/asset-20260325201552447.jpg.jpg)
 
