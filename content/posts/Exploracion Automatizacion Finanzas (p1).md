@@ -17,25 +17,10 @@ tags:
   - ocr
   - self-hosted
 created: 14-06-2026T18:43
-updated: 14-06-2026T19:34
+updated: 14-06-2026T19:37
 ---
 
-# Exploración y aprendizaje de una automatización ( o de un intento de automatización)
 
-
-## Que automatizar y por que?
-
-Hace tiempo que uso una planilla de Google Sheets para llevar el registro de mis finanzas personales. En general no es mucho el tiempo que tengo que dedicarle, pero en algunos momentos sí me resultó más tedioso o me llevó más tiempo. No tanto por lo complejo de la planilla en sí (que es bastante simple) sino por la metodología elegida o las decisiones que en ese momento tomaba sobre qué tan puntilloso quería ser. Al principio quería registrar más detalles de cada gasto, y con el tiempo lo fui flexibilizando.
-
-Todos los meses sigo más o menos el mismo ritual. Al iniciar el mes suelo tener un template o grupo de "gastos fijos" y algunos variables que se repiten constantemente, y lo uso para arrancar. Después, a lo largo del mes, voy registrando los gastos variables, en distintos momentos, a medida que voy gastando.
-
-Durante un tiempo guardaba los tickets y en algún momento pasaba cada uno a la planilla, para después tirarlos. Con el tiempo me empezó a resultar demasiado tedioso: a veces repetía algunos tickets, había otros gastos que no quedaban registrados en ningún ticket y los tenía que buscar en el historial de alguna billetera virtual con la que hubiera hecho ese pago (a veces una billetera distinta, otras veces un gasto en efectivo que tenía que recordar). En algún momento empecé a anotar esos gastos sueltos en notas temporales, otras veces no. Todo ese proceso tenía su parte engorrosa.
-
-Después fui dejando de usar tickets de papel y empecé a tratar de usar siempre la misma billetera, registrando los gastos según el histórico de pagos de esa billetera virtual. Esto comenzó a ser un poco mas fluido. Aunque aveces insuficiente para tomar una desicion a mitad de mes sobre hacer un un determinado gasto (No voy a entran en detalle aquí sobre algunos de estos criterios que eventualmente puedo tener en mis finanzas personales, es suficiente con contar esto)
-
-Respondiendo mas directamente a la pregunta: Porqu tenia ganas de aprender y experimentar algunas cosas nuevas, y en el camino ver si lo aplicaba en mejorar un caso de uso personal (lo cual hace que para mi tenga mas sentido utilizar la tecnología disponible para resolver casos de uso concretos)
-
----
 
 ## Vista previa
 
@@ -55,6 +40,21 @@ Respondiendo mas directamente a la pregunta: Porqu tenia ganas de aprender y exp
 <video src="https://github.com/user-attachments/assets/e7915549-1a0e-4407-93b1-804beab1454a" controls width="100%"></video>
 
 ---
+
+## Que automatizar y por que?
+
+Hace tiempo que uso una planilla de Google Sheets para llevar el registro de mis finanzas personales. En general no es mucho el tiempo que tengo que dedicarle, pero en algunos momentos sí me resultó más tedioso o me llevó más tiempo. No tanto por lo complejo de la planilla en sí (que es bastante simple) sino por la metodología elegida o las decisiones que en ese momento tomaba sobre qué tan puntilloso quería ser. Al principio quería registrar más detalles de cada gasto, y con el tiempo lo fui flexibilizando.
+
+Todos los meses sigo más o menos el mismo ritual. Al iniciar el mes suelo tener un template o grupo de "gastos fijos" y algunos variables que se repiten constantemente, y lo uso para arrancar. Después, a lo largo del mes, voy registrando los gastos variables, en distintos momentos, a medida que voy gastando.
+
+Durante un tiempo guardaba los tickets y en algún momento pasaba cada uno a la planilla, para después tirarlos. Con el tiempo me empezó a resultar demasiado tedioso: a veces repetía algunos tickets, había otros gastos que no quedaban registrados en ningún ticket y los tenía que buscar en el historial de alguna billetera virtual con la que hubiera hecho ese pago (a veces una billetera distinta, otras veces un gasto en efectivo que tenía que recordar). En algún momento empecé a anotar esos gastos sueltos en notas temporales, otras veces no. Todo ese proceso tenía su parte engorrosa.
+
+Después fui dejando de usar tickets de papel y empecé a tratar de usar siempre la misma billetera, registrando los gastos según el histórico de pagos de esa billetera virtual. Esto comenzó a ser un poco mas fluido. Aunque aveces insuficiente para tomar una desicion a mitad de mes sobre hacer un un determinado gasto (No voy a entran en detalle aquí sobre algunos de estos criterios que eventualmente puedo tener en mis finanzas personales, es suficiente con contar esto)
+
+Respondiendo mas directamente a la pregunta: Porqu tenia ganas de aprender y experimentar algunas cosas nuevas, y en el camino ver si lo aplicaba en mejorar un caso de uso personal (lo cual hace que para mi tenga mas sentido utilizar la tecnología disponible para resolver casos de uso concretos)
+
+---
+
 
 ## Momento de automatización (experimental)
 
