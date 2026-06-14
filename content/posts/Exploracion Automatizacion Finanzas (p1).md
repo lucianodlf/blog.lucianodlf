@@ -17,7 +17,7 @@ tags:
   - ocr
   - self-hosted
 created: 14-06-2026T18:43
-updated: 14-06-2026T19:37
+updated: 14-06-2026T19:56
 ---
 
 
@@ -78,6 +78,7 @@ Otro aspecto que determinó esta prueba fue usar solo las opciones que ya tenía
 
 ---
 
+
 ## Arquitectura
 
 ```mermaid
@@ -118,17 +119,6 @@ flowchart LR
     IND -->|"⏳ Actualizando... (Xs)"| TG
 ```
 
-
-## Stack
-
-| Componente          | Tecnología                                          |
-| ------------------- | --------------------------------------------------- |
-| Orquestador         | n8n self-hosted (Docker, puerto 5678)               |
-| OCR                 | Mistral Document AI (`mistral-ocr-latest`)          |
-| Agente de escritura | Claude Code CLI (Agente 2)                          |
-| Storage             | Google Sheets (Service Account)                     |
-| Entrada             | Telegram Bot                                        |
-| Túnel público       | zrok2 (desarrollo) / Cloudflare Tunnel (producción) |
 
 ---
 
