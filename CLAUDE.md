@@ -39,9 +39,9 @@ layouts/
       render-blockquote.html ← pass-through (callouts los maneja callouts.js)
 .github/workflows/deploy.yml ← build + fix paths Enveloppe + pagefind + deploy
 Makefile                    ← comandos de desarrollo local
-.agents/                    ← documentación interna
-  config/enveloppe.json     ← backup config Enveloppe
-  working-progress/blog-plan.md ← plan completo del proyecto
+.obsidian-backup/enveloppe.json ← backup config Enveloppe (versionado)
+.agents/                    ← documentación interna (no versionado, ver .gitignore)
+  working-progress/          ← sesiones de trabajo
 ```
 
 ## Flujo de publicación
@@ -79,7 +79,7 @@ make clean    # limpiar public/
 - Upload path: `content/posts/`
 - Attachment folder: `static/assets/`
 - Share key: `share`
-- Config backup: `.agents/config/enveloppe.json`
+- Config backup: `.obsidian-backup/enveloppe.json`
 
 ### GitHub Actions
 - Fix de paths de Enveloppe (relative → Hugo-compatible) con `sed`
