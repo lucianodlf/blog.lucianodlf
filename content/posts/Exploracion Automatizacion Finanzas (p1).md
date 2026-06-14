@@ -17,12 +17,13 @@ tags:
   - ocr
   - self-hosted
 created: 14-06-2026T18:43
-updated: 14-06-2026T19:07
+updated: 14-06-2026T19:34
 ---
 
 # Exploración y aprendizaje de una automatización ( o de un intento de automatización)
 
-### Que automatizar y por que?
+
+## Que automatizar y por que?
 
 Hace tiempo que uso una planilla de Google Sheets para llevar el registro de mis finanzas personales. En general no es mucho el tiempo que tengo que dedicarle, pero en algunos momentos sí me resultó más tedioso o me llevó más tiempo. No tanto por lo complejo de la planilla en sí (que es bastante simple) sino por la metodología elegida o las decisiones que en ese momento tomaba sobre qué tan puntilloso quería ser. Al principio quería registrar más detalles de cada gasto, y con el tiempo lo fui flexibilizando.
 
@@ -37,22 +38,25 @@ Respondiendo mas directamente a la pregunta: Porqu tenia ganas de aprender y exp
 ---
 
 ## Vista previa
+
 ##### Planilla de gastos (Google Sheets)
 
 ![Google Sheet de gastos](../../static/assets/asset-20260614185155189.png)
+
 
 ##### Workflow en n8n
 
 ![asset-20260614185320362.png](../../static/assets/asset-20260614185320362.png.png)
 
-## Demo
+##### Demo
 
 ![Video-Demo](https://github.com/user-attachments/assets/e7915549-1a0e-4407-93b1-804beab1454a)
 
 <video src="https://github.com/user-attachments/assets/e7915549-1a0e-4407-93b1-804beab1454a" controls width="100%"></video>
 
+---
 
-### Momento de automatización (experimental)
+## Momento de automatización (experimental)
 
 Cuando empecé a vincularme más con la inteligencia artificial y a trabajar con ella, se me ocurrió hacer algo que no es nada nuevo: intentar automatizar ese proceso de registro de gastos en la misma planilla. Lo más interesante para mí fue usar esa excusa para explorar la tecnología de los workflows de n8n en conjunto con OCR sobre imágenes de tickets o capturas de pantalla de gastos, todo esto junto con el proceso de desarrollo asistido con Claude Code CLI, probando también skills y MCP.
 
@@ -127,7 +131,8 @@ flowchart LR
 | Túnel público       | zrok2 (desarrollo) / Cloudflare Tunnel (producción) |
 
 ---
-### Cómo quedó armado el workflow final (o más o menos)
+
+## Cómo quedó armado el workflow final (o más o menos)
 
 En resumen, el workflow de trabajo quedó así:
 
@@ -161,7 +166,8 @@ Para un comprobante de Monotributo, por ejemplo, el resultado luce así:
 ```
 
 ---
-### Algunas cosas con las que me encontré en el camino
+
+## Algunas cosas con las que me encontré en el camino
 
 Fue realmente interesante y un poco asombroso ver las capacidades de Claude Code usando MCP con la información adecuada para trabajar conectándose a la instancia de n8n. No tuve la necesidad de hacer una curva de aprendizaje, prueba y error, construyendo manualmente los workflows (no porque no me gustara hacer ese proceso de aprendizaje, que lo he hecho en muchas otras ocasiones. Pero en este caso no se trataba de poner el foco en eso, y gracias a esta posibilidad pude abstraerme bastante de la construcción de los workflows y delegarla a Claude a raíz de mis indicaciones).
 
@@ -176,13 +182,15 @@ No es que todo lo hacía Claude vía MCP sobre la instancia de n8n. Yo también 
 Con esto quiero hacer hincapié en algo: ahí es donde encuentro la riqueza de hacer estos experimentos por el solo hecho de hacerlos y aprender, de explorar, lo que igual lleva prueba y error en múltiples etapas. Aunque se realicen con una IA, con un agente, siguen teniendo el componente de mis ideas, mis intereses en probar tal o cual cosa, mi forma de probarlo, mis conclusiones. En la medida en que yo evalúo, paso a paso, qué aspectos quiero detenerme más y cuáles quiero que sean soluciones más "rápidas", delegables a decisiones del agente sin profundizar. Eso sigue siendo una decisión de mi parte (filosofía aparte sobre si realmente decidimos algo).
 
 ---
-#### Agente 2
+
+## Agente 2
 
 Ese "Agente 2" es, en sí mismo, un wrapper que ejecuta Claude Code CLI con instrucciones, evaluando los datos que le llegan y el estado actual de la planilla. Como agente, modifica la planilla: actualiza el estado de un gasto ya registrado o agrega un nuevo registro, según corresponda.
 
 En la planilla hay dos tipos de gastos. Los *fijos* (Monotributo, IIBB, Gas, Obra Social) ya tienen su fila reservada en el mes, así que solo hay que encontrarla y actualizarla con fecha, importe y estado. Los *variables* (súper, farmacia, consultas) se agregan como filas nuevas directamente. El agente tiene que distinguir en qué caso está. Buscar o insertar: no hay una tercera opción.
 
 Basicamente el script de `agent2.sh` lo que hace es ejecutar `claude` con una serie de parametros (entre otras cosas...), algo asi:
+
 ```bash
 # ...
 # ── Flags de claude ───────────────────────────────────────────────────────────
@@ -217,6 +225,7 @@ set -e
 
 
 Para ejecutarlo toma de base un prompt (la verdad que si quedo super largo y con mucho por mejorar, pero es lo que hay ahora) Por ejemplo: 
+
 ```txt
 Sos el Agente 2 de automatización de gastos personales.
 Operás sobre el Google Sheet de Finanzas (ID: SHEET_ID_PLACEHOLDER), pestaña "Egresos".
@@ -257,7 +266,7 @@ Se puede ver completo en: [ia-update-gestion-personal/scripts/agent2-system-prom
 
 ---
 
-### Entender la planilla antes de tocarla
+## Entender la planilla antes de tocarla
 
 Como comenté antes, una parte del proceso que me gustó bastante fue, antes de meterme con la lógica del agente, usar un agente para leer la planilla y documentarla. Le di acceso vía MCP (con una Service Account de Google Cloud) y le pedí que generara un archivo de estructura con las tabs, columnas, fórmulas y reglas de escritura.
 
@@ -273,7 +282,7 @@ Tomar un rango de unos 100 registros desde la última fila con datos. No fue fá
 
 ---
 
-### Conclusión de esta primera etapa
+## Conclusión de esta primera etapa
 
 Como experiencia concreta para hacer el proceso de desarrollo y probar distintas tecnologías y formas de trabajar con Claude Code CLI, fue muy enriquecedor. Sin embargo, para una metodología de uso real, resultó ser un proceso bastante ineficiente: el hecho de usar un script que envuelve a Claude Code lo hizo lento y propenso a errores, además de un consumo de tokens bastante alto comparado con otras formas que pude probar después.
 
