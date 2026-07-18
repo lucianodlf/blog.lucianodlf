@@ -1,0 +1,16 @@
+{
+  "columns": 3,
+  "items": [
+    {
+      "name": "Este blog (hugo)",
+      "link": "https://github.com/lucianodlf/blog.lucianodlf",
+      "image": "img/projects/hugo-blog.png",
+      "visible": true
+    },
+    {
+      "name": "otro-proyecto",
+      "link": "https://github.com/lucianodlf",
+      "visible": true
+    }
+  ]
+}

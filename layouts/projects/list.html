@@ -1,0 +1,33 @@
+{{ define "main" }}
+    <header class="content__header">
+        <h1>{{ .Title | markdownify }}</h1>
+        {{ .Content }}
+    </header>
+
+    {{ $data := .Site.Data.projects }}
+    {{ $cols := $data.columns | default 3 }}
+    {{ $items := where $data.items "visible" "ne" false }}
+
+    <div class="projects-grid" style="--projects-cols: {{ $cols }};">
+        {{ range $items }}
+        {{ $item := . }}
+        <a class="project-card"
+           href="{{ $item.link }}"
+           target="_blank"
+           rel="noopener">
+            {{ with $item.image }}
+                <img class="project-card__image" src="{{ . | relURL }}" alt="{{ $item.name }}" loading="lazy">
+            {{ else }}
+                <span class="project-card__image project-card__image--fallback">
+                    <i class="fa-solid fa-folder"></i>
+                </span>
+            {{ end }}
+            <span class="project-card__name">{{ $item.name }}</span>
+        </a>
+        {{ end }}
+    </div>
+{{ end }}
+
+{{define "aside" }}
+    {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+{{ end }}
