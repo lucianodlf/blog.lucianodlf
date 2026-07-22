@@ -10,10 +10,10 @@ tags:
   - Filosofía
   - Poemas
 created: 10-03-2026T12:09
-updated: 25-03-2026T21:27
+updated: 22-07-2026T10:27
 ---
 
-![center|686](../../static/assets/asset-20260325201552447.jpg.jpg)
+![center|650](../../static/assets/asset-20260325201552447.jpg.jpg)
 
 Recibir la gratificación de ser _"yo"_ quien ayuda. Ser "yo" quien dice las palabras, quien ejecuta el gesto, quien actúa. Sentir la satisfacción. El autorreconocimiento de haber actuado correctamente, con "impecabilidad". Ser "yo" quien encarna la sensatez, la ecuanimidad, la armonía, la empatía, el altruismo.
 
