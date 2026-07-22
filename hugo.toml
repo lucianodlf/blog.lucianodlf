@@ -2,7 +2,7 @@ baseURL = "https://lucianodlf.github.io/blog.lucianodlf/"
 theme = "risotto"
 title = "lucianodlf -v"
 author = "Luciano Delfino"
-copyright = "© [Luciano Delfino](https://github.com/lucianodlf) · hecho con [Hugo](https://gohugo.io/) y [Risotto](https://github.com/joeroe/risotto)"
+copyright = "© [Luciano Delfino](https://github.com/lucianodlf) · hecho con ❤️ + [Hugo](https://gohugo.io/) y [Risotto](https://github.com/joeroe/risotto)"
 languageCode = "es"
 DefaultContentLanguage = "es"
 enableInlineShortcodes = true
@@ -34,7 +34,7 @@ url = "https://github.com/lucianodlf"
 [[params.socialLinks]]
 icon = "fa-brands fa-gitlab"
 title = "GitLab"
-url = "https://gitlab.com/lucianodlf"
+url = ""
 
 [[params.socialLinks]]
 icon = "fa-brands fa-linkedin"
