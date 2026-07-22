@@ -12,6 +12,11 @@
       "link": "https://github.com/lucianodlf/gplnr",
       "image": "img/projects/gplnr-icon.png",
       "visible": true
+    },
+    {
+      "name": "Automatización Gastos (Experimento)",
+      "link": "https://github.com/lucianodlf/ia-update-gestion-personal",
+      "visible": true
     }
   ]
 }
