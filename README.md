@@ -1,3 +1,5 @@
+[![Deploy Hugo site to GitHub Pages](https://github.com/lucianodlf/blog.lucianodlf/actions/workflows/deploy.yml/badge.svg)](https://github.com/lucianodlf/blog.lucianodlf/actions/workflows/deploy.yml)
+
 # blog (WIP)
 
 Blog personal de Luciano Delfino (`lucianodlf`).

@@ -12,7 +12,7 @@ tags:
 created: 18-07-2026T13:05
 updated: 18-07-2026T14:24
 ---
-![center|300](../../static/assets/asset-20260718131346335.png.png)
+![center|300](../../assets/asset-20260718131346335.png)
 
 Estaba escribiendo en un archivo, seleccioné unas líneas, apreté ctrl+alt+k para mandarle la referencia a Claude Code, y en vez de eso se abrió una terminal nueva con un `@mention` vacío adentro. En otros casos, dos terminales integradas, solo enviaba un '@mention' a la primer instancia de Claude Code. O bien, queria obtener el mention copiado para usar en otro lado. Nada de lo que yo quería estaba funcionando. La extensión oficial de Claude Code para VS Code había registrado exactamente el mismo atajo, con el mismo `when: editorTextFocus`.
 

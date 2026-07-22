@@ -26,12 +26,12 @@ updated: 14-06-2026T19:56
 
 ##### Planilla de gastos (Google Sheets)
 
-![Google Sheet de gastos](../../static/assets/asset-20260614185155189.png)
+![Google Sheet de gastos](../../assets/asset-20260614185155189.png)
 
 
 ##### Workflow en n8n
 
-![asset-20260614185320362.png](../../static/assets/asset-20260614185320362.png.png)
+![asset-20260614185320362.png](../../assets/asset-20260614185320362.png)
 
 ##### Demo
 
