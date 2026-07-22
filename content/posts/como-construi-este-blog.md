@@ -11,7 +11,7 @@ tags:
   - Blog
   - Workflow
 created: 22-07-2026T17:23
-updated: 22-07-2026T17:51
+updated: 22-07-2026T18:06
 ---
 
 Este blog es un sitio estático hecho con [Hugo](https://gohugo.io/), el theme [Risotto](https://github.com/joeroe/risotto) y GitHub Pages para el hosting. Lo que lo hace distinto no es el generador en sí, sino que nunca escribo directamente en el repo: todo el contenido sale de un vault de [Obsidian](https://obsidian.md/) y llega acá mediante un plugin de publicación (Tampoco es que es distinto! esta inspirado en otros cuantos que vi por la red!) (Si lo hace distinto los grandes pequeños detalles que a mi me gusta que tenga, ademas de que lo hice con amor). Este post documenta esa arquitectura completa: cómo está armado el repo, qué hace cada pieza del pipeline de CI, y el flujo exacto que sigo desde que abro Obsidian hasta que el post está online.
@@ -264,4 +264,3 @@ El diseño completo se apoya en una idea simple: cada pieza hace una sola cosa y
 
 ![asset-20260722173713632.png](../../static/assets/asset-20260722173713632.png.png)
 
-Si estás armando algo parecido con Hugo, el punto de partida más simple es replicar solo el `fix-assets.sh` y el Makefile — el resto (Risotto, Pagefind, GitHub Actions) son piezas intercambiables por las que prefieras.
