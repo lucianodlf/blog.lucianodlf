@@ -1,7 +1,7 @@
 ---
 title: "Benchmarking de modelos de visión con Ollama: CPU local vs GPU en Colab para OCR y extracción de facturas"
 date: 2026-07-21
-draft: true
+draft: false
 share: true
 featured: false
 toc: true
@@ -15,7 +15,7 @@ tags:
   - colab
   - llm
 created: 22-07-2026T11:36
-updated: 22-07-2026T12:05
+updated: 22-07-2026T12:16
 ---
 
 ## Vista previa
