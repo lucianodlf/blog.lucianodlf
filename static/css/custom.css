@@ -297,6 +297,92 @@ kbd {
     border-color: var(--link);
 }
 
+/* --- Ancho completo del post (toggle .wide) --- */
+/* El theme usa .page { max-width: 64rem }. Lo expandimos cuando html.wide */
+html.wide .page {
+    max-width: 90rem;
+}
+
+/* --- Tablas: bordes tipo Obsidian + scroll horizontal + toggle crudo --- */
+.table-wrap {
+    position: relative;
+    margin: 0 0 1.5rem 0;
+}
+
+.table-wrap table {
+    /* Anular el corte agresivo de palabras del theme: preferimos scroll */
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    overflow-wrap: normal;
+}
+
+/* Scroll horizontal dentro de la caja si la tabla no entra */
+.table-wrap {
+    overflow-x: auto;
+}
+
+.table-wrap th,
+.table-wrap td {
+    border: 1px solid var(--inner-bg);
+    padding: 0.4rem 0.75rem;
+    white-space: normal;
+    vertical-align: top;
+}
+
+/* Restaurar el padding-left que el theme quitaba a la primera columna */
+.table-wrap th:first-child,
+.table-wrap td:first-child {
+    padding-left: 0.75rem;
+}
+
+.table-wrap th {
+    background: var(--inner-bg);
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Botón toggle (flota arriba a la derecha de la tabla) */
+.table-toggle {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    z-index: 1;
+    background: var(--inner-bg);
+    color: var(--muted);
+    border: 1px solid var(--muted);
+    border-radius: 3px;
+    padding: 0.15em 0.4em;
+    font-size: 0.8em;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.15s, color 0.15s;
+}
+
+.table-toggle:hover,
+.table-toggle.is-raw {
+    opacity: 1;
+    color: var(--link);
+    border-color: var(--link);
+}
+
+/* Bloque de markdown crudo */
+.table-raw {
+    background: var(--inner-bg);
+    border-radius: 3px;
+    padding: 0.75rem;
+    overflow-x: auto;
+    margin: 0;
+}
+
+.table-raw code {
+    background: none;
+    padding: 0;
+    white-space: pre;
+    font-family: var(--font-monospace);
+    font-size: 0.85em;
+}
+
 /* Toggle dark/light — tamaño aumentado */
 .theme-toggle {
     font-size: 1rem;

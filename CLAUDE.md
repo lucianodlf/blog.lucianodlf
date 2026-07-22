@@ -124,6 +124,7 @@ tags: []
 | `Enter` | Abrir resultado |
 | `gg` | Scroll al inicio |
 | `G` | Scroll al final |
+| `w` | Ancho completo del post (toggle) |
 | `?` | Popup de ayuda |
 | Toggle `⊕` | Cambiar dark/light mode |
 

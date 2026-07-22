@@ -24,6 +24,10 @@
     <button id="theme-toggle" class="theme-toggle" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
         <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
     </button>
+    <span class="aside__keyhints-sep">·</span>
+    <button id="wide-toggle" class="theme-toggle" title="Ancho completo" aria-label="Expandir o contraer el ancho del post">
+        <i class="fa-solid fa-left-right" aria-hidden="true"></i>
+    </button>
 </p>
 
 {{ $featured := where .Site.RegularPages "Params.featured" true }}

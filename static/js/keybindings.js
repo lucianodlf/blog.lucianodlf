@@ -15,6 +15,17 @@
     });
   }
 
+  // --- Wide toggle (ancho completo del post) ---
+  function toggleWide() {
+    const wide = document.documentElement.classList.toggle('wide');
+    localStorage.setItem('wide', wide ? '1' : '0');
+  }
+
+  const wideBtn = document.getElementById('wide-toggle');
+  if (wideBtn) {
+    wideBtn.addEventListener('click', toggleWide);
+  }
+
   function isTyping() {
     const el = document.activeElement;
     return el && (
@@ -134,6 +145,10 @@
 
       case '?':
         toggleHelp();
+        break;
+
+      case 'w':
+        toggleWide();
         break;
 
       case 'G':

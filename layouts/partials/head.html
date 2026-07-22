@@ -1,5 +1,5 @@
 <!-- Anti-flash: aplicar tema antes del render -->
-<script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light')</script>
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');if(localStorage.getItem('wide')==='1')document.documentElement.classList.add('wide')</script>
 <title>{{ if not .IsHome }}{{ .Title }} &ndash; {{ end }}{{ .Site.Title }}</title>
 {{ with .Site.Params.about }}<meta name="description" content="{{ .description }}">{{ end }}
 
@@ -48,6 +48,9 @@
 
 <!-- Keyboard navigation -->
 <script src="{{ "js/keybindings.js" | absURL }}" defer></script>
+
+<!-- Tablas: scroll horizontal + toggle markdown crudo -->
+<script src="{{ "js/tables.js" | absURL }}" defer></script>
 
 <!-- Diagramas Mermaid (solo se activa si hay un bloque .mermaid en la página) -->
 <script src="{{ "js/mermaid.js" | absURL }}" defer></script>
