@@ -1,0 +1,350 @@
+---
+title: Experiencia desarrollando MilPathsX con workflow agerntico
+date: 2026-07-24
+draft: false
+share: false
+featured: false
+toc: true
+tags:
+  - claude
+  - claude-code
+  - vibe-coding
+  - spec-driven
+  - agentes
+  - workflow
+  - mcp
+  - vue
+  - fastapi
+  - milp
+  - optimizacion
+  - milpathsx
+  - ia
+created: 24-07-2026T13:03
+updated: 27-07-2026T08:30
+---
+
+
+>[!IMPORTANTE]
+> Este post hace referencia a un proyecto de software con propiedad intelectual de INGAR (CONICET-UTN) en el marco de un proyecto de tesis vigente. Motivo por el cual no se comparten partes del código fuente, y la autoría de la idea es exclusiva del equipo de trabajo de INGAR. Mi interés es compartir la experiencia de participar en el desarrollo desde una perspectiva técnica implementando un workflow de trabajo  agentico. 
+
+## Sobre MilPathsX
+
+MilPathsX es un software que optimiza operaciones logísticas vinculadas a recorridos para el reparto y recolección. **Nació como proyecto de tesis e I+D en INGAR (CONICET-UTN)**, desde el que me convocaron como freelance developer para ayudarles a materializar como pieza de software la idea sobre la que venían trabajando. **Al día de hoy sigue en desarrollo**. Cuento esto aclarando que no es una idea ni desarrollo exclusivo que nace de mi parte, hay una base creativa y un trabajo previo del equipo que participa en la tesis. En lo que a mí respecta, la parte "tangible" como herramienta de software es en gran medida el resultado de mi experiencia del proceso de desarrollo. El foco que más quiero compartir aquí es justamente esta experiencia (novedosa para mí) con un workflow agéntico y de vibe coding.
+
+En pocas palabras:
+La plataforma tiene dos mundos conectados. Por un lado, un backoffice con enfoque app desktop donde se gestionan clientes, vehículos, empleados, plantas, etc... (la mayoría de ABM's de sistemas de gestión), más las características particulares para el armado de planes de ruteo, planificación, seguimiento, auditoría y análisis de datos. Por otro lado, está la app mobile para el conductor, que recibe el recorrido del día, realiza las visitas, entregas, recolecciones y cierra cada visita con un QR de conformidad.
+
+---
+
+## Vista previa
+
+##### Demo Reel
+
+<video src="" controls width="100%"></video>
+
+##### Tablero de planificaciones y progreso en tiempo real
+
+![[asset-20260724214457349.png|center|1500]]
+
+---
+
+## La experiencia: develop workflow con agentes sin demencia
+
+Vibe coding, entendido en serio, no es tirarle una idea suelta a un LLM y esperar que adivine el resto. Es más parecido a trabajar con un compañero de equipo que no tiene memoria entre reuniones: si no le dejás documentado dónde quedó todo, cada sesión nueva arranca de cero, reexplicando arquitectura, decisiones ya tomadas, repitiendo errores, etc... Sin contar el consumo mayor de tokens en cada sesión o sosteniendo sesiones en donde crece el contexto.
+Hay un proceso importante en el que se toman las decisiones, la redacción de qué y cómo se quiere algo, cómo validarlo, qué reutilizar de lo que ya está hecho, sobre qué poner el foco para priorizar características. Escribirle buenos prompts con especificaciones es parte del trabajo a donde se traslada el esfuerzo y la creatividad. Ahora no es dedicarle el tiempo a escribir código, copy/paste/edit de funciones similares, revisar coherencia, refinar las interfaces manualmente, validar llamadas a la API paso a paso, y un largo etcétera. Esto no desaparece por completo (por lo menos para la forma en que continúo desarrollando), pero hay un desplazamiento de la carga cognitiva y el foco de atención a otro aspecto del proceso de creación.
+
+Esta fue una de las cuestiones reales que me propuse resolver antes de poder avanzar con el proyecto de forma sostenida. MilPathsX no es un script de una tarde: son meses de trabajo, con un backoffice, una app mobile, todo evolucionando en paralelo. Sin un mecanismo para preservar contexto entre sesiones, cada sesión nueva de Claude Code iba a perder tiempo redescubriendo cosas que ya sabíamos. (El plural es intencional, ahora somos dos, Claude y yo, a veces somos más... :)
+
+Como ya venía trabajando hace algunas semanas junto a Claude, en un proyecto más grande, donde paulatinamente estaba integrando su uso. Al comenzar con este proyecto, en un estadio preliminar o, como solemos decir, más verde. Aproveché para comenzar a experimentar con un workflow de trabajo, que sobre la marcha y la práctica fui refinándolo (continúa WIP). Me ayudó que el proyecto arrancó en esta oportunidad con una lista de objetivos más o menos definidos, describiendo features y tareas (lo cual no siempre es moneda corriente al comenzar un proyecto, apuesto a que deben ser bastantes las personas que se han encontrado con especificaciones difusas, confusas, vagas y probables. Si te pasó, no te sientas en soledad, ¡somos más!).
+
+Algo así comenzó:
+
+```
+## 0. Setup y base
+
+- Setup entorno y repositorio
+- Configuración base backend/frontend (ver /scripts/dump-...sql)
+- Ejecución de la app (fastapi + arq + ui)
+
+## 1. ABMs básicos
+
+- Cliente: agregar campo para almacenar días prohibidos
+- Cliente: agregar la generación de Paths para un cliente en particular (que debería borrar lo existente)
+- Feriados: agregar módulo para cargar feriados
+
+## 2. Integración con Job
+
+- Mejorar interfaz de datos de entrada
+  - Permitir excluir en los datos de entrada uno o más días (por feriados)
+- Mejorar interacción Fastapi - ARQ de forma de poder cancelar ejecuciones y avisarle al usuario cuando un job terminó
+- Agregar eliminación de jobs
+- Mejorar visualización de resultados
+- Visualización de resultados tipo mapa
+- Guardar JOB como PLANIFICACION eligiendo la semana para la cual guardarlo:
+  - Chequear que no haya planificación para esa semana
+  - Agregar un campo repetir X semanas
+
+## 2b. Comparación de Jobs
+
+- Agregar una vista para comparar resultados de 2 jobs seleccionados
+  ...
+  ...
+  ...
+```
+
+Esto me dio una base de input bastante buena para hacer un proceso de "init" del proyecto base y lograr como resultado un conjunto de issues definidos. Sin proponérmelo al principio, estaba comenzando a implementar mi workflow de SDD **(Spec Driven Development)**.
+
+El `roadmap.md` fue creciendo, cada issue con su propio archivo, que luego refinaría en iteraciones de planificación e implementación: antes de escribir código, escribir qué se va a construir, por qué, y con qué criterio se va a considerar terminado. No lo apliqué como metodología formal de la industria que haya adoptado tal cual, es lo que fui armando a partir de mi necesidad real, con carpetas y convenciones simples que terminaron sosteniendo todo el desarrollo, algo que también fue mutando en el proceso.
+
+---
+
+## El workflow de sesiones
+
+El trabajo con el agente está organizado en sesiones. Cada sesión es una carpeta con su propio contexto: qué se pidió, qué se investigó, qué se decidió hacer y, si la sesión es grande, un desglose por fases.
+
+Tres comandos propios fui construyendo:
+
+- `/init-workflow`: inicializa la estructura de trabajo en un proyecto nuevo (carpetas de sesiones, issues, conocimiento).
+- `/ns` (nueva sesión): crea una carpeta de sesión nueva con su `prompt.md` inicial. (primera versión de trabajo, fue dejando de tener sentido en varios casos)
+- `/ip` (iniciar plan): a partir del prompt y la investigación previa, arma el `plan.md` de la sesión. (última implementación más flexible)
+
+Una sesión típica termina con esta estructura de archivos:
+
+```
+sessions/
+  nombre-de-la-sesion/
+    prompt.md          # qué se pidió, en las palabras originales
+    research.md         # exploración del código existente, decisiones a evaluar
+    plan.md              # plan de implementación acordado
+    fase-1-plan.md       # si la sesión se divide en fases
+    fase-2-plan.md
+```
+
+- con el tiempo dejé de guardar los `prompt.md` originales, fui aprendiendo más cosas al manejar Claude Code CLI. De todas formas sigo iniciando prompts más grandes en archivos. Además se fueron incorporando mejor el histórico de prompt, resumen de sesiones, stashed tmp prompt
+- El `research.md` también lo fui guardando menos. Como comencé a usar el modo `/plan` propiamente dicho, preferí enfocarme más sobre el archivo de `plan.md` detallado
+- las fases de planes me permitieron darme cuenta de que en algunos casos, comenzaba con issues muy amplios que podía dividir, en otros fue el resultado de nuevas ideas o de encontrarme con casos de más trabajo del que creía, por lo que dividía por fases para poder probar o corregir sin hacer toda una implementación de una sola vez
+
+Cuando una sesión es larga y se extiende en el tiempo (o se retoma días después), un archivo `LAST-STATUS.md` en la raíz del directorio de trabajo guarda el estado de traspaso: en qué quedó todo, qué falta, qué decisión está pendiente, un status de lo ya investigado, etc... Es el archivo que reviso primero cuando retomo el proyecto. (Más de una vez dejé a medias una sesión con múltiples archivos abiertos en el editor y al retomar, me encontraba perdido. Aclaro que me gustan los paréntesis (sobre este aspecto de "encontrarse perdido" (paradoja aparte), da para otra reflexión sobre la carga cognitiva y el multitasking que comienzan a ser como fantasmas silenciosos que se pegan y acompañan a uno al trabajar en conjunto con las capacidades, e "incapacidades", de la IA))
+
+Más o menos con cada issue este es el workflow que fui siguiendo (issues muy pequeños pasan directamente a implementación, otros se dividen al llegar al plan o el research)
+```mermaid
+graph LR
+    A[ /ns o /ip crear sesion/ ] --> B{ }
+    B -->|/ns| C[folder + research.md + plan.md]
+    B -->|/ip| D[folder + plan.md /plan mode]
+    C --> E[Refinar]
+    D --> E
+    E -->|loop| E
+    E --> G[Implementación]
+    G --> J[Test / Revisión]
+    J -->|nuevo issue| A
+    J --> H[LAST-STATUS.md actualizado]
+    H -.opcional.-> I[Cosecha en knowledge/]
+```
+
+Este ciclo no elimina la necesidad de que yo entienda lo que se está construyendo. Al contrario: escribir el prompt, revisar y refinar el plan me obliga a pensar antes de delegar. Lo que sí elimina es la fricción de tener que reconstruir ese pensamiento de memoria cada vez que abro una terminal nueva. A veces el research y el plan me permiten retomar y probar otras alternativas o tener la documentación necesaria para explorar otras posibilidades.
+
+---
+
+## Specs primero: el ciclo de issues
+
+Además de las sesiones, el proyecto se organiza por issues, agrupadas en un roadmap. En MilPathsX ese roadmap terminó teniendo 57 issues distribuidas en 9 fases.
+
+Cada issue vive como un archivo markdown, con criterios de aceptación escritos antes de tocar código. La estructura, dentro del directorio de trabajo agéntico del proyecto, es simple:
+
+```
+.agents/working-progress/
+  issues/
+    todo/
+      0042-comparador-jobs.md
+    done/
+      0038-calendario-drag-drop.md
+  sessions/
+  knowledge/
+```
+
+Una issue en `todo/` describe el problema, a veces propuesta de abordaje, otras input de investigación y el criterio de aceptación. Cuando se cierra, se mueve a `done/`, y si generó algún aprendizaje reutilizable, ese aprendizaje se documenta aparte (más sobre esto en la próxima sección). Definir el criterio de aceptación antes de escribir código cambia la conversación con el agente: en vez de "andá haciendo y vemos", la sesión arranca sabiendo exactamente cuándo termina (idealmente... ser el human in the loop en mi caso hace que en medio de sesiones despliegue aristas por ideas repentinas... a veces ventaja en el momento justo, a veces pérdida de foco...).
+
+No es un sistema perfecto. Hay tensión constante entre mantener el roadmap, pruebas end to end (humanas), casos especiales con más debug, mientras la velocidad de programar y avanzar, cerrar issues y la acumulación de código juegan su papel en esta tensión. Pero sin duda lo alcanzado hasta ahora me ayuda en mi orden y tranquilidad mental, me permite retomar sesiones largas y tener una base de conocimiento sobre decisiones pasadas. Por otra parte esta base de conocimiento es información valiosa para procesos posteriores de documentación
+
+Sumamos a la gestión de proyecto, el mantener cierta coherencia y orden entre el roadmap, los archivos de issues individuales, sus estados y el tablero de proyectos kanban de gitlab. Aposté por la flexibilidad a no tener todo "tan" organizado, pero tampoco "todo" desorganizado
+
+Probé durante un tiempo el MCP de gitlab para gestionar issues con el agente, pero lo descarté para ahorrar tokens.
+
+#### Issue ejemplo de una sesión
+
+Ejemplo issue `mobile-header`
+
+```markdown
+# mobile-header: Header MobileLayout — rediseño y fix de alineación
+
+**Módulo**: Mobile — Layout / UI
+**Tipo**: mejora · frontend
+**Tamaño**: XS — 0.1 JE
+**Depende de**: mobile-008 (audit baseline)
+**Prioridad**: baja — mejora visual, sin impacto funcional
+
+---
+
+## Problema
+
+El header original tenía logo + nombre a la izquierda y menú a la derecha. El nombre usaba `font-semibold` con Roboto (fuente base). Visualmente plano, sin jerarquía, y compacidad subóptima.
+
+---
+
+## Solución implementada (2026-05-17)
+
+### Layout nuevo: Menú | Avatar+Nombre | Logo
+
+- Hamburguesa a la izquierda (48px touch target, sin cambios funcionales).
+- Avatar de iniciales centrado: 30×30px, `border-radius: 999px`, `background: var(--color-mobile-accent)`, texto en `--font-mobile-mono` — adapta dark/light vía tokens.
+- Nombre en Montserrat 500 (`--font-mobile-display`, `--text-mobile-sm`), truncado, centrado.
+- Logo a la derecha, 28px de alto.
+
+### Fix de alineación (segundo pase)
+
+**Causa del desalineamiento inicial**: el `padding-top: calc(0.5rem + env(safe-area-inset-top))` inline sobreescribía el `py-2` de Tailwind solo en la parte superior, rompiendo el flex alignment vertical — el logo quedaba desplazado abajo.
+
+**Fix**: separar el safe-area en un `div` de relleno puro (`height: env(safe-area-inset-top)`) y usar un inner div con `height: 52px` fijo para el contenido. Los tres elementos quedan alineados correctamente en cualquier dispositivo.
+
+---
+
+## Archivos modificados
+
+- `frontend/src/layouts/MobileLayout.vue` — script setup (computed `userInitials`) + bloque `<header>`
+
+---
+
+## Estado
+
+CERRADO — implementado y verificado en browser.
+
+```
+
+Casos como este, no genero un plan, directamente lo trabajo en una sesión de implementación y verificación de resultados
+
+---
+
+## Cosecha de conocimiento
+
+Cerrar una issue no es solo mover un archivo de `todo/` a `done/`. Antes de cerrarla, reviso si hay algo de esa sesión que valga la pena preservar más allá del código: una decisión de arquitectura, un workaround para una limitación externa, una regla de negocio que no es obvia mirando el código solo.
+
+Eso va a la carpeta `knowledge/`, un espacio separado de las sesiones y las issues, pensado para sobrevivir a ambas. Una sesión se cierra, una issue se archiva, pero el conocimiento que generaron queda disponible para consultarlo en cualquier sesión futura, sin tener que rastrear en qué issue se decidió tal cosa.
+Otros aspectos son cosechados en el sistema de memoria integrado de Claude Code CLI. Más adelante comencé a experimentar e integrar el proyecto **agentmemory**
+
+Dos ejemplos concretos de este proyecto: el método de auditoría de UI/UX que terminé usando de forma sistemática (de qué se trata más abajo) quedó documentado como proceso reutilizable, no como nota de una sola issue. Lo mismo con el ciclo de vida completo de un job de optimización: sus estados posibles, qué dispara cada transición, qué significa cada uno para el usuario del backoffice. Esa tabla de estados terminó siendo referencia obligada cada vez que tocaba algo relacionado con jobs, en vez de tener que releer la issue original que la originó.
+
+```
+knowledge/
+  metodo-auditoria-uiux.md
+  ciclo-vida-jobs.md
+  ...
+```
+
+
+En más de una oportunidad tener estas referencias y que el agente ya sepa dónde buscar, fue de mucha utilidad para no volver a caer en repeticiones o errores conceptuales, más respecto de la lógica de negocio, la terminología o vocabulario utilizado.
+
+---
+
+## El stack de herramientas agénticas
+
+Además del workflow de sesiones e issues, fui incorporando un conjunto de herramientas, skills y MCPs que cumplen roles específicos dentro de este proceso. Ninguna es indispensable por sí sola, pero juntas terminaron formando el stack agéntico con el que trabajo hoy (que sigue mutando. Constantemente descubro nuevas alternativas y me dan ganas de probarlas... pero de verdad, no hay forma de probar en la práctica concreta tantas cosas y trabajar al mismo tiempo, así que vamos paso a paso...):
+
+- **[agentmemory](https://github.com/rohitg00/agentmemory)**: servidor de memoria persistente entre sesiones de agente. Captura decisiones y contexto mediante hooks y los reinyecta en la sesión siguiente, entre otras cosas.
+
+- **[graphify](https://github.com/Graphify-Labs/graphify)**: convierte el repositorio en un grafo de conocimiento consultable en lenguaje natural, analizado localmente con tree-sitter, sin depender de un LLM para indexar. Lo uso cuando necesito entender relaciones entre componentes sin recorrer archivo por archivo a mano.
+
+- **[gitnexus](https://github.com/abhigyanpatwari/GitNexus)**: indexa el repositorio en un grafo de conocimiento, dependencias y cadenas de llamadas, y deja preguntar "quién depende de esto" antes de editar. Es el que más usé en las migraciones grandes, donde el riesgo de romper algo por un cambio no evidente es alto. En este caso uso un modelo local con ollama para embedding
+
+> [!NOTE]
+> graphify y gitnexus fueron pruebas en el camino, los dos juntos no tienen sentido para este caso. Con graphify exploré en otros proyectos para indexar más documentos como PDF, Excel, DB SQLite, markdown y mantener una relación entre todos para explorar. Con gitnexus hay una orientación más específica a código, y es el que en la práctica de desarrollo y concretamente probado en este proyecto me da mejores resultados.
+
+- **[rtk](https://github.com/rtk-ai/rtk)**: proxy en Rust que filtra y comprime la salida de comandos de shell antes de que lleguen al contexto del agente. Menos tokens gastados en ruido de terminal, más presupuesto de contexto para lo que importa.
+
+- **[deepwiki](https://deepwiki.com/)**: documentación interactiva generada para cualquier repositorio público. La uso para consultar cómo funciona una dependencia externa, navegar por la documentación. Es base de conocimiento para exploraciones del agente, en research y planificaciones. En lugar de suponer, el agente lee sobre el repositorio e investiga (mejor que solo fetch web).
+
+- **[ponytail](https://github.com/DietrichGebert/ponytail)**: le mete al agente la mentalidad de un desarrollador senior que evita la sobre-ingeniería: antes de escribir código nuevo, preguntarse si ya existe, si lo resuelve la librería estándar, si alcanza con una línea. Lo uso como contrapeso a la tendencia de los agentes a generar más código del necesario.
+
+- **[playwright MCP](https://github.com/microsoft/playwright-mcp)**: automatización de navegador vía protocolo MCP, usando el árbol de accesibilidad de la página en vez de capturas de pantalla. Lo uso para que el agente verifique visualmente un cambio de UI antes de darlo por terminado, con confirmación mía en el medio.
+
+- **[impeccable](https://github.com/pbakaus/impeccable)**: sistema de guía de diseño que genera `PRODUCT.md` y `DESIGN.md` por dominio, y audita el código generado contra reglas determinísticas para pescar los clichés típicos de UI generada por IA. Clave en la migración de design system del backoffice, que cuento en la próxima sección.
+
+- **[ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)**: skill de diseño con reglas específicas por plataforma.
+
+(también fui probando resultados entre estas dos skills para UX/UI. Personalmente me van gustando más los resultados logrados con impeccable, da para otro post)
+
+A esto se suman las reglas propias del proyecto definidas en `CLAUDE.md` y un `CLAUDE.local.md` (para no invadir el entorno de compañeros), comandos obligatorios antes de tocar ciertos módulos, convenciones de commits, ese tipo de cosas.
+MCP's en archivo `.mcp.json` que configura los MCPs disponibles para la sesión: acceso de solo lectura a la base de datos de desarrollo, playwright, gitnexus y un MCP de componentes de UI ([shadcn-vue](https://www.shadcn-vue.com/)).
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest", "--output-dir", ".playwright-mcp", "--user-data-dir", ".playwright-mcp/profile"]
+    },
+    "postgres": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "DATABASE_URI",
+        "crystaldba/postgres-mcp",
+        "--access-mode=restricted"
+      ],
+      "env": {
+        "DATABASE_URI": "postgresql://postgres:xxxxx@xxxx:xxxx/xxxxx"
+      }
+    },
+    "gitnexus": {
+      "command": "/home/xxxxx/.nvm/versions/node/v22.13.0/bin/gitnexus",
+      "args": [
+        "mcp"
+      ]
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn-vue@latest", "mcp"]
+    }
+  }
+}
+
+```
+
+
+Otros incluidos como plugins de Claude: ponytail, deepwiki, gitlab y agentmemory
+
+---
+
+## Algunas cosas a subrayar
+
+**Documentación desactualizada.** DeepWiki es útil, pero no infalible: en más de una ocasión el resumen que devolvía sobre una dependencia no coincidía con la versión que estaba usando en el proyecto, y terminé teniendo que leer el código fuente de la librería directamente para confirmar un comportamiento. El aprendizaje ahí no fue menor: igual queda, aunque la herramienta falle, porque el ejercicio de ir a la fuente termina dejando más entendimiento que confiar ciegamente en un resumen. De todas formas en otras oportunidades sí me marcó diferencia para investigar posibilidades previas sobre un repo intentando resolver problemas de configuración (por ejemplo implementando agentmemory, explorando opciones de shadcn). Mayormente me dio resultados para investigaciones y evacuar dudas dándole contexto más amplio y la posibilidad de "preguntarle" al repositorio. La contra en otros momentos fue tener que hacer el proceso manual de solicitar un reindexado actualizado de un repo particular
+
+**Verificación con playwright.** El MCP automatiza la interacción con la página, pero la decisión de si algo "se ve bien" sigue siendo mía. No delegué esa parte, y no creo que debiera: son juicios de criterio visual que todavía prefiero hacer yo. También aumenta el consumo de tokens cuando entra en loops de verificación, modificación, verificación... (es considerable). Por otra parte para hacer test e2e y verificar los criterios de aceptación sobre una decisión específica tomada, me resulta una maravilla. Me encanta ver cómo controla de forma autónoma el browser y "piensa" en el proceso.
+Otra experiencia de aprendizaje importante es la persistencia de perfiles para las sesiones de usuario. Si no se cargan, cada apertura nueva en una sesión consume tokens en un proceso de volver a pasar por el login de usuario y navegar hasta la interfaz particular a testear.
+
+**Ponytail contra la sobre-ingeniería, con límites.** Hay momentos donde la solución más simple no es la correcta, y ahí tuve que frenar la tendencia de ponytail a simplificar de más. Igual no tengo más criterio ya que es una incorporación más reciente finalizando el proyecto y no lo probé mucho en la práctica.
+
+**Consumo de tokens.** En sesiones largas, sobre todo las que tocan varios módulos a la vez, el consumo de contexto se vuelve un problema práctico, no solo económico. rtk ayuda filtrando ruido de los comandos bash que ejecuta el agente. Noté mejores resultados al integrarlo, separando sesiones en fases más cortas, planificando con detalle e indicación de TODO list, limpiando contexto del agente y luego implementando. Cuando digo mejores resultados en verdad son apreciaciones cualitativas más que cuantitativas medidas. Es difícil tener una noción de que "me está consumiendo menos tokens de lo planeado" cuando en medio del trabajo también hay cambios en las condiciones del servicio de Anthropic, de repente hay crédito extra de regalo y cambios en el consumo de tokens, pruebas con diferentes modelos, etc.
+
+(Es otro tema que da para hablar más, me dan ganas de hacer un proceso de auditoría acotada a mis usos actuales, algo como [Agent observability](https://arize.com/docs/phoenix/tracing/llm-traces), para realmente poder comparar la diferencia de usar diferentes tools y enfoques de trabajo, pero como ya dije... paso a paso)
+
+---
+
+## Conclusión
+
+Hablo de proceso agéntico y me siento en la necesidad de aclarar que no es autónomo en mi caso, como se suele definir más la "era agéntica", tampoco es solo vibe coding. Es un mix, en momentos más autónomo por etapas y en otros más acompañante.
+Si es un hecho concreto que en esta experiencia mis intervenciones manuales de escribir código fueron de un 5% si intento ponerle un valor concreto.
+
+Después de meses trabajando así, lo que más rescato del proceso agéntico no es la velocidad (aunque también), sino la capacidad de sostener un proyecto grande sin perder el hilo entre sesiones, trabajando en backend y frontend, investigando, probando alternativas, migrando stack. El agente aporta mucho en la ejecución: escribir el componente, correr la migración, verificar visualmente un cambio, comparar dos alternativas de heurística. Aporta menos, en las decisiones de fondo: qué construir, cuándo un atajo es aceptable y cuándo no, cómo debe funcionar, qué espera el usuario, qué auditar, etc.
+
+La velocidad también me resultó extrañamente asombrosa, aun con jornadas de más esfuerzo de trabajo para preparar una versión entregable con más cuerpo, logré construir cosas que en otro momento me llevaría mucho más tiempo y energía (claro que con un pro de enriquecimiento en el proceso de aprendizaje). Sin ser un especialista en manejar tecnologías del stack para frontend, sin haber programado con tailwind a pata como lo hacía antes, ni tener más recorrido ni experiencia en typescript, pude ver construidas interfaces y features funcionales completas sin pasarme horas leyendo una documentación y probando (justamente, esto es lo que a veces me resultó entretenido y me dio más aprendizaje particular sobre una tecnología, mientras otras veces ha sido un garrón ese cuello de botella para poder lograr ver implementado algo que está en mi imaginación).
+
+Esta "capacidad" de poder hacer y ver la idea "tangible" implementada me generaba entusiasmo y nuevas ideas.
+En medio del proyecto surgió la idea de migrar el stack que veníamos usando heredado con Bulma y Vuero, a tailwind y componentes shadcn-vue. En verdad con mis conocimientos en frontend, sin la asistencia agéntica me hubiese resultado impensable emprender esa tarea. Aquí surgió como una prueba, y sobre la marcha fue creciendo. No voy a negar que resultó más trabajoso de lo que creí en un primer momento, pero de todas formas, migrar todo el frontend en una semana es algo que no me habría imaginado posible.
+De ahí a creer que esto puede hacerse con pocas "horas-culo-silla", baja fricción o simplicidad, porque "la IA lo hace sola", hay una brecha muy grande. No digo que hoy no se pueda, ya hay bastante ecosistema como para lanzar un enjambre de agentes que trabajen hasta completar todo el objetivo (siempre que esté bien definido de entrada). Pero en mi realidad concreta todavía no es algo posible, tanto por falta de experimentación con ese modo concreto de trabajo, como por limitación económica (hay que tener más que un plan Pro de USD 200 anual con Claude Code para que un ciclo de trabajo así se complete)
+
+fin.

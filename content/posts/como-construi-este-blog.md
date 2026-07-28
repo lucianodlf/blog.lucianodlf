@@ -76,7 +76,7 @@ La config de Enveloppe (upload path, attachment folder, y la clave `share` que d
 Acá aparece el único punto de fricción real del pipeline. Obsidian resuelve las rutas de las imágenes a su manera, y el resultado que Enveloppe escribe en el markdown no es el que Hugo espera:
 
 ```
-Enveloppe escribe:  ![alt](../../static/assets/img.jpg.jpg)
+Enveloppe escribe:  ![alt](../../assets/img.jpg)
 Hugo necesita:      ![alt](../../assets/img.jpg)
 ```
 
@@ -235,9 +235,9 @@ El script busca el patrón `[!TIPO]` al inicio del blockquote, lo saca del texto
 - keybinding `/ | Ctrl+K` para busquedas
 - keybinding `?` para help y navegacion
 
-![asset-20260722174125871.png](../../static/assets/asset-20260722174125871.png.png)
+![asset-20260722174125871.png](../../assets/asset-20260722174125871.png)
 
-![asset-20260722173933566.png](../../static/assets/asset-20260722173933566.png.png)
+![asset-20260722173933566.png](../../assets/asset-20260722173933566.png)
 
 ## Preguntas frecuentes
 
@@ -252,7 +252,7 @@ Porque el problema no es de Hugo, es de cómo Enveloppe resuelve las rutas de at
 
 ### ¿Qué pasa si corro `fix-assets.sh` dos veces sobre el mismo post?
 
-Nada distinto — el script es idempotente. Los patrones de `sed` solo matchean el path "roto" original (`../../static/assets/` o la extensión duplicada); una vez corregido, ninguna de las reglas vuelve a aplicar.
+Nada distinto — el script es idempotente. Los patrones de `sed` solo matchean el path "roto" original (`../../assets/` o la extensión duplicada); una vez corregido, ninguna de las reglas vuelve a aplicar.
 
 ### ¿Necesito indexar Pagefind en cada build local?
 
@@ -262,5 +262,5 @@ No. `make serve` te da un ciclo de feedback rápido para escribir o ajustar esti
 
 El diseño completo se apoya en una idea simple: cada pieza hace una sola cosa y el pipeline nunca diverge entre local y CI porque comparten el mismo script de fix de assets. Obsidian resuelve la escritura, Enveloppe resuelve la subida, GitHub Actions resuelve el build y el deploy, y Pagefind resuelve la búsqueda — sin superposición entre capas.
 
-![asset-20260722173713632.png](../../static/assets/asset-20260722173713632.png.png)
+![asset-20260722173713632.png](../../assets/asset-20260722173713632.png)
 

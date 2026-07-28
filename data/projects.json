@@ -1,5 +1,5 @@
 {
-  "columns": 3,
+  "columns": 4,
   "items": [
     {
       "name": "Este blog",
@@ -16,6 +16,13 @@
     {
       "name": "Automatización Gastos (Experimento)",
       "link": "https://github.com/lucianodlf/ia-update-gestion-personal",
+      "image": "img/projects/automatizar-gastos.png",
+      "visible": true
+    },
+    {
+      "name": "notesmd",
+      "link": "https://github.com/lucianodlf/notesmd",
+      "image": "img/projects/notesmd.png",
       "visible": true
     }
   ]
