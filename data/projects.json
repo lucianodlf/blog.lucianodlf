@@ -20,9 +20,15 @@
       "visible": true
     },
     {
-      "name": "notesmd",
+      "name": "NotesMD",
       "link": "https://github.com/lucianodlf/notesmd",
       "image": "img/projects/notesmd.png",
+      "visible": true
+    },
+    {
+      "name": "MiTarasca",
+      "link": "https://mitarasca.demo.lucianodlf.com.ar",
+      "image": "img/projects/mitarasca.png",
       "visible": true
     }
   ]
