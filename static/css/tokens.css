@@ -1,6 +1,6 @@
-/* lucianodlf: tokens del design system, generados a mano desde tokens.json (DS v1)
-   + candidatos de feat-brand-redesign (plan.md §3.3): primary-soft dark, primary-deep light,
-   danger, primary-hover, code-bg, lead, display-xl.
+/* lucianodlf: tokens del design system, generados a mano desde tokens.json (DS v2,
+   https://claude.ai/artifact/1Cb555udMz1t4gBdSJczcs). Incluye primary-soft y primary-deep por tema,
+   primary-hover, danger, code-bg, backdrop y el espaciado 3/6/12/16.
    Dark es el default del sitio (:root). Light se activa con html.light (keybindings.js). */
 
 :root {

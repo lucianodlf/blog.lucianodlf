@@ -13,30 +13,30 @@ hero:
 
 metrics:
   - { value: "2006", label: "en IT; desarrollando software desde 2016" }
-  - { value: "+20", label: "clientes acompañados en implementaciones de software" }
+  - { value: "+20", label: "clientes en implementaciones como líder implementador" }
   - { value: "2 de 3", label: "meses: AppLogistic entregado antes con un workflow spec-driven" }
-  - { value: "7", label: "modelos de OCR comparados en un benchmark propio" }
+  - { value: "20' → 10'", label: "modelo MILP: de no resolver a una solución válida" }
 
 services:
   eyebrow: "$ man luciano"
   title: "En qué te puedo ayudar"
   items:
-    - { icon: "fa-solid fa-layer-group", title: "Sistemas internos y de gestión", text: "Desarrollo backend y full stack de sistemas que tu equipo usa todos los días." }
-    - { icon: "fa-solid fa-plug", title: "Integraciones", text: "Conecto ERP, ecommerce y APIs para que la información no se cargue dos veces." }
-    - { icon: "fa-solid fa-cubes", title: "Odoo", text: "Implementación y adaptación, con módulos propios cuando hace falta." }
-    - { icon: "fa-solid fa-gears", title: "Automatización", text: "Procesos y workflows, con IA cuando aporta valor y validación humana del resultado." }
-    - { icon: "fa-solid fa-magnifying-glass-chart", title: "Análisis funcional", text: "Relevo cómo trabajás antes de escribir código, para construir lo que se va a usar." }
-    - { icon: "fa-solid fa-chalkboard-user", title: "Capacitación y soporte", text: "Acompaño la adopción de la herramienta y su mantenimiento evolutivo." }
+    - { icon: "fa-solid fa-layer-group", title: "Desarrollo backend y full stack", text: "Sistemas internos y de gestión: diseño soluciones desde cero o mejoro las que ya tenés." }
+    - { icon: "fa-solid fa-plug", title: "Integraciones", text: "Integración entre plataformas: ERP, ecommerce y APIs." }
+    - { icon: "fa-solid fa-cubes", title: "Odoo", text: "Implementación y adaptación de Odoo, con módulos propios cuando hace falta." }
+    - { icon: "fa-solid fa-gears", title: "Automatización con IA", text: "Procesos, workflows y documentos, con IA cuando aporta valor y validación humana del resultado." }
+    - { icon: "fa-solid fa-magnifying-glass-chart", title: "Análisis funcional", text: "Relevamiento y análisis funcional antes de escribir código, para diseñar la estrategia que se adapte a tu caso." }
+    - { icon: "fa-solid fa-chalkboard-user", title: "Capacitación y soporte", text: "Capacito a los usuarios, acompaño la adopción y sostengo el mantenimiento evolutivo." }
 
 workflow:
   eyebrow: "$ cat workflow.md"
   title: "Cómo trabajo"
-  text: "Trabajo de forma AI-Augmented: escribo la especificación, planifico por fases y uso agentes para implementar, con validación en cada paso. Así entregué AppLogistic en dos meses para un alcance pensado en tres, con 51 issues en 9 fases."
+  text: "Trabajo de forma AI-Augmented con un workflow propio basado en specs: genero el backlog desde el documento de alcance y cada issue pasa por investigación, plan, implementación y validación. Así entregué AppLogistic en dos meses para un alcance planificado en tres, con 51 issues en 9 fases."
   steps:
-    - { cmd: "spec", text: "Qué problema resolvemos y cómo sabemos que está resuelto." }
+    - { cmd: "investigación", text: "Entiendo el problema, el contexto y las herramientas que convienen." }
     - { cmd: "plan", text: "Fases chicas, cada una con su criterio de aceptación." }
-    - { cmd: "implementación", text: "Código con agentes, revisado y versionado por fase." }
-    - { cmd: "validación", text: "Pruebas, métricas y la persona que lo va a usar." }
+    - { cmd: "implementación", text: "Código con agentes, guiado por la spec y versionado por fase." }
+    - { cmd: "validación", text: "Tests, métricas y la persona que lo va a usar." }
   quote: "Los LLMs amplían lo que puedo hacer; la metodología, mi criterio y mis decisiones son con lo que más valor aporto."
 
 # Posts destacados en la home (D14). Rutas de contenido relativas a content/.
@@ -47,6 +47,6 @@ featuredPosts:
 
 contact:
   title: "¿Tenés una idea o un proceso para ordenar?"
-  text: "Contame qué querés resolver. Respondo por mail o por LinkedIn."
+  text: "Abierto a proyectos freelance y a equipos de producto. Contame qué querés resolver."
   cta: { label: "Escribime", url: "mailto:luciano.dlf@gmail.com" }
   secondary: { label: "LinkedIn", url: "https://www.linkedin.com/in/lucianodelfino" }

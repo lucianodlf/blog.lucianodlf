@@ -164,6 +164,5 @@ Al iniciar sesión nueva (sin contexto de trabajo activo): sugerir al usuario ej
 ## Pendientes conocidos
 - Comentarios Giscus (opcional)
 - PDF del CV en `static/cv/luciano-delfino-cv.pdf` (el botón aparece solo si existe)
-- Revisar `data/cv.yaml` contra LinkedIn unificado (roles y textos reconstruidos desde research)
-- Agregar al DS los tokens candidatos (`primary-soft` dark, `primary-deep` light, `danger`, `code-bg`, `primary-hover`, `lead`, `display-xl`, itálica)
+- Si cambia el DS (artifact `1Cb555udMz1t4gBdSJczcs`), regenerar a mano `static/css/tokens.css` (hoy DS v2)
 - og:image por post (opcional)
