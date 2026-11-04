@@ -2,7 +2,7 @@
 <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');if(localStorage.getItem('wide')==='1')document.documentElement.classList.add('wide')}catch(e){}</script>
 {{- $title := cond .IsHome (printf "Luciano Delfino · %s" site.Title) (printf "%s · %s" .Title site.Title) }}
 {{- $desc := "" }}
-{{- with .Description }}{{ $desc = . }}{{ else }}{{ with .Params.summary }}{{ $desc = . }}{{ else }}{{ if and .IsPage (eq .Type "posts") }}{{ $desc = .Summary | plainify | htmlUnescape | truncate 160 }}{{ end }}{{ end }}{{ end }}
+{{- with .Description }}{{ $desc = . }}{{ else }}{{ with .Params.summary }}{{ $desc = . }}{{ else }}{{ if and .IsPage (eq .Type "posts") }}{{ $desc = .Summary | plainify | htmlUnescape | strings.TrimSpace | truncate 160 }}{{ end }}{{ end }}{{ end }}
 {{- if not $desc }}{{ $desc = site.Params.description }}{{ end }}
 {{- $og := site.Params.ogImage | absURL }}
 {{- with .Resources.GetMatch "cover.*" }}{{ $og = .Permalink }}{{ end }}
