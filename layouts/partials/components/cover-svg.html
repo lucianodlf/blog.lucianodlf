@@ -1,0 +1,51 @@
+{{- /* Composición de portada del DS lucianodlf (losa primary, bloque text con grilla
+   de puntos, barra accent = cursor, banda primary-soft), con colores por tokens.
+   dict "variant" "hero|card|wide" "label" "texto opcional" "avatar" "url opcional" "id" "único" */ -}}
+{{- $v := .variant | default "card" -}}
+{{- $id := .id | default "c" -}}
+{{- if eq $v "hero" -}}
+<svg class="cover cover--hero" viewBox="0 0 480 400" role="img" aria-label="Composición gráfica lucianodlf{{ with .avatar }} con retrato de Luciano Delfino{{ end }}" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <clipPath id="{{ $id }}-av"><circle cx="384" cy="168" r="64"/></clipPath>
+  </defs>
+  <rect class="cv-bg" width="480" height="400"/>
+  <rect class="cv-primary" x="48" y="-16" width="160" height="288" rx="8"/>
+  <rect class="cv-ink" x="224" y="56" width="272" height="224" rx="8"/>
+  <g class="cv-dot">
+    {{- range $y := slice 88 120 152 184 216 248 }}{{ range $x := slice 256 288 }}<circle cx="{{ $x }}" cy="{{ $y }}" r="2"/>{{ end }}{{ end }}
+    {{- range $x := slice 320 352 384 416 448 }}<circle cx="{{ $x }}" cy="88" r="2"/><circle cx="{{ $x }}" cy="248" r="2"/>{{ end }}
+  </g>
+  {{- with .avatar }}
+  <circle class="cv-ring" cx="384" cy="168" r="68"/>
+  <image href="{{ . }}" x="320" y="96" width="128" height="150" preserveAspectRatio="xMidYMin slice" clip-path="url(#{{ $id }}-av)"/>
+  {{- end }}
+  <rect class="cv-accent" x="224" y="296" width="32" height="8"/>
+  <rect class="cv-soft" x="48" y="320" width="464" height="96" rx="8"/>
+</svg>
+{{- else if eq $v "wide" -}}
+<svg class="cover cover--wide" viewBox="0 0 960 288" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <rect class="cv-bg" width="960" height="288"/>
+  <rect class="cv-primary" x="528" y="-16" width="192" height="240" rx="8"/>
+  <rect class="cv-ink" x="736" y="48" width="240" height="160" rx="8"/>
+  <g class="cv-dot">{{ range $y := slice 80 112 144 176 }}{{ range $x := slice 768 800 832 864 896 928 }}<circle cx="{{ $x }}" cy="{{ $y }}" r="2"/>{{ end }}{{ end }}</g>
+  <rect class="cv-accent" x="736" y="224" width="32" height="8"/>
+  <rect class="cv-soft" x="528" y="240" width="448" height="64" rx="8"/>
+  {{- with .label }}
+  <text class="cv-title" x="48" y="208" font-size="{{ cond (gt (len .) 12) 40 56 }}">{{ . }}<tspan class="cv-label-cursor">_</tspan></text>
+  {{- end }}
+</svg>
+{{- else -}}
+{{- $label := .label | default "" -}}
+{{- $fs := cond (gt (len $label) 12) 13 17 -}}
+<svg class="cover cover--card" viewBox="0 0 320 200" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <rect class="cv-bg" width="320" height="200"/>
+  <rect class="cv-primary" x="24" y="-8" width="64" height="136" rx="8"/>
+  <rect class="cv-ink" x="104" y="32" width="232" height="112" rx="8"/>
+  <g class="cv-dot">{{ range $y := slice 112 128 }}{{ range $x := slice 216 232 248 264 280 296 312 }}<circle cx="{{ $x }}" cy="{{ $y }}" r="1.5"/>{{ end }}{{ end }}</g>
+  {{- with $label }}
+  <text class="cv-label" x="120" y="64" font-size="{{ $fs }}">{{ . }}<tspan class="cv-label-cursor">_</tspan></text>
+  {{- end }}
+  <rect class="cv-accent" x="104" y="156" width="24" height="6"/>
+  <rect class="cv-soft" x="24" y="172" width="312" height="40" rx="8"/>
+</svg>
+{{- end -}}

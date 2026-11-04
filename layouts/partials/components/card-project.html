@@ -1,0 +1,29 @@
+{{- /* Card de proyecto (page bundle). Contexto: página */ -}}
+{{- $img := .Resources.GetMatch "cover.*" -}}
+<article class="card card--project">
+  <div class="card__media{{ if and $img (eq .Params.coverFit "contain") }} card__media--contain{{ end }}">
+    {{- if $img }}
+    {{- if eq .Params.coverFit "contain" }}
+    {{- $r := $img.Fit "320x320 webp" }}
+    <img src="{{ $r.RelPermalink }}" width="{{ $r.Width }}" height="{{ $r.Height }}" alt="" loading="lazy">
+    {{- else }}
+    {{- $r := $img.Fill "640x400 webp Center" }}
+    <img src="{{ $r.RelPermalink }}" width="{{ $r.Width }}" height="{{ $r.Height }}" alt="" loading="lazy">
+    {{- end }}
+    {{- else }}
+    {{ partial "components/cover-svg.html" (dict "variant" "card" "label" (.Params.coverLabel | default .Title)) }}
+    {{- end }}
+  </div>
+  <div class="card__body">
+    <p class="card__chips">
+      <span class="chip chip--soft">{{ .Params.kind }}</span>
+      {{- with .Params.status }}<span class="chip chip--status">{{ . }}</span>{{ end }}
+    </p>
+    <h3 class="card__title"><a class="card__link" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="card__excerpt">{{ .Params.summary }}</p>
+    {{- with .Params.stack }}
+    <p class="card__tags">{{ range first 4 . }}<span class="chip chip--neutral">{{ . }}</span>{{ end }}</p>
+    {{- end }}
+    {{- with .Params.period }}<p class="card__meta">{{ . }}</p>{{ end }}
+  </div>
+</article>

@@ -1,0 +1,3 @@
+{{- /* dict "text" "..." "href" "..." "variant" "soft|neutral|status" */ -}}
+{{- $cls := printf "chip chip--%s" (.variant | default "soft") -}}
+{{- if .href }}<a class="{{ $cls }}" href="{{ .href }}">{{ .text }}</a>{{ else }}<span class="{{ $cls }}">{{ .text }}</span>{{ end -}}

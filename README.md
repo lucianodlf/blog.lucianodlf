@@ -1,13 +1,13 @@
 [![Deploy Hugo site to GitHub Pages](https://github.com/lucianodlf/blog.lucianodlf/actions/workflows/deploy.yml/badge.svg)](https://github.com/lucianodlf/blog.lucianodlf/actions/workflows/deploy.yml)
 
-# blog (WIP)
+# lucianodlf -v
 
-Blog personal de Luciano Delfino (`lucianodlf`).
+Sitio personal y blog de Luciano Delfino (`lucianodlf`): home de marca, blog, proyectos, CV y una página de enlaces.
 
-- **URL**: https://lucianodlf.github.io/blog.lucianodlf/
-- **Stack**: [Hugo](https://gohugo.io/) (extended) + theme [Risotto](https://github.com/joeroe/risotto) (submodule, paleta dracula)
+- **URL**: https://lucianodlf.is-a.dev/ (enlaces: `/links/`, alias corto `/l/`)
+- **Stack**: [Hugo](https://gohugo.io/) con layouts propios (sin theme), design system lucianodlf (IBM Plex, light y dark)
 - **Hosting**: GitHub Pages via GitHub Actions
-- **Búsqueda**: [Pagefind](https://pagefind.app/), indexado en CI post-build
+- **Búsqueda**: [Pagefind](https://pagefind.app/), indexado en CI post-build (posts, proyectos y CV)
 
 ## Publicación desde Obsidian
 
@@ -16,43 +16,60 @@ El contenido se escribe en un vault de Obsidian y se publica con el plugin [Enve
 1. Escribir el post en el vault (`Proyectos/blog/posts/<nota>.md`) con el frontmatter correspondiente (`title`, `date`, `draft: true`, `share: false`, `tags`, etc.).
 2. Cuando el post está listo, pasar a `draft: false` y `share: true`.
 3. Desde Obsidian, `Ctrl+Shift+P` → Enveloppe "Upload all shared notes". Esto sube el `.md` a `content/posts/` y las imágenes a `static/assets/` de este repo.
-4. Al llegar el push, el workflow de GitHub Actions corrige los paths que genera Enveloppe, indexa la búsqueda con Pagefind, hace el build de Hugo y despliega en GitHub Pages (~2 minutos).
+4. Al llegar el push, el workflow de GitHub Actions corrige los paths que genera Enveloppe, hace el build de Hugo, indexa la búsqueda con Pagefind y despliega en GitHub Pages (~2 minutos).
 
-## Proyectos destacados
+## Contenido editable sin tocar templates
 
-La sección de proyectos (`/projects`) se alimenta de `data/projects.json`, renderizado por `layouts/projects/list.html`. Para agregar un proyecto, sumar un objeto al array `items`:
+| Qué | Dónde |
+| --- | --- |
+| Textos de la home (hero, métricas, servicios, cómo trabajo, posts destacados, contacto) | `data/home.yaml` |
+| README personal de la home | `content/_index.md` |
+| CV web (perfil, skills, experiencia, formación) y trayectoria de la home | `data/cv.yaml` |
+| Página de enlaces | `data/links.yaml` |
+| Línea de estado, rol, redes, menú | `hugo.toml` (`params.status`, `params.role`, `params.socialLinks`, `menus.main`) |
 
-```json
-{
-  "name": "Nombre del proyecto",
-  "link": "https://github.com/usuario/repo",
-  "image": "img/projects/mi-proyecto.png",
-  "visible": true
-}
+### Proyectos
+
+Cada proyecto es un page bundle en `content/projects/<slug>/index.md`, con su imagen opcional `cover.png` al lado:
+
+```yaml
+---
+title: "Nombre"
+summary: "Una línea de resumen."
+kind: cliente            # cliente | propio
+client: "Empresa"        # opcional
+role: "Software Engineer" # opcional
+period: "04/2026 – 07/2026"
+date: 2026-04-01         # ordena
+status: finalizado       # en uso | activo | experimental | finalizado
+featured: true           # aparece en la home (máximo 3, por weight)
+weight: 1
+coverLabel: "Nombre"     # texto de la portada generada si no hay cover.*
+coverFit: contain        # para íconos cuadrados
+stack: [Python, FastAPI]
+metrics:
+  - { value: "51", label: "issues en 9 fases" }
+links:
+  repo: "https://github.com/..."
+  demo: "https://..."
+  post: "posts/<archivo>.md"
+---
+## Contexto
+## Qué hice
+## Resultado
 ```
 
-- `image` es opcional (si falta, se muestra un ícono de carpeta como fallback); si se define, el archivo va en `static/`.
-- `visible: false` oculta el proyecto sin borrarlo del JSON.
-- `columns` en la raíz del JSON controla la cantidad de columnas del grid.
+Sin `cover.*`, la card usa la composición gráfica del design system con `coverLabel`.
+
+### PDF del CV
+
+Si existe `static/cv/luciano-delfino-cv.pdf`, `/cv/` muestra el botón "Descargar PDF". Sin archivo, queda el botón de imprimir (la hoja de impresión fuerza la paleta light y da un CV de 3 páginas).
 
 ## Uso
 
-### Clonar
-
-```bash
-git clone --recurse-submodules git@github.com:lucianodlf/blog.lucianodlf.git
-cd blog.lucianodlf
-```
-
-Si ya clonaste sin `--recurse-submodules`, traer el theme con:
-
-```bash
-git submodule update --init --recursive
-```
-
 ### Requisitos
 
-- [Hugo extended](https://gohugo.io/installation/) (última versión)
+- [Hugo](https://gohugo.io/installation/) (última versión; extended no es obligatorio)
 - Node.js (para Pagefind vía `npx`)
 
 ### Comandos (Makefile)
@@ -67,9 +84,9 @@ make clean    # borra public/
 
 ## Agradecimientos
 
-- [Hugo](https://github.com/gohugoio/hugo) — generador estático
-- [Risotto](https://github.com/joeroe/risotto) — theme
+- [Hugo](https://github.com/gohugoio/hugo), generador estático
+- [Risotto](https://github.com/joeroe/risotto), el theme que usó este sitio hasta el rediseño de 2026
 
 ---
 
-Hecho con ❤️ por [Luciano Delfino](https://github.com/lucianodlf)
+Hecho por [Luciano Delfino](https://github.com/lucianodlf)

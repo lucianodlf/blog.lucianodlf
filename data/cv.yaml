@@ -1,0 +1,157 @@
+# CV web (/cv/). Fuente: LinkedIn unificado (02/11/26) con la estructura del CV base (v1, 2026-11-04).
+# Reconstruido desde docs/feat-brand-redesign/research.md §4: revisar textos y roles contra LinkedIn.
+# No publicar teléfono.
+
+name: "Luciano Javier Delfino"
+headline: "Software Engineer | Backend & Full Stack | AI-Augmented"
+location: "Santa Fe, Argentina"
+contact:
+  - { label: "luciano.dlf@gmail.com", url: "mailto:luciano.dlf@gmail.com", icon: "fa-solid fa-envelope" }
+  - { label: "in/lucianodelfino", url: "https://www.linkedin.com/in/lucianodelfino", icon: "fa-brands fa-linkedin" }
+  - { label: "github.com/lucianodlf", url: "https://github.com/lucianodlf", icon: "fa-brands fa-github" }
+pdf: "cv/luciano-delfino-cv.pdf"
+
+stats:
+  - { value: "2006", label: "en IT" }
+  - { value: "+20", label: "implementaciones con clientes" }
+  - { value: "10", label: "roles en 20 años" }
+  - { value: "ES / EN", label: "nativo / inglés técnico" }
+
+profile:
+  - "Trabajo en IT desarrollando software para ayudar a las personas a resolver problemas, convertir ideas en procesos y herramientas simples que aporten claridad."
+  - "Llevo la información dispersa de empresas, emprendimientos y personas a sistemas que se usan. Empecé en soporte e implementaciones, pasé a desarrollo en 2016 y hoy trabajo en backend y full stack, con relevamiento funcional antes de escribir código."
+  - "Trabajo de forma AI-Augmented: especificación, plan por fases, implementación con agentes y validación humana. Los LLMs amplían lo que puedo hacer; la metodología, mi criterio y mis decisiones son con lo que más valor aporto."
+
+skills:
+  - { group: "Backend", items: ["Python", "FastAPI", "APIs REST", "ARQ", "Redis"] }
+  - { group: "Frontend", items: ["Vue.js", "Tailwind", "shadcn-vue", "JavaScript"] }
+  - { group: "Datos", items: ["PostgreSQL", "SQLite", "Modelado de datos", "MILP"] }
+  - { group: "Testing", items: ["Testing manual", "QA ágil", "Validación de resultados"] }
+  - { group: "Infra / DevOps", items: ["Linux", "Docker", "Git", "GitHub Actions", "Self-hosting"] }
+  - { group: "Integraciones", items: ["Odoo", "ERP", "Ecommerce", "n8n", "Telegram API", "Google Sheets"] }
+  - { group: "AI-Augmented", items: ["Claude Code", "MCP", "Spec-driven development", "Ollama", "OCR con LLMs"] }
+  - { group: "Explorando", items: ["Optimización con MILP", "Modelos de visión locales", "Local-first"] }
+
+experience:
+  - role: "Software Engineer"
+    company: "Poliédrica"
+    period: "07/2026 – 10/2026"
+    place: "Santa Fe, Argentina"
+    summary: "Desarrollo full stack para ordenar la información comercial y de catálogo del negocio."
+    highlights: []
+    stack: []
+
+  - role: "Software Engineer"
+    company: "AppLogistic · INGAR (CONICET-UTN)"
+    period: "04/2026 – 07/2026"
+    place: "Santa Fe, Argentina"
+    summary: "Plataforma para planificar rutas de recolección, con backoffice web y app mobile, sobre un modelo de optimización MILP."
+    highlights:
+      - "Organicé el desarrollo en 51 issues y 9 fases con un workflow spec-driven y agentes."
+      - "Entregué en dos meses un alcance planificado para tres."
+      - "El escenario más grande del modelo MILP pasó de no encontrar solución en 20 minutos a una válida en 10."
+    stack: ["Python", "FastAPI", "PostgreSQL", "Redis", "ARQ", "Vue.js", "Tailwind", "shadcn-vue", "MILP"]
+
+  - role: "Software Engineer"
+    company: "Innovat · INGAR (CONICET-UTN)"
+    period: "07/2024 – 07/2026"
+    place: "Santa Fe, Argentina"
+    summary: "Backoffice institucional y automatización de procesos internos."
+    highlights:
+      - "Armé un benchmark propio de 7 modelos de visión para OCR y extracción de datos de facturas, CPU local contra GPU."
+    stack: ["Python", "Ollama", "OCR", "LLMs"]
+
+  - role: "Desarrollador independiente"
+    company: "Freelance"
+    period: "01/2021 – actualidad"
+    place: "Remoto"
+    summary: "Acompaño a empresas, emprendimientos y personas a llevar sus procesos a sistemas que se usan."
+    highlights:
+      - "Desarrollo backend y full stack de sistemas internos y de gestión."
+      - "Integración entre plataformas: ERP, ecommerce y APIs."
+      - "Implementación y adaptación de Odoo."
+      - "Automatización de procesos y workflows, con IA cuando aporta valor y validación humana."
+      - "Relevamiento y análisis funcional, soporte y mantenimiento evolutivo."
+    stack: ["Python", "Odoo", "n8n", "PostgreSQL"]
+
+  - role: "Desarrollador full stack"
+    company: "Fenix App"
+    period: "11/2022 – 12/2023"
+    place: "Santa Fe, Argentina"
+    summary: "Sistema de caja, stock y cuentas corrientes."
+    highlights:
+      - "La identificación de morosos, las notificaciones y los recuentos de stock pasaron de horas a minutos."
+    stack: []
+
+  - role: "Desarrollador (freelance)"
+    company: "ANCA · UDR Web UI"
+    period: "04/2022 – 07/2022"
+    place: "Remoto"
+    summary: "Interfaz web y validación de capturas."
+    highlights: []
+    stack: []
+
+  - role: ""
+    company: "DataLab Center"
+    period: "08/2019 – 03/2020"
+    place: ""
+    summary: ""
+    highlights: []
+    stack: []
+
+  - role: "Soporte y desarrollo"
+    company: "ANCA"
+    period: "03/2016 – 12/2018"
+    place: "Santa Fe, Argentina"
+    summary: "De soporte a desarrollo: el paso a escribir software a tiempo completo."
+    highlights: []
+    stack: []
+
+  - role: "Implementaciones y soporte"
+    company: "EMSER"
+    period: "06/2008 – 10/2013"
+    place: "Santa Fe, Argentina"
+    summary: "Implementación de software de gestión en clientes."
+    highlights:
+      - "Más de 20 implementaciones acompañando a cada cliente hasta que el sistema se usaba."
+    stack: []
+
+  - role: ""
+    company: "Raúl Torres Hogar"
+    period: "01/2006 – 05/2008"
+    place: "Santa Fe, Argentina"
+    summary: "Primer trabajo en IT."
+    highlights: []
+    stack: []
+
+education:
+  - title: "Analista de Sistemas en Computación"
+    place: "ICOP N.º 4021"
+    period: "2006 – 2009"
+    note: "Trabajo final: ERP, distinguido (2011)."
+
+certifications:
+  - { title: "Google IT Automation with Python", place: "Coursera", period: "2023" }
+  - { title: "Testing QA Manual / Ágil", place: "UTN", period: "2023" }
+  - { title: "Getting Started with Google Cloud", place: "Google Cloud Skills Boost", period: "" }
+  - { title: "Análisis y Diseño Orientado a Objetos", place: "ICOP", period: "2008" }
+
+languages:
+  - { name: "Español", level: "Nativo" }
+  - { name: "Inglés", level: "Comprensión auditiva y lectura técnica intermedias; escritura y conversación básicas" }
+
+complementary:
+  - title: "Voluntariado"
+    place: "Asociación SER · Kuamar"
+    period: "01/2019 – 07/2019"
+  - title: "Viaje en bicicleta reclinada"
+    place: "Santa Fe, Argentina a Antofagasta, Chile"
+    period: "02/2014 – 09/2014"
+
+# Trayectoria resumida (home): 5 hitos
+timeline:
+  - { year: "2026", text: "AppLogistic · optimización de rutas con MILP" }
+  - { year: "2024", text: "Innovat · backoffice institucional en INGAR (CONICET-UTN)" }
+  - { year: "2022", text: "Fenix App · caja, stock y cuentas corrientes" }
+  - { year: "2016", text: "ANCA · de soporte a desarrollo" }
+  - { year: "2008", text: "EMSER · +20 implementaciones con clientes" }

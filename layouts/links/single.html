@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{- partial "head.html" . }}
+</head>
+<body class="links-page" data-pagefind-ignore="all">
+{{- $d := hugo.Data.links }}
+<button type="button" id="theme-toggle" class="links-theme" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+<main class="links">
+  <div class="links__cover" aria-hidden="true">{{ partial "components/cover-svg.html" (dict "variant" "wide") }}</div>
+  <header class="links__head">
+    <img class="links__avatar" src="{{ site.Params.avatar | absURL }}" width="96" height="96" alt="Luciano Delfino">
+    <h1 class="links__name">lucianodlf<span class="cursor" aria-hidden="true">_</span></h1>
+    <p class="links__role">{{ site.Params.role }}</p>
+    <p class="links__intro">{{ $d.intro }}</p>
+    {{ with site.Params.status }}<p class="status-pill"><span class="status-pill__dot" aria-hidden="true"></span>{{ . }}</p>{{ end }}
+  </header>
+
+  {{- range $d.sections }}
+  <section class="links__section"{{ with .eyebrow }} aria-label="{{ . }}"{{ end }}>
+    {{- with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+    <ul class="links__list">
+      {{- range .items }}
+      {{- $external := not (hasPrefix .url "/") }}
+      {{- $href := cond $external .url (absURL .url) }}
+      <li><a class="link-btn{{ if .primary }} link-btn--primary{{ end }}" href="{{ $href }}"{{ if and $external (hasPrefix .url "http") }} rel="noopener"{{ end }}>
+        {{- $thumb := "" }}
+        {{- with .project }}{{ with site.GetPage (printf "/projects/%s" .) }}{{ with .Resources.GetMatch "cover.*" }}{{ $thumb = .Fill "80x80 webp" }}{{ end }}{{ end }}{{ end }}
+        {{- if $thumb }}<img class="link-btn__thumb" src="{{ $thumb.Permalink }}" width="40" height="40" alt="">
+        {{- else }}<span class="link-btn__icon" aria-hidden="true"><i class="{{ .icon | default "fa-solid fa-link" }}"></i></span>{{ end }}
+        <span class="link-btn__text"><span class="link-btn__title">{{ .title }}</span>{{ with .subtitle }}<span class="link-btn__sub">{{ . }}</span>{{ end }}</span>
+        <span class="link-btn__arrow" aria-hidden="true">{{ if and $external (hasPrefix .url "http") }}↗{{ else if hasPrefix .url "mailto:" }}<i class="fa-regular fa-envelope"></i>{{ else }}→{{ end }}</span>
+      </a></li>
+      {{- end }}
+      {{- with .posts }}
+      {{- range first . (where site.RegularPages "Type" "posts") }}
+      <li><a class="link-btn" href="{{ .Permalink }}">
+        <span class="link-btn__icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
+        <span class="link-btn__text"><span class="link-btn__title">{{ .Title }}</span><span class="link-btn__sub">{{ partial "fmt-date.html" (dict "date" .Date) }} · {{ .ReadingTime }} min</span></span>
+        <span class="link-btn__arrow" aria-hidden="true">→</span>
+      </a></li>
+      {{- end }}
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  <footer class="links__foot">
+    <ul class="social">
+      {{- range site.Params.socialLinks }}{{ if .url }}
+      <li><a href="{{ if hasPrefix .url "/" }}{{ .url | absURL }}{{ else }}{{ .url }}{{ end }}" rel="me" aria-label="{{ .title }}" title="{{ .title }}"><i class="{{ .icon }}" aria-hidden="true"></i></a></li>
+      {{- end }}{{ end }}
+    </ul>
+    <p><a href="{{ "/" | absURL }}">{{ replace (replace site.BaseURL "https://" "") "/" "" }}</a></p>
+  </footer>
+</main>
+</body>
+</html>

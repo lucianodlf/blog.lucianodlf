@@ -1,33 +1,20 @@
 {{ define "main" }}
-    <header class="content__header">
-        <h1>{{ .Title | markdownify }}</h1>
-        {{ .Content }}
-    </header>
-
-    {{ $data := .Site.Data.projects }}
-    {{ $cols := $data.columns | default 3 }}
-    {{ $items := where $data.items "visible" "ne" false }}
-
-    <div class="projects-grid" style="--projects-cols: {{ $cols }};">
-        {{ range $items }}
-        {{ $item := . }}
-        <a class="project-card"
-           href="{{ $item.link }}"
-           target="_blank"
-           rel="noopener">
-            {{ with $item.image }}
-                <img class="project-card__image" src="{{ . | relURL }}" alt="{{ $item.name }}" loading="lazy">
-            {{ else }}
-                <span class="project-card__image project-card__image--fallback">
-                    <i class="fa-solid fa-folder"></i>
-                </span>
-            {{ end }}
-            <span class="project-card__name">{{ $item.name }}</span>
-        </a>
-        {{ end }}
-    </div>
-{{ end }}
-
-{{define "aside" }}
-    {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+<div class="container section-page">
+  {{ partial "components/page-title.html" (dict "eyebrow" "$ ls proyectos/" "title" "Proyectos" "lead" "Sistemas para clientes y herramientas propias. Cada uno con su contexto, lo que hice y el resultado.") }}
+  {{- $all := .Pages.ByWeight }}
+  {{- $clients := where $all "Params.kind" "cliente" }}
+  {{- $own := where $all "Params.kind" "propio" }}
+  {{- with $clients }}
+  <section class="section section--first" aria-labelledby="clients-title">
+    <div class="section__head"><div><p class="eyebrow">$ ls clientes/</p><h2 id="clients-title" class="section__title">Trabajo con clientes</h2></div></div>
+    <div class="grid grid--3">{{ range . }}{{ partial "components/card-project.html" . }}{{ end }}</div>
+  </section>
+  {{- end }}
+  {{- with $own }}
+  <section class="section" aria-labelledby="own-title">
+    <div class="section__head"><div><p class="eyebrow">$ ls ~/proyectos/</p><h2 id="own-title" class="section__title">Proyectos propios</h2></div></div>
+    <div class="grid grid--3">{{ range . }}{{ partial "components/card-project.html" . }}{{ end }}</div>
+  </section>
+  {{- end }}
+</div>
 {{ end }}

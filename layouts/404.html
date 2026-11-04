@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="container section-page notfound">
+  <div class="notfound__art">{{ partial "components/cover-svg.html" (dict "variant" "wide") }}</div>
+  <p class="eyebrow">error 404</p>
+  <h1 class="page-title">No encontrado<span class="cursor" aria-hidden="true">_</span></h1>
+  <pre class="notfound__term"><code>$ cd <span id="nf-path">esta-ruta</span>
+cd: No such file or directory</code></pre>
+  <p class="actions">
+    <a class="btn btn--primary" href="{{ "/" | relURL }}">Inicio</a>
+    <a class="btn btn--secondary" href="{{ "/posts/" | relURL }}">Blog</a>
+    <a class="btn btn--secondary" href="{{ "/projects/" | relURL }}">Proyectos</a>
+  </p>
+  <script>document.getElementById('nf-path').textContent=location.pathname;</script>
+</div>
+{{ end }}

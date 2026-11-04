@@ -1,35 +1,47 @@
 /**
  * --verbose · mermaid.js
  * Carga e inicializa mermaid.js solo si hay diagramas en la página.
- * Sincroniza el tema con el dark/light toggle (paleta Dracula).
+ * Colores leídos de los tokens CSS (tokens.css), así respeta light y dark.
  */
 (function () {
   'use strict';
 
   if (!document.querySelector('.mermaid')) return;
 
+  const css = getComputedStyle(document.documentElement);
+  const v = (name) => css.getPropertyValue(name).trim();
   const isLight = document.documentElement.classList.contains('light');
 
   const baseConfig = {
     startOnLoad: true,
-    theme: isLight ? 'default' : 'dark',
+    theme: 'base',
+    fontFamily: v('--font-sans'),
+    themeVariables: {
+      darkMode: !isLight,
+      fontFamily: v('--font-sans'),
+      background: v('--surface'),
+      primaryColor: v('--primary-soft'),
+      primaryTextColor: v('--text'),
+      primaryBorderColor: v('--primary'),
+      secondaryColor: v('--background'),
+      secondaryTextColor: v('--text'),
+      secondaryBorderColor: v('--border'),
+      tertiaryColor: v('--surface'),
+      tertiaryTextColor: v('--text'),
+      tertiaryBorderColor: v('--border'),
+      lineColor: v('--muted'),
+      textColor: v('--text'),
+      mainBkg: v('--primary-soft'),
+      nodeBorder: v('--primary'),
+      nodeTextColor: v('--text'),
+      clusterBkg: v('--background'),
+      clusterBorder: v('--border'),
+      edgeLabelBackground: v('--surface'),
+      noteBkgColor: v('--surface'),
+      noteTextColor: v('--text'),
+      noteBorderColor: v('--accent'),
+    },
   };
-
-  if (!isLight) {
-    baseConfig.themeVariables = {
-      darkMode: true,
-      background: '#282936',
-      primaryColor: '#3a3c4e',
-      primaryTextColor: '#e9e9f4',
-      primaryBorderColor: '#62d6e8',
-      secondaryColor: '#4d4f68',
-      tertiaryColor: '#282936',
-      lineColor: '#62d6e8',
-      textColor: '#e9e9f4',
-      mainBkg: '#3a3c4e',
-      nodeTextColor: '#e9e9f4',
-    };
-  }
 
   const script = document.createElement('script');
   script.type = 'module';
