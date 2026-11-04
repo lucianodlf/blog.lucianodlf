@@ -15,7 +15,7 @@ Verificación común a todas las fases (abreviada **VC**):
 
 - [x] Instalar Hugo y verificar `npx pagefind`. Hugo v0.169.0 (no extended, vía `go install`; GitHub releases bloqueado en el contenedor). No hace falta extended: no hay SCSS y WebP funciona.
 - [x] `git submodule update --init --recursive` (y en Fase 8, submodule eliminado).
-- [ ] Capturas "antes": no se tomaron (build "antes" en `/tmp` sin capturas). Se tomaron capturas "después" en 320/375/768/1280, dark y light.
+- [x] Capturas "antes" (build de `da51b52` con Risotto) y "después": comparación en `antes-despues.png`.
 - [x] Decisiones D1 a D15 resueltas con autonomía delegada por el usuario (ver "Decisiones tomadas" al final).
 - [ ] D15: tokens candidatos aplicados en `static/css/tokens.css`; el artifact del DS no se modificó (pendiente).
 
@@ -97,8 +97,8 @@ Verificación común a todas las fases (abreviada **VC**):
 
 - [x] D6: atributos de Pagefind en todos los tipos a la vez; probar búsqueda de un post, un proyecto y el CV.
 - [x] D7/D8: quitar submodule Risotto y Academicons si el build sigue limpio; borrar `about.html`.
-- [x] axe-core 4.10 (wcag2a, wcag2aa, best-practice) en home, blog, post, proyectos, proyecto, CV, links y tags, ambos temas: 0 violaciones de layout. Quedan 2 del markdown del post de benchmark (`heading-order`, `empty-table-header`). Lighthouse no se corrió.
-- [x] Capturas "después" (sin comparación: no hay "antes").
+- [x] axe-core 4.10 (wcag2a, wcag2aa, best-practice) en home, blog, post, proyectos, proyecto, CV, links y tags, ambos temas: 0 violaciones de layout. Quedan 2 del markdown del post de benchmark (`heading-order`, `empty-table-header`). Lighthouse 12.2.1: accesibilidad, buenas prácticas y SEO en 100 (home, CV, links); post de benchmark 98 por su markdown.
+- [x] Capturas "después" y comparación (`antes-despues.png`).
 - [x] Actualizar `README.md` y `CLAUDE.md` (URL, estructura, CSS, paleta, pendientes resueltos).
 - [x] Push a la rama. PR: no (no se pidió).
 
