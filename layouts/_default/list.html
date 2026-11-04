@@ -1,0 +1,34 @@
+{{ define "main" }}
+<div class="container section-page">
+  {{ partial "components/page-title.html" (dict "eyebrow" "$ ls posts/" "title" "Blog" "lead" (.Params.description | default "Write-ups técnicos, con sus desvíos y decisiones cuestionables, y escritura personal.")) }}
+
+  {{- with site.Taxonomies.tags }}
+  <nav class="tag-bar" aria-label="Tags más usados">
+    {{- range first 8 .ByCount }}
+    <a class="chip chip--soft" href="{{ .Page.RelPermalink }}">#{{ .Page.Title | lower }}</a>
+    {{- end }}
+    <a class="chip chip--neutral" href="{{ "/tags/" | relURL }}">ver todos →</a>
+  </nav>
+  {{- end }}
+
+  {{- $pages := .Pages }}
+  {{- $featured := first 1 (where (where $pages "Params.featured" true) "Params.author" "eq" nil) }}
+  {{- with index $featured 0 }}
+  <article class="feature-card">
+    <p class="eyebrow">destacado</p>
+    <h2 class="feature-card__title"><a class="card__link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <p class="card__excerpt">{{ .Summary | plainify | htmlUnescape | truncate 220 }}</p>
+    <p class="card__meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "fmt-date.html" (dict "date" .Date) }}</time> · {{ .ReadingTime }} min{{ with .Params.author }} · {{ . }}{{ end }}</p>
+  </article>
+  {{- end }}
+
+  {{- range $pages.GroupByDate "2006" }}
+  <section class="year-group" aria-labelledby="y-{{ .Key }}">
+    <h2 id="y-{{ .Key }}" class="year-group__title">{{ .Key }}</h2>
+    <ul class="post-list">
+      {{- range .Pages }}{{ partial "components/post-row.html" . }}{{ end }}
+    </ul>
+  </section>
+  {{- end }}
+</div>
+{{ end }}

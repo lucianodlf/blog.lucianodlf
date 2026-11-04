@@ -1,13 +1,33 @@
 {{- partial "search.html" . -}}
-{{ $recent := first 3 (where .Site.RegularPages "Type" "posts") }}
-{{ if $recent }}
-<nav class="footer__recent">
-    <p>$ ls -t posts/ | head -3</p>
-    <ul>
-        {{ range $recent }}
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-        {{ end }}
-    </ul>
-</nav>
-{{ end }}
-<p class="copyright">{{ .Site.Copyright | markdownify }}</p>
+<footer class="site-footer" data-pagefind-ignore="all">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="wordmark wordmark--sm" href="{{ "/" | relURL }}" aria-label="lucianodlf, inicio"><span class="wordmark__name">lucianodlf</span><span class="wordmark__cursor" aria-hidden="true">_</span></a>
+      <p class="site-footer__tagline">{{ site.Params.about.description }}</p>
+      <nav aria-label="Secundaria" class="site-footer__nav">
+        {{- range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+        <a href="{{ "/links/" | relURL }}">Enlaces</a>
+      </nav>
+      <ul class="social">
+        {{- range site.Params.socialLinks }}{{ if .url }}
+        <li><a href="{{ if hasPrefix .url "/" }}{{ .url | relURL }}{{ else }}{{ .url }}{{ end }}" rel="me" aria-label="{{ .title }}" title="{{ .title }}"><i class="{{ .icon }}" aria-hidden="true"></i></a></li>
+        {{- end }}{{ end }}
+      </ul>
+    </div>
+    <div class="site-footer__recent">
+      {{- $recent := first 3 (where site.RegularPages "Type" "posts") }}
+      {{- if $recent }}
+      <p class="eyebrow">$ ls -t posts/ | head -3</p>
+      <ul class="recent-list">
+        {{- range $recent }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{- end }}
+      </ul>
+      {{- end }}
+      {{ with site.Params.status }}{{ partial "components/status-pill.html" . }}{{ end }}
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>{{ replace site.Copyright "{year}" (string now.Year) | markdownify }}</p>
+  </div>
+</footer>
