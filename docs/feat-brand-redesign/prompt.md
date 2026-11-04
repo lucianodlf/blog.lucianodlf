@@ -24,6 +24,6 @@ Fecha: 2026-11-04.
 - `plan.md`: la propuesta completa (arquitectura, lenguaje visual, especificación por página, textos).
 - `roadmap.md`: fases de implementación con TODOs y criterios de aceptación.
 
-Al retomar: leer `prompt.md`, `plan.md` y `roadmap.md`; resolver primero las decisiones abiertas de `plan.md` §11.
+Al retomar: leer `estado.md` (estado actual), luego `plan.md` y `roadmap.md`.
 
 Nota: estos documentos viven en `docs/` (versionado) y no en `.agents/working-progress/` (ignorado por git) para que la sesión de implementación, local o en la nube, los tenga en el clon.

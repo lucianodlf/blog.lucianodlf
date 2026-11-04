@@ -17,7 +17,7 @@ Verificación común a todas las fases (abreviada **VC**):
 - [x] `git submodule update --init --recursive` (y en Fase 8, submodule eliminado).
 - [x] Capturas "antes" (build de `da51b52` con Risotto) y "después": comparación en `antes-despues.png`.
 - [x] Decisiones D1 a D15 resueltas con autonomía delegada por el usuario (ver "Decisiones tomadas" al final).
-- [ ] D15: tokens candidatos aplicados en `static/css/tokens.css`; el artifact del DS no se modificó (pendiente).
+- [x] D15: artifact del DS actualizado a tokens v2 (2026-11-04) y `static/css/tokens.css` alineado.
 
 **Hecho cuando:** hay build local idéntico al de producción y las decisiones están anotadas.
 
@@ -79,7 +79,7 @@ Verificación común a todas las fases (abreviada **VC**):
 - [x] `data/home.yaml` (hero, métricas, servicios, workflow, trayectoria).
 - [x] `layouts/index.html` con las 9 secciones de §6.1; README personal desde `content/_index.md`.
 - [x] Hero con composición del DS + avatar; versión mobile.
-- [ ] Revisión de textos con la voz del usuario (D10): textos escritos desde CV/LinkedIn/BIORG, pendiente de validación.
+- [x] Textos de home, CV y proyectos reescritos desde los originales (CV base v1, LinkedIn unificado 02/11/26). Falta la lectura final del usuario.
 
 **Hecho cuando:** la home pasa VC y cada sección enlaza a su destino.
 
@@ -122,4 +122,4 @@ Verificación común a todas las fases (abreviada **VC**):
 | D12 | MinguitoD, NotesMD, summary-gitlab-issues y n8n-shbase no se listan. |
 | D13 | Post de MilPathsX sigue en draft; AppLogistic sin link a post. |
 | D14 | Home destaca gplnr, Benchmarking y Cómo construí este blog (`data/home.yaml`, `featuredPosts`); `featured` del frontmatter se usa en el índice del blog. |
-| D15 | Tokens candidatos aplicados en el sitio; actualizar el artifact del DS queda pendiente. |
+| D15 | Sí: DS actualizado (tokens v2: primary-soft/primary-deep por tema, primary-hover, danger, code-bg, backdrop, lead, display-xl, body-long, espaciado 3/6/12/16). |

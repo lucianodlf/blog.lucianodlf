@@ -60,7 +60,7 @@
               <h3 class="timeline__role">{{ with .role }}{{ . }} · {{ end }}<span class="timeline__company">{{ .company }}</span></h3>
               <p class="timeline__period">{{ .period }}</p>
             </div>
-            {{- with .place }}<p class="timeline__place">{{ . }}</p>{{ end }}
+            {{- if or .place .mode }}<p class="timeline__place">{{ .place }}{{ if and .place .mode }} · {{ end }}{{ .mode }}</p>{{ end }}
             {{- with .summary }}<p>{{ . }}</p>{{ end }}
             {{- with .highlights }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
             {{- with .stack }}
@@ -93,10 +93,10 @@
         </ul>
       </section>
 
-      <section id="complementarias" class="cv-section">
+      <section id="complementarias" class="cv-section no-print">
         <h2 class="cv-section__title">Experiencias complementarias</h2>
         <ul class="cv-list">
-          {{- range $cv.complementary }}<li><strong>{{ .title }}</strong><span class="cv-list__meta">{{ .place }} · {{ .period }}</span></li>{{ end }}
+          {{- range $cv.complementary }}<li><strong>{{ .title }}</strong><span class="cv-list__meta">{{ .place }} · {{ .period }}</span>{{ with .text }}<span>{{ . }}</span>{{ end }}</li>{{ end }}
         </ul>
       </section>
 

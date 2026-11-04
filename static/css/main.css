@@ -254,7 +254,8 @@ a.chip:hover { border-color: var(--primary); }
   .stats .stat:nth-child(n) { border-left: 1px solid var(--border); border-top: 0; }
   .stats .stat:first-child { border-left: 0; }
 }
-.stat__value { font-family: var(--font-mono); font-size: 24px; line-height: 32px; font-weight: 600; color: var(--text); white-space: nowrap; }
+.stat__value { font-family: var(--font-mono); font-size: 22px; line-height: 30px; font-weight: 600; color: var(--text); white-space: nowrap; }
+@media (max-width: 359px) { .stat { padding: var(--space-3) var(--space-4); } .stat__value { font-size: 18px; line-height: 26px; } }
 @media (min-width: 640px) { .stat__value { font-size: 28px; line-height: 36px; } }
 .stat__label { margin-top: var(--space-1); font-size: 14px; line-height: 20px; color: var(--muted); }
 
@@ -603,8 +604,8 @@ html.wide .post__footer { max-width: var(--measure-wide); }
     --primary: #2a7449; --primary-soft: #c5e8d0; --accent: #965719; --code-bg: #f7f5ec; --danger: #a8382f;
     color-scheme: light;
   }
-  @page { margin: 16mm 14mm; }
-  body { font-size: 10pt; line-height: 1.4; font-feature-settings: "liga" 0, "calt" 0; font-variant-ligatures: none; }
+  @page { margin: 12mm 13mm; }
+  body { font-size: 9.5pt; line-height: 1.35; font-feature-settings: "liga" 0, "calt" 0; font-variant-ligatures: none; }
   .site-header, .site-footer, .skip-link, .no-print, .toc, .post__footer, .post__meta .tool-btn, #search-modal, #help-modal, .table-toggle, .cv__toc, .post__back { display: none !important; }
   .container { max-width: none; padding: 0; }
   .section-page, .post, .cv, .project { padding-top: 0; }
@@ -614,18 +615,23 @@ html.wide .post__footer { max-width: var(--measure-wide); }
   .stats { break-inside: avoid; grid-template-columns: repeat(4, 1fr) !important; }
   .stats .stat:nth-child(n) { border-top: 0; border-left: 1px solid var(--border); }
   .stats .stat:first-child { border-left: 0; }
-  .prose, .timeline__role, .cv-entry__title { font-size: 10.5pt; line-height: 1.4; }
+  .prose, .timeline__role, .cv-entry__title { font-size: 10pt; line-height: 1.35; }
   .skills { gap: 4px; }
   .cv-section__title { font-size: 13pt; margin-bottom: 3mm; }
   .timeline__item > * + * { margin-top: 1mm; }
   .card__tags .chip, .skills .chip { font-size: 7.5pt; padding: 0 5px; }
-  .cv-list { gap: 2mm; }
+  .cv-list { gap: 2mm 6mm; grid-template-columns: 1fr 1fr; }
   .stat { padding: 6px 10px; }
   .stat__value { font-size: 15pt; line-height: 1.2; }
   .cv-section + .cv-section { margin-top: 5mm; }
+  .timeline .card__tags, .stack-more, .timeline__place, .cv-list__meta + span { display: none !important; }
+  .timeline li li { margin: 0; }
+  .cv-section p + p { margin-top: 2mm; }
   .cv-section__title { break-after: avoid; }
   .timeline__item { padding-bottom: 3.5mm; }
-  .timeline__item, .cv-entry, .cv-list li, .skills__row { break-inside: avoid; }
+  .cv-entry, .cv-list li, .skills__row, .timeline__head, .timeline li li { break-inside: avoid; }
+  .timeline__item { break-inside: auto; }
+  .timeline__head { break-after: avoid; }
   .chip { border-color: var(--border); }
   a { color: var(--text); text-decoration: none; }
   .cv__contact a::after { content: " (" attr(href) ")"; color: var(--muted); font-size: 9pt; }
