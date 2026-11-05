@@ -230,6 +230,30 @@ body[data-kind="simple"] section[data-kind="doble"],body[data-kind="doble"] sect
 .d5b .wsp .num{display:flex;align-items:center;gap:1mm;font:500 5.2pt/1 var(--mono);white-space:nowrap}
 .d5b .wsp .num .ic{width:2.2mm;height:2.2mm}
 
+/* D6 como D5, dorso alineado */
+.d6f .slab{left:8mm;top:-4mm;width:17mm;height:33mm;border-radius:1.2mm;background:var(--primary)}
+.d6f .ink{left:29mm;top:5mm;width:60mm;height:28mm;border-radius:1.2mm;background:var(--text)}
+.d6f .dots{left:29mm;top:5mm;width:60mm;height:28mm}
+.d6f .dots circle{fill:var(--bg)}
+.d6f .qr{left:57mm;top:8mm;width:22mm;height:22mm;border-radius:.8mm;overflow:hidden}
+.d6f .bar{left:29mm;top:36mm;width:6mm;height:1.5mm;background:var(--accent)}
+.d6f .band{left:58mm;top:42mm;width:32mm;height:16mm;border-radius:1.2mm;background:var(--soft)}
+.d6f .wm{left:8mm;top:40mm;font-size:16pt}
+.d6f .sub{left:8mm;top:47.2mm;font:500 5.4pt/1 var(--mono);color:var(--muted);letter-spacing:.04em}
+.d6b .id{left:7mm;top:7mm}
+.d6b .name{font-size:12pt}
+.d6b .role{margin-top:1mm;color:var(--muted);font-size:6.3pt;line-height:1.4}
+.d6b .rule{left:7mm;top:23.5mm;width:6mm;height:1.2mm;background:var(--accent)}
+.d6b .links{left:7mm;bottom:6.5mm;font:400 6.2pt/1.6 var(--mono)}
+.d6b .links li{display:flex;align-items:center;gap:1.8mm}
+.d6b .wsp{right:6.5mm;bottom:6.5mm;width:24mm;display:flex;flex-direction:column;align-items:center;gap:1.8mm}
+.d6b .wsp .qr{width:14mm;height:14mm;border-radius:.6mm;overflow:hidden}
+.d6b .wsp .num{display:flex;align-items:center;gap:1mm;font:500 5.2pt/1 var(--mono);white-space:nowrap}
+.d6b .wsp .num .ic{width:2.2mm;height:2.2mm}
+
+.d6b .links{height:17.4mm;display:flex;flex-direction:column;justify-content:space-between;line-height:1}
+.d6b .links li{height:2.5mm}
+.d6b .wsp{gap:1.2mm}
 /* D3 --verbose */
 .d3f .wm{left:7mm;top:17mm;font-size:17pt}
 .d3f .wm .fl{color:var(--primary)}
@@ -287,7 +311,7 @@ body.print .wrap{display:none}
   <header>
     <p class="eyebrow">$ ls tarjetas/ | wc -l</p>
     <h1>Tarjetas personales<span class="c">_</span></h1>
-    <p class="lead">Nueve diseños sobre el design system lucianodlf: cuatro de simple faz y cinco de doble faz, cada uno en light y dark. Más una tarjeta de prueba para medir hasta qué tamaño se lee el QR de WhatsApp.</p>
+    <p class="lead">Diez diseños sobre el design system lucianodlf: cuatro de simple faz y seis de doble faz, cada uno en light y dark. Más una tarjeta de prueba para medir hasta qué tamaño se lee el QR de WhatsApp.</p>
     <ul class="facts">
       <li><b>85 x 54 mm</b> · 250 g</li>
       <li>QR web <b>v3-Q</b> · 37 módulos con margen</li>
@@ -300,7 +324,7 @@ body.print .wrap{display:none}
   <nav class="controls" aria-label="Filtros">
     <div><span class="seg-label">modo</span><span class="seg" data-ctl="show"><button aria-pressed="true" data-v="both">ambos</button><button aria-pressed="false" data-v="light">light</button><button aria-pressed="false" data-v="dark">dark</button></span></div>
     <div><span class="seg-label">tipo</span><span class="seg" data-ctl="kind"><button aria-pressed="true" data-v="all">todos</button><button aria-pressed="false" data-v="simple">simple faz</button><button aria-pressed="false" data-v="doble">doble faz</button></span></div>
-    <div class="toc"><a href="#S1">S1</a><a href="#S2">S2</a><a href="#S3">S3</a><a href="#S4">S4</a><a href="#D1">D1</a><a href="#D2">D2</a><a href="#D3">D3</a><a href="#D4">D4</a><a href="#D5">D5</a><a href="#QT">QR test</a></div>
+    <div class="toc"><a href="#S1">S1</a><a href="#S2">S2</a><a href="#S3">S3</a><a href="#S4">S4</a><a href="#D1">D1</a><a href="#D2">D2</a><a href="#D3">D3</a><a href="#D4">D4</a><a href="#D5">D5</a><a href="#D6">D6</a><a href="#QT">QR test</a></div>
   </nav>
 
   <main id="designs"></main>
@@ -524,6 +548,33 @@ body.print .wrap{display:none}
     <p class="num"><i class="ic"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M187.3,159.06A36.09,36.09,0,0,1,152,188a84.09,84.09,0,0,1-84-84A36.09,36.09,0,0,1,96.94,68.7,12,12,0,0,1,110,75.1l11.48,23a12,12,0,0,1-.75,12l-8.52,12.78a44.56,44.56,0,0,0,20.91,20.91l12.78-8.52a12,12,0,0,1,12-.75l23,11.48A12,12,0,0,1,187.3,159.06ZM236,128A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z"/></svg></i>+54 9 3425 13-3628</p>
   </div>
 </div>
+<!-- D6 -->
+<div class="card d6f" data-face="D6-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" aria-hidden="true"><g>DOTS_D6</g></svg>
+  <div class="a qr" data-qr="main"><svg viewBox="0 0 37 37" shape-rendering="crispEdges" aria-hidden="true"><rect width="37" height="37" fill="var(--qr-ground)"/><path fill="var(--qr-ink)" d="M4 4h7v1h-7zM13 4h3v1h-3zM17 4h3v1h-3zM22 4h3v1h-3zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM14 5h1v1h-1zM17 5h2v1h-2zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM17 6h1v1h-1zM19 6h2v1h-2zM22 6h2v1h-2zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h1v1h-1zM16 7h1v1h-1zM20 7h2v1h-2zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h2v1h-2zM17 8h2v1h-2zM20 8h2v1h-2zM23 8h1v1h-1zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM14 9h3v1h-3zM18 9h1v1h-1zM20 9h2v1h-2zM23 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h6v1h-6zM20 11h2v1h-2zM5 12h3v1h-3zM9 12h2v1h-2zM14 12h1v1h-1zM19 12h1v1h-1zM21 12h4v1h-4zM30 12h2v1h-2zM4 13h1v1h-1zM6 13h1v1h-1zM9 13h1v1h-1zM12 13h1v1h-1zM16 13h1v1h-1zM20 13h7v1h-7zM28 13h2v1h-2zM32 13h1v1h-1zM6 14h1v1h-1zM10 14h4v1h-4zM16 14h1v1h-1zM18 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM31 14h1v1h-1zM4 15h2v1h-2zM7 15h1v1h-1zM11 15h1v1h-1zM13 15h2v1h-2zM17 15h1v1h-1zM19 15h2v1h-2zM22 15h1v1h-1zM24 15h1v1h-1zM27 15h3v1h-3zM32 15h1v1h-1zM6 16h1v1h-1zM10 16h7v1h-7zM18 16h1v1h-1zM21 16h1v1h-1zM23 16h3v1h-3zM27 16h1v1h-1zM30 16h3v1h-3zM6 17h2v1h-2zM9 17h1v1h-1zM12 17h5v1h-5zM19 17h3v1h-3zM23 17h1v1h-1zM26 17h2v1h-2zM29 17h2v1h-2zM32 17h1v1h-1zM4 18h3v1h-3zM8 18h3v1h-3zM12 18h1v1h-1zM14 18h3v1h-3zM21 18h1v1h-1zM23 18h1v1h-1zM25 18h1v1h-1zM27 18h3v1h-3zM31 18h2v1h-2zM4 19h1v1h-1zM13 19h2v1h-2zM16 19h1v1h-1zM18 19h3v1h-3zM24 19h3v1h-3zM28 19h2v1h-2zM31 19h1v1h-1zM6 20h2v1h-2zM10 20h1v1h-1zM12 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM22 20h4v1h-4zM27 20h3v1h-3zM31 20h2v1h-2zM5 21h5v1h-5zM11 21h1v1h-1zM13 21h1v1h-1zM15 21h4v1h-4zM20 21h1v1h-1zM27 21h1v1h-1zM30 21h1v1h-1zM4 22h1v1h-1zM7 22h1v1h-1zM9 22h2v1h-2zM12 22h4v1h-4zM17 22h3v1h-3zM22 22h1v1h-1zM26 22h2v1h-2zM30 22h1v1h-1zM6 23h1v1h-1zM8 23h2v1h-2zM12 23h2v1h-2zM18 23h1v1h-1zM20 23h7v1h-7zM28 23h3v1h-3zM5 24h4v1h-4zM10 24h3v1h-3zM14 24h1v1h-1zM20 24h11v1h-11zM32 24h1v1h-1zM12 25h1v1h-1zM15 25h1v1h-1zM17 25h2v1h-2zM20 25h1v1h-1zM22 25h1v1h-1zM24 25h1v1h-1zM28 25h2v1h-2zM31 25h2v1h-2zM4 26h7v1h-7zM13 26h1v1h-1zM18 26h1v1h-1zM20 26h2v1h-2zM23 26h2v1h-2zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM4 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM14 27h1v1h-1zM16 27h1v1h-1zM19 27h1v1h-1zM22 27h1v1h-1zM24 27h1v1h-1zM28 27h1v1h-1zM32 27h1v1h-1zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM15 28h2v1h-2zM21 28h1v1h-1zM24 28h7v1h-7zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM12 29h1v1h-1zM14 29h1v1h-1zM19 29h2v1h-2zM22 29h2v1h-2zM28 29h1v1h-1zM30 29h1v1h-1zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h1v1h-1zM14 30h5v1h-5zM20 30h3v1h-3zM24 30h1v1h-1zM27 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h2v1h-2zM15 31h4v1h-4zM22 31h4v1h-4zM28 31h2v1h-2zM31 31h1v1h-1zM4 32h7v1h-7zM16 32h1v1h-1zM18 32h1v1h-1zM22 32h4v1h-4zM27 32h1v1h-1zM31 32h1v1h-1z"/></svg></div>
+  <i class="a bar"></i>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
+<div class="card d6b" data-face="D6-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <ul class="a links">
+    <li><i class="ic"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,187a113.4,113.4,0,0,1-20.39-35h40.82a116.94,116.94,0,0,1-10,20.77A108.61,108.61,0,0,1,128,207Zm-26.49-59a135.42,135.42,0,0,1,0-40h53a135.42,135.42,0,0,1,0,40ZM44,128a83.49,83.49,0,0,1,2.43-20H77.25a160.63,160.63,0,0,0,0,40H46.43A83.49,83.49,0,0,1,44,128Zm84-79a113.4,113.4,0,0,1,20.39,35H107.59a116.94,116.94,0,0,1,10-20.77A108.61,108.61,0,0,1,128,49Zm50.73,59h30.82a83.52,83.52,0,0,1,0,40H178.75a160.63,160.63,0,0,0,0-40Zm20.77-24H173.71a140.82,140.82,0,0,0-15.5-34.36A84.51,84.51,0,0,1,199.52,84ZM97.79,49.64A140.82,140.82,0,0,0,82.29,84H56.48A84.51,84.51,0,0,1,97.79,49.64ZM56.48,172H82.29a140.82,140.82,0,0,0,15.5,34.36A84.51,84.51,0,0,1,56.48,172Zm101.73,34.36A140.82,140.82,0,0,0,173.71,172h25.81A84.51,84.51,0,0,1,158.21,206.36Z"/></svg></i>lucianodlf.com.ar</li>
+    <li><i class="ic"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M216,20H40A20,20,0,0,0,20,40V216a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V40A20,20,0,0,0,216,20Zm-4,192H44V44H212ZM112,176V120a12,12,0,0,1,21.43-7.41A40,40,0,0,1,192,148v28a12,12,0,0,1-24,0V148a16,16,0,0,0-32,0v28a12,12,0,0,1-24,0ZM96,120v56a12,12,0,0,1-24,0V120a12,12,0,0,1,24,0ZM68,80A16,16,0,1,1,84,96,16,16,0,0,1,68,80Z"/></svg></i>in/lucianodelfino</li>
+    <li><i class="ic"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"/></svg></i>github.com/lucianodlf</li>
+  </ul>
+  <div class="a wsp">
+    <div class="qr" data-qr="wsp"><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="var(--qr-ground)"/><path fill="var(--qr-ink)" d="M4 4h7v1h-7zM12 4h4v1h-4zM17 4h1v1h-1zM20 4h1v1h-1zM22 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM15 5h2v1h-2zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM17 6h4v1h-4zM22 6h1v1h-1zM24 6h3v1h-3zM28 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM14 7h6v1h-6zM22 7h1v1h-1zM24 7h3v1h-3zM28 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM14 8h3v1h-3zM22 8h1v1h-1zM24 8h3v1h-3zM28 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM13 9h1v1h-1zM15 9h2v1h-2zM18 9h1v1h-1zM20 9h1v1h-1zM22 9h1v1h-1zM28 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h7v1h-7zM12 11h2v1h-2zM16 11h3v1h-3zM20 11h1v1h-1zM4 12h2v1h-2zM7 12h2v1h-2zM10 12h1v1h-1zM13 12h1v1h-1zM16 12h1v1h-1zM19 12h1v1h-1zM22 12h1v1h-1zM28 12h1v1h-1zM4 13h2v1h-2zM7 13h1v1h-1zM9 13h1v1h-1zM12 13h1v1h-1zM14 13h1v1h-1zM16 13h1v1h-1zM19 13h2v1h-2zM23 13h5v1h-5zM7 14h1v1h-1zM10 14h1v1h-1zM12 14h2v1h-2zM15 14h9v1h-9zM25 14h1v1h-1zM28 14h1v1h-1zM4 15h4v1h-4zM9 15h1v1h-1zM12 15h1v1h-1zM15 15h2v1h-2zM22 15h2v1h-2zM25 15h4v1h-4zM4 16h1v1h-1zM6 16h2v1h-2zM9 16h6v1h-6zM18 16h2v1h-2zM21 16h2v1h-2zM28 16h1v1h-1zM4 17h3v1h-3zM9 17h1v1h-1zM14 17h4v1h-4zM19 17h1v1h-1zM24 17h1v1h-1zM27 17h1v1h-1zM4 18h2v1h-2zM8 18h3v1h-3zM12 18h1v1h-1zM14 18h1v1h-1zM16 18h4v1h-4zM21 18h1v1h-1zM24 18h5v1h-5zM4 19h1v1h-1zM12 19h1v1h-1zM14 19h3v1h-3zM19 19h1v1h-1zM23 19h1v1h-1zM25 19h2v1h-2zM28 19h1v1h-1zM4 20h1v1h-1zM8 20h5v1h-5zM15 20h1v1h-1zM17 20h2v1h-2zM20 20h5v1h-5zM26 20h2v1h-2zM12 21h3v1h-3zM16 21h1v1h-1zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h2v1h-2zM4 22h7v1h-7zM13 22h1v1h-1zM15 22h4v1h-4zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM28 22h1v1h-1zM4 23h1v1h-1zM10 23h1v1h-1zM13 23h1v1h-1zM15 23h1v1h-1zM17 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM27 23h1v1h-1zM4 24h1v1h-1zM6 24h3v1h-3zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM19 24h6v1h-6zM4 25h1v1h-1zM6 25h3v1h-3zM10 25h1v1h-1zM12 25h1v1h-1zM14 25h3v1h-3zM19 25h4v1h-4zM27 25h2v1h-2zM4 26h1v1h-1zM6 26h3v1h-3zM10 26h1v1h-1zM13 26h1v1h-1zM15 26h1v1h-1zM17 26h2v1h-2zM21 26h1v1h-1zM24 26h5v1h-5zM4 27h1v1h-1zM10 27h1v1h-1zM12 27h2v1h-2zM16 27h1v1h-1zM18 27h1v1h-1zM23 27h2v1h-2zM26 27h3v1h-3zM4 28h7v1h-7zM12 28h1v1h-1zM14 28h2v1h-2zM18 28h1v1h-1zM20 28h1v1h-1zM22 28h1v1h-1zM25 28h1v1h-1zM28 28h1v1h-1z"/></svg></div>
+    <p class="num"><i class="ic"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M187.3,159.06A36.09,36.09,0,0,1,152,188a84.09,84.09,0,0,1-84-84A36.09,36.09,0,0,1,96.94,68.7,12,12,0,0,1,110,75.1l11.48,23a12,12,0,0,1-.75,12l-8.52,12.78a44.56,44.56,0,0,0,20.91,20.91l12.78-8.52a12,12,0,0,1,12-.75l23,11.48A12,12,0,0,1,187.3,159.06ZM236,128A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z"/></svg></i>+54 9 3425 13-3628</p>
+  </div>
+</div>
 </template>
 
 <script>
@@ -547,6 +598,8 @@ const DESIGNS = [
    why:"El favicon del rediseño (l_) como monograma sobre la grilla de 4 px hecha puntos. Frente de marca mínimo; dorso con QR a la izquierda y datos a la derecha."},
   {id:"D5", kind:"doble", name:"Portada + QR", faces:["D5-f","D5-b"], tags:["doble faz","qr wsp 14 mm","iconos"], qrtest:true,
    why:"D1 y S3 combinadas: el frente conserva la composición de D1 con el QR web dentro del bloque de tinta, y solo lucianodlf_ y SOFTWARE ENGINEER. El dorso lleva los links con iconos monocromos y el QR de WhatsApp aparte, con el número debajo."},
+  {id:"D6", kind:"doble", name:"Portada + QR alineada", faces:["D6-f","D6-b"], tags:["doble faz","qr wsp 14 mm","iconos"], qrtest:true,
+   why:"Como D5, con el rol en una línea (Software Engineer | AI-Augmented). En el dorso la lista de contactos ocupa exactamente la altura del bloque QR + número: el primer link alinea con el borde superior del QR y el último con el número, con el texto del número más cerca del QR."},
   {id:"QT", kind:"test", name:"Prueba de QR", faces:["QT-f"], tags:["prueba"], qrtest:true,
    why:"No es un diseño: imprimila junto a las demás para medir con tu teléfono hasta qué tamaño leen el QR web y el de WhatsApp. Cada QR indica su tamaño y milímetros por módulo."}
 ];
@@ -563,6 +616,7 @@ const tpl = document.getElementById("faces").innerHTML
   .replace("DOTS_S3", dots(34,38,3.5,2.4,2.4,.28,(x,y)=>y>6.5&&y<31.5))
   .replace("DOTS_D1", dots(60,24,3,3,3,.32))
   .replace("DOTS_D5", dots(60,28,3,3,3,.32))
+  .replace("DOTS_D6", dots(60,28,3,3,3,.32))
   .replace("DOTS_D4", dots(93,62,2.25,2.25,2.5,.3));
 const lib = document.createElement("div"); lib.innerHTML = tpl;
 const face = id => lib.querySelector(`[data-face="${id}"]`).cloneNode(true);
