@@ -1,7 +1,7 @@
 # Tarjetas personales
 
 Diseños de tarjeta 85 x 54 mm (250 g) sobre el design system lucianodlf.
-Ocho diseños (S1-S4 simple faz, D1-D4 doble faz) en light y dark, más la tarjeta de prueba QT.
+Nueve diseños (S1-S4 simple faz, D1-D5 doble faz) en light y dark, más la tarjeta de prueba QT.
 
 - `index.html`: galería (generada, no editar a mano).
 - `template.html`: diseños (HTML/CSS en mm).
@@ -14,3 +14,5 @@ Para cambiar dominio o número: editar `DOMAIN`, `WSP_DIGITS` y `WSP_TEXT` en `b
 ```bash
 python3 docs/tarjetas/build.py && node docs/tarjetas/render.mjs && python3 docs/tarjetas/verify.py
 ```
+
+Los iconos de `icons/` son de [Phosphor Icons](https://phosphoricons.com) (MIT), peso bold, usados en D5.

@@ -11,16 +11,25 @@ import segno
 
 HERE = Path(__file__).resolve().parent
 
-# --- Datos (dominio y WhatsApp son provisorios) ---------------------------
-DOMAIN = "lucianodlf.is-a.dev"          # dominio final: cambiar aca y regenerar
-WSP_DIGITS = "5493420000000"            # formato wa.me: 54 9 <area> <numero>, sin + ni espacios
-WSP_TEXT = "+54 9 342 000-0000"         # como se imprime
+# --- Datos ----------------------------------------------------------------
+DOMAIN = "lucianodlf.com.ar"            # se imprime como link web
+QR_PATH = "/pbcard"                      # destino del QR principal
+WSP_DIGITS = "5493425133628"            # formato wa.me: 54 9 <area> <numero>, sin + ni espacios
+WSP_TEXT = "+54 9 3425 13-3628"         # como se imprime
 LINKEDIN = "lucianodelfino"
 GITHUB = "lucianodlf"
+LINKEDIN_PATH = f"in/{LINKEDIN}"          # D5 (con iconos)
+GITHUB_URL = f"github.com/{GITHUB}"
 
-MAIN_URL = f"https://{DOMAIN}"
+MAIN_URL = f"https://{DOMAIN}{QR_PATH}"
 WSP_URL = f"https://wa.me/{WSP_DIGITS}"
 BORDER = 4  # quiet zone en modulos (regla del DS)
+
+
+def icon(name):
+    """Icono Phosphor (MIT) inline, monocromo (currentColor)."""
+    svg = (HERE / "icons" / f"{name}-bold.svg").read_text().strip()
+    return svg.replace(' xmlns="http://www.w3.org/2000/svg"', ' aria-hidden="true"')
 
 
 def qr(data, error):
@@ -59,9 +68,16 @@ def main():
         "{{QR_MAIN}}": svg_main,
         "{{QR_WSP}}": svg_wsp,
         "{{DOMAIN}}": DOMAIN,
+        "{{MAIN_URL}}": MAIN_URL,
         "{{WSP_TEXT}}": WSP_TEXT,
         "{{LINKEDIN}}": LINKEDIN,
         "{{GITHUB}}": GITHUB,
+        "{{LINKEDIN_PATH}}": LINKEDIN_PATH,
+        "{{GITHUB_URL}}": GITHUB_URL,
+        "{{I_WEB}}": icon("globe"),
+        "{{I_IN}}": icon("linkedin-logo"),
+        "{{I_GH}}": icon("github-logo"),
+        "{{I_WSP}}": icon("whatsapp-logo"),
         "{{MAIN_V}}": f"v{qm.version}-{qm.error}",
         "{{WSP_V}}": f"v{qw.version}-{qw.error}",
         "{{MAIN_N}}": str(nm),
