@@ -262,8 +262,18 @@ body[data-kind="simple"] section[data-kind="doble"],body[data-kind="doble"] sect
 .r4b .shape{left:0;top:0;width:85mm;height:54mm;overflow:visible}
 .r4b .shape path{fill:var(--soft)}
 .r4b .qr{left:57.5mm;top:32mm;width:16mm;height:16mm;border-radius:.6mm;overflow:hidden}
-.r5b .qr{left:60.5mm;top:32.885mm;width:11mm;height:11mm;border-radius:.4mm}
+.r5b .qr{left:61.5mm;top:33.885mm;width:9mm;height:9mm;border-radius:.4mm}
 .r5b .rule{top:16.76mm}
+
+/* R5 en 85 x 50 mm: todo lo anclado arriba/abajo sube 4 mm respecto del formato 85 x 54 */
+.card.h50{height:50mm}
+.h50.rf .ink,.h50.rf .dots{top:4mm}
+.h50.rf .qr{top:7mm}
+.h50.rf .wm{top:36mm}
+.h50.rf .sub{top:43.2mm}
+.h50.rf .band{top:38mm}
+.h50.r5b .shape{height:50mm}
+.h50.r5b .qr{top:29.885mm}
 
 /* D3 --verbose */
 .d3f .wm{left:7mm;top:17mm;font-size:17pt}
@@ -618,6 +628,16 @@ body.testsheet{background:#fff;page:testa4;width:210mm;height:297mm;margin:0;pad
   <i class="a leaf"></i>
   <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
 </div>
+<!-- R5 frente, 85 x 50 mm -->
+<div class="card rf r2f h50" data-face="R5-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
 <!-- R4 (frente compartido con R5) -->
 <div class="card rf r2f" data-face="R4-f">
   <i class="a slab"></i>
@@ -644,13 +664,13 @@ body.testsheet{background:#fff;page:testa4;width:210mm;height:297mm;margin:0;pad
   <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
 </div>
 <!-- R5 -->
-<div class="card rb r4b r5b" data-face="R5-b">
+<div class="card rb r4b r5b h50" data-face="R5-b">
   <div class="a id">
     <p class="name">Luciano Delfino</p>
     <p class="role">Software Engineer | AI-Augmented</p>
   </div>
   <i class="a rule"></i>
-  <svg class="a shape" viewBox="0 0 85 54" aria-hidden="true"><path d="M-4 42.73H52A1.5 1.5 0 0 0 53.5 41.23V37A10 10 0 0 1 63.5 27H77.3A1.2 1.2 0 0 1 78.5 28.2V39.77A10 10 0 0 1 68.5 49.77H-4Z"/></svg>
+  <svg class="a shape" viewBox="0 0 85 50" aria-hidden="true"><path transform="translate(0 -4)" d="M-4 42.73H52A1.5 1.5 0 0 0 53.5 41.23V37A10 10 0 0 1 63.5 27H77.3A1.2 1.2 0 0 1 78.5 28.2V39.77A10 10 0 0 1 68.5 49.77H-4Z"/></svg>
   <ul class="a links">
     <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
     <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
@@ -688,8 +708,8 @@ const DESIGNS = [
    why:"Frente D5 sin la barra ámbar. En el dorso, el QR de WhatsApp está sobre un fondo verde claro con dos esquinas opuestas muy redondeadas, junto al bloque de contactos."},
   {id:"R4", kind:"doble", name:"Hoja + franja", faces:["R4-f","R4-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
    why:"Combina R2 y R3. Frente de R2. En el dorso, el fondo del QR baja y se prolonga en una franja recta, del alto justo de la línea del número, que termina redondeada en el margen derecho. El número queda separado del resto de los links y la franja indica que ese QR es el de WhatsApp."},
-  {id:"R5", kind:"doble", name:"Hoja + franja al borde", faces:["R4-f","R5-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
-   why:"Variante de R4: la franja entra desde el borde izquierdo de la tarjeta (al corte) en vez de empezar junto al número. Mismo frente."},
+  {id:"R5", kind:"doble", name:"Hoja + franja al borde", h:50, faces:["R5-f","R5-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
+   why:"Variante de R4: la franja entra desde el borde izquierdo de la tarjeta (al corte) en vez de empezar junto al número. Mismo frente. Formato 85 x 50 mm, QR de WhatsApp de 9 mm."},
   {id:"QT", kind:"test", name:"Prueba de QR", faces:["QT-f"], tags:["prueba"], qrtest:true,
    why:"No es un diseño: imprimila junto a las demás para medir con tu teléfono hasta qué tamaño leen el QR web y el de WhatsApp. Cada QR indica su tamaño y milímetros por módulo."}
 ];
@@ -724,14 +744,14 @@ if (tsheet) {
   document.body.classList.add("print","testsheet");
   const items = [["R5","light",0,"frente"],["R5","light",1,"dorso"],["R5","dark",0,"frente"],["R5","dark",1,"dorso"],["QT","light",0,""],["QT","dark",0,""]];
   const head = document.createElement("div"); head.className = "thead";
-  head.innerHTML = "Hoja de prueba de impresión · A4 · tamaño real 85 x 54 mm<br>R5 light/dark (frente y dorso) + QT light/dark";
+  head.innerHTML = "Hoja de prueba de impresión · A4 · tamaño real (R5 85 x 50 mm, QT 85 x 54 mm)<br>R5 light/dark (frente y dorso) + QT light/dark";
   document.body.appendChild(head);
   const grid = document.createElement("div"); grid.className = "tgrid";
   items.forEach(([id,th,i,side])=>{
     const d = DESIGNS.find(x=>x.id===id);
     const cell = document.createElement("div"); cell.className = `tcell t-${th}`;
     const fw = document.createElement("div"); fw.className = "face";
-    fw.appendChild(face(d.faces[i])); cell.appendChild(fw);
+    fw.appendChild(face(d.faces[i])); if (d.h) fw.style.height = d.h+"mm"; cell.appendChild(fw);
     const cap = document.createElement("div"); cap.className = "cap"; cap.textContent = `${id} ${th}${side?" "+side:""}`;
     cell.appendChild(cap); grid.appendChild(cell); modLabel(cell);
   });
@@ -739,7 +759,9 @@ if (tsheet) {
 } else
 if (params.get("print")) {
   document.body.classList.add("print");
-  if (params.get("bleed")==="0") { document.body.classList.add("nobleed"); const st=document.createElement("style"); st.textContent="@page{size:85mm 54mm}"; document.head.appendChild(st); }
+  const dsn = DESIGNS.find(x=>x.id===params.get("print")), H = dsn.h || 54;
+  if (H !== 54) { const st=document.createElement("style"); st.textContent=`.sheet{height:${H+6}mm}body.nobleed .sheet{height:${H}mm}@page{size:91mm ${H+6}mm}`; document.head.appendChild(st); }
+  if (params.get("bleed")==="0") { document.body.classList.add("nobleed"); const st=document.createElement("style"); st.textContent=`@page{size:85mm ${H}mm}`; document.head.appendChild(st); }
   const d = DESIGNS.find(x=>x.id===params.get("print"));
   const th = params.get("theme") || "light";
   d.faces.forEach(f=>{

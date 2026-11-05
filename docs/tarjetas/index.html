@@ -262,8 +262,18 @@ body[data-kind="simple"] section[data-kind="doble"],body[data-kind="doble"] sect
 .r4b .shape{left:0;top:0;width:85mm;height:54mm;overflow:visible}
 .r4b .shape path{fill:var(--soft)}
 .r4b .qr{left:57.5mm;top:32mm;width:16mm;height:16mm;border-radius:.6mm;overflow:hidden}
-.r5b .qr{left:60.5mm;top:32.885mm;width:11mm;height:11mm;border-radius:.4mm}
+.r5b .qr{left:61.5mm;top:33.885mm;width:9mm;height:9mm;border-radius:.4mm}
 .r5b .rule{top:16.76mm}
+
+/* R5 en 85 x 50 mm: todo lo anclado arriba/abajo sube 4 mm respecto del formato 85 x 54 */
+.card.h50{height:50mm}
+.h50.rf .ink,.h50.rf .dots{top:4mm}
+.h50.rf .qr{top:7mm}
+.h50.rf .wm{top:36mm}
+.h50.rf .sub{top:43.2mm}
+.h50.rf .band{top:38mm}
+.h50.r5b .shape{height:50mm}
+.h50.r5b .qr{top:29.885mm}
 
 /* D3 --verbose */
 .d3f .wm{left:7mm;top:17mm;font-size:17pt}
@@ -618,6 +628,16 @@ body.testsheet{background:#fff;page:testa4;width:210mm;height:297mm;margin:0;pad
   <i class="a leaf"></i>
   <div class="a qr" data-qr="wsp"><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="var(--qr-ground)"/><path fill="var(--qr-ink)" d="M4 4h7v1h-7zM12 4h4v1h-4zM17 4h1v1h-1zM20 4h1v1h-1zM22 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM15 5h2v1h-2zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM17 6h4v1h-4zM22 6h1v1h-1zM24 6h3v1h-3zM28 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM14 7h6v1h-6zM22 7h1v1h-1zM24 7h3v1h-3zM28 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM14 8h3v1h-3zM22 8h1v1h-1zM24 8h3v1h-3zM28 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM13 9h1v1h-1zM15 9h2v1h-2zM18 9h1v1h-1zM20 9h1v1h-1zM22 9h1v1h-1zM28 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h7v1h-7zM12 11h2v1h-2zM16 11h3v1h-3zM20 11h1v1h-1zM4 12h2v1h-2zM7 12h2v1h-2zM10 12h1v1h-1zM13 12h1v1h-1zM16 12h1v1h-1zM19 12h1v1h-1zM22 12h1v1h-1zM28 12h1v1h-1zM4 13h2v1h-2zM7 13h1v1h-1zM9 13h1v1h-1zM12 13h1v1h-1zM14 13h1v1h-1zM16 13h1v1h-1zM19 13h2v1h-2zM23 13h5v1h-5zM7 14h1v1h-1zM10 14h1v1h-1zM12 14h2v1h-2zM15 14h9v1h-9zM25 14h1v1h-1zM28 14h1v1h-1zM4 15h4v1h-4zM9 15h1v1h-1zM12 15h1v1h-1zM15 15h2v1h-2zM22 15h2v1h-2zM25 15h4v1h-4zM4 16h1v1h-1zM6 16h2v1h-2zM9 16h6v1h-6zM18 16h2v1h-2zM21 16h2v1h-2zM28 16h1v1h-1zM4 17h3v1h-3zM9 17h1v1h-1zM14 17h4v1h-4zM19 17h1v1h-1zM24 17h1v1h-1zM27 17h1v1h-1zM4 18h2v1h-2zM8 18h3v1h-3zM12 18h1v1h-1zM14 18h1v1h-1zM16 18h4v1h-4zM21 18h1v1h-1zM24 18h5v1h-5zM4 19h1v1h-1zM12 19h1v1h-1zM14 19h3v1h-3zM19 19h1v1h-1zM23 19h1v1h-1zM25 19h2v1h-2zM28 19h1v1h-1zM4 20h1v1h-1zM8 20h5v1h-5zM15 20h1v1h-1zM17 20h2v1h-2zM20 20h5v1h-5zM26 20h2v1h-2zM12 21h3v1h-3zM16 21h1v1h-1zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h2v1h-2zM4 22h7v1h-7zM13 22h1v1h-1zM15 22h4v1h-4zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM28 22h1v1h-1zM4 23h1v1h-1zM10 23h1v1h-1zM13 23h1v1h-1zM15 23h1v1h-1zM17 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM27 23h1v1h-1zM4 24h1v1h-1zM6 24h3v1h-3zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM19 24h6v1h-6zM4 25h1v1h-1zM6 25h3v1h-3zM10 25h1v1h-1zM12 25h1v1h-1zM14 25h3v1h-3zM19 25h4v1h-4zM27 25h2v1h-2zM4 26h1v1h-1zM6 26h3v1h-3zM10 26h1v1h-1zM13 26h1v1h-1zM15 26h1v1h-1zM17 26h2v1h-2zM21 26h1v1h-1zM24 26h5v1h-5zM4 27h1v1h-1zM10 27h1v1h-1zM12 27h2v1h-2zM16 27h1v1h-1zM18 27h1v1h-1zM23 27h2v1h-2zM26 27h3v1h-3zM4 28h7v1h-7zM12 28h1v1h-1zM14 28h2v1h-2zM18 28h1v1h-1zM20 28h1v1h-1zM22 28h1v1h-1zM25 28h1v1h-1zM28 28h1v1h-1z"/></svg></div>
 </div>
+<!-- R5 frente, 85 x 50 mm -->
+<div class="card rf r2f h50" data-face="R5-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
+  <div class="a qr" data-qr="main"><svg viewBox="0 0 37 37" shape-rendering="crispEdges" aria-hidden="true"><rect width="37" height="37" fill="var(--qr-ground)"/><path fill="var(--qr-ink)" d="M4 4h7v1h-7zM13 4h3v1h-3zM17 4h3v1h-3zM22 4h3v1h-3zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM14 5h1v1h-1zM17 5h2v1h-2zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h2v1h-2zM17 6h1v1h-1zM19 6h2v1h-2zM22 6h2v1h-2zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h1v1h-1zM16 7h1v1h-1zM20 7h2v1h-2zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h2v1h-2zM17 8h2v1h-2zM20 8h2v1h-2zM23 8h1v1h-1zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM14 9h3v1h-3zM18 9h1v1h-1zM20 9h2v1h-2zM23 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h6v1h-6zM20 11h2v1h-2zM5 12h3v1h-3zM9 12h2v1h-2zM14 12h1v1h-1zM19 12h1v1h-1zM21 12h4v1h-4zM30 12h2v1h-2zM4 13h1v1h-1zM6 13h1v1h-1zM9 13h1v1h-1zM12 13h1v1h-1zM16 13h1v1h-1zM20 13h7v1h-7zM28 13h2v1h-2zM32 13h1v1h-1zM6 14h1v1h-1zM10 14h4v1h-4zM16 14h1v1h-1zM18 14h1v1h-1zM20 14h2v1h-2zM26 14h1v1h-1zM31 14h1v1h-1zM4 15h2v1h-2zM7 15h1v1h-1zM11 15h1v1h-1zM13 15h2v1h-2zM17 15h1v1h-1zM19 15h2v1h-2zM22 15h1v1h-1zM24 15h1v1h-1zM27 15h3v1h-3zM32 15h1v1h-1zM6 16h1v1h-1zM10 16h7v1h-7zM18 16h1v1h-1zM21 16h1v1h-1zM23 16h3v1h-3zM27 16h1v1h-1zM30 16h3v1h-3zM6 17h2v1h-2zM9 17h1v1h-1zM12 17h5v1h-5zM19 17h3v1h-3zM23 17h1v1h-1zM26 17h2v1h-2zM29 17h2v1h-2zM32 17h1v1h-1zM4 18h3v1h-3zM8 18h3v1h-3zM12 18h1v1h-1zM14 18h3v1h-3zM21 18h1v1h-1zM23 18h1v1h-1zM25 18h1v1h-1zM27 18h3v1h-3zM31 18h2v1h-2zM4 19h1v1h-1zM13 19h2v1h-2zM16 19h1v1h-1zM18 19h3v1h-3zM24 19h3v1h-3zM28 19h2v1h-2zM31 19h1v1h-1zM6 20h2v1h-2zM10 20h1v1h-1zM12 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM22 20h4v1h-4zM27 20h3v1h-3zM31 20h2v1h-2zM5 21h5v1h-5zM11 21h1v1h-1zM13 21h1v1h-1zM15 21h4v1h-4zM20 21h1v1h-1zM27 21h1v1h-1zM30 21h1v1h-1zM4 22h1v1h-1zM7 22h1v1h-1zM9 22h2v1h-2zM12 22h4v1h-4zM17 22h3v1h-3zM22 22h1v1h-1zM26 22h2v1h-2zM30 22h1v1h-1zM6 23h1v1h-1zM8 23h2v1h-2zM12 23h2v1h-2zM18 23h1v1h-1zM20 23h7v1h-7zM28 23h3v1h-3zM5 24h4v1h-4zM10 24h3v1h-3zM14 24h1v1h-1zM20 24h11v1h-11zM32 24h1v1h-1zM12 25h1v1h-1zM15 25h1v1h-1zM17 25h2v1h-2zM20 25h1v1h-1zM22 25h1v1h-1zM24 25h1v1h-1zM28 25h2v1h-2zM31 25h2v1h-2zM4 26h7v1h-7zM13 26h1v1h-1zM18 26h1v1h-1zM20 26h2v1h-2zM23 26h2v1h-2zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM4 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM14 27h1v1h-1zM16 27h1v1h-1zM19 27h1v1h-1zM22 27h1v1h-1zM24 27h1v1h-1zM28 27h1v1h-1zM32 27h1v1h-1zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM15 28h2v1h-2zM21 28h1v1h-1zM24 28h7v1h-7zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM12 29h1v1h-1zM14 29h1v1h-1zM19 29h2v1h-2zM22 29h2v1h-2zM28 29h1v1h-1zM30 29h1v1h-1zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h1v1h-1zM14 30h5v1h-5zM20 30h3v1h-3zM24 30h1v1h-1zM27 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h2v1h-2zM15 31h4v1h-4zM22 31h4v1h-4zM28 31h2v1h-2zM31 31h1v1h-1zM4 32h7v1h-7zM16 32h1v1h-1zM18 32h1v1h-1zM22 32h4v1h-4zM27 32h1v1h-1zM31 32h1v1h-1z"/></svg></div>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
 <!-- R4 (frente compartido con R5) -->
 <div class="card rf r2f" data-face="R4-f">
   <i class="a slab"></i>
@@ -644,13 +664,13 @@ body.testsheet{background:#fff;page:testa4;width:210mm;height:297mm;margin:0;pad
   <div class="a qr" data-qr="wsp"><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="var(--qr-ground)"/><path fill="var(--qr-ink)" d="M4 4h7v1h-7zM12 4h4v1h-4zM17 4h1v1h-1zM20 4h1v1h-1zM22 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM15 5h2v1h-2zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM17 6h4v1h-4zM22 6h1v1h-1zM24 6h3v1h-3zM28 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM14 7h6v1h-6zM22 7h1v1h-1zM24 7h3v1h-3zM28 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM14 8h3v1h-3zM22 8h1v1h-1zM24 8h3v1h-3zM28 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM13 9h1v1h-1zM15 9h2v1h-2zM18 9h1v1h-1zM20 9h1v1h-1zM22 9h1v1h-1zM28 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h7v1h-7zM12 11h2v1h-2zM16 11h3v1h-3zM20 11h1v1h-1zM4 12h2v1h-2zM7 12h2v1h-2zM10 12h1v1h-1zM13 12h1v1h-1zM16 12h1v1h-1zM19 12h1v1h-1zM22 12h1v1h-1zM28 12h1v1h-1zM4 13h2v1h-2zM7 13h1v1h-1zM9 13h1v1h-1zM12 13h1v1h-1zM14 13h1v1h-1zM16 13h1v1h-1zM19 13h2v1h-2zM23 13h5v1h-5zM7 14h1v1h-1zM10 14h1v1h-1zM12 14h2v1h-2zM15 14h9v1h-9zM25 14h1v1h-1zM28 14h1v1h-1zM4 15h4v1h-4zM9 15h1v1h-1zM12 15h1v1h-1zM15 15h2v1h-2zM22 15h2v1h-2zM25 15h4v1h-4zM4 16h1v1h-1zM6 16h2v1h-2zM9 16h6v1h-6zM18 16h2v1h-2zM21 16h2v1h-2zM28 16h1v1h-1zM4 17h3v1h-3zM9 17h1v1h-1zM14 17h4v1h-4zM19 17h1v1h-1zM24 17h1v1h-1zM27 17h1v1h-1zM4 18h2v1h-2zM8 18h3v1h-3zM12 18h1v1h-1zM14 18h1v1h-1zM16 18h4v1h-4zM21 18h1v1h-1zM24 18h5v1h-5zM4 19h1v1h-1zM12 19h1v1h-1zM14 19h3v1h-3zM19 19h1v1h-1zM23 19h1v1h-1zM25 19h2v1h-2zM28 19h1v1h-1zM4 20h1v1h-1zM8 20h5v1h-5zM15 20h1v1h-1zM17 20h2v1h-2zM20 20h5v1h-5zM26 20h2v1h-2zM12 21h3v1h-3zM16 21h1v1h-1zM18 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h2v1h-2zM4 22h7v1h-7zM13 22h1v1h-1zM15 22h4v1h-4zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM28 22h1v1h-1zM4 23h1v1h-1zM10 23h1v1h-1zM13 23h1v1h-1zM15 23h1v1h-1zM17 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM27 23h1v1h-1zM4 24h1v1h-1zM6 24h3v1h-3zM10 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM19 24h6v1h-6zM4 25h1v1h-1zM6 25h3v1h-3zM10 25h1v1h-1zM12 25h1v1h-1zM14 25h3v1h-3zM19 25h4v1h-4zM27 25h2v1h-2zM4 26h1v1h-1zM6 26h3v1h-3zM10 26h1v1h-1zM13 26h1v1h-1zM15 26h1v1h-1zM17 26h2v1h-2zM21 26h1v1h-1zM24 26h5v1h-5zM4 27h1v1h-1zM10 27h1v1h-1zM12 27h2v1h-2zM16 27h1v1h-1zM18 27h1v1h-1zM23 27h2v1h-2zM26 27h3v1h-3zM4 28h7v1h-7zM12 28h1v1h-1zM14 28h2v1h-2zM18 28h1v1h-1zM20 28h1v1h-1zM22 28h1v1h-1zM25 28h1v1h-1zM28 28h1v1h-1z"/></svg></div>
 </div>
 <!-- R5 -->
-<div class="card rb r4b r5b" data-face="R5-b">
+<div class="card rb r4b r5b h50" data-face="R5-b">
   <div class="a id">
     <p class="name">Luciano Delfino</p>
     <p class="role">Software Engineer | AI-Augmented</p>
   </div>
   <i class="a rule"></i>
-  <svg class="a shape" viewBox="0 0 85 54" aria-hidden="true"><path d="M-4 42.73H52A1.5 1.5 0 0 0 53.5 41.23V37A10 10 0 0 1 63.5 27H77.3A1.2 1.2 0 0 1 78.5 28.2V39.77A10 10 0 0 1 68.5 49.77H-4Z"/></svg>
+  <svg class="a shape" viewBox="0 0 85 50" aria-hidden="true"><path transform="translate(0 -4)" d="M-4 42.73H52A1.5 1.5 0 0 0 53.5 41.23V37A10 10 0 0 1 63.5 27H77.3A1.2 1.2 0 0 1 78.5 28.2V39.77A10 10 0 0 1 68.5 49.77H-4Z"/></svg>
   <ul class="a links">
     <li><i class="ic"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,187a113.4,113.4,0,0,1-20.39-35h40.82a116.94,116.94,0,0,1-10,20.77A108.61,108.61,0,0,1,128,207Zm-26.49-59a135.42,135.42,0,0,1,0-40h53a135.42,135.42,0,0,1,0,40ZM44,128a83.49,83.49,0,0,1,2.43-20H77.25a160.63,160.63,0,0,0,0,40H46.43A83.49,83.49,0,0,1,44,128Zm84-79a113.4,113.4,0,0,1,20.39,35H107.59a116.94,116.94,0,0,1,10-20.77A108.61,108.61,0,0,1,128,49Zm50.73,59h30.82a83.52,83.52,0,0,1,0,40H178.75a160.63,160.63,0,0,0,0-40Zm20.77-24H173.71a140.82,140.82,0,0,0-15.5-34.36A84.51,84.51,0,0,1,199.52,84ZM97.79,49.64A140.82,140.82,0,0,0,82.29,84H56.48A84.51,84.51,0,0,1,97.79,49.64ZM56.48,172H82.29a140.82,140.82,0,0,0,15.5,34.36A84.51,84.51,0,0,1,56.48,172Zm101.73,34.36A140.82,140.82,0,0,0,173.71,172h25.81A84.51,84.51,0,0,1,158.21,206.36Z"/></svg></i>lucianodlf.com.ar</li>
     <li><i class="ic"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M216,20H40A20,20,0,0,0,20,40V216a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V40A20,20,0,0,0,216,20Zm-4,192H44V44H212ZM112,176V120a12,12,0,0,1,21.43-7.41A40,40,0,0,1,192,148v28a12,12,0,0,1-24,0V148a16,16,0,0,0-32,0v28a12,12,0,0,1-24,0ZM96,120v56a12,12,0,0,1-24,0V120a12,12,0,0,1,24,0ZM68,80A16,16,0,1,1,84,96,16,16,0,0,1,68,80Z"/></svg></i>in/lucianodelfino</li>
@@ -688,8 +708,8 @@ const DESIGNS = [
    why:"Frente D5 sin la barra ámbar. En el dorso, el QR de WhatsApp está sobre un fondo verde claro con dos esquinas opuestas muy redondeadas, junto al bloque de contactos."},
   {id:"R4", kind:"doble", name:"Hoja + franja", faces:["R4-f","R4-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
    why:"Combina R2 y R3. Frente de R2. En el dorso, el fondo del QR baja y se prolonga en una franja recta, del alto justo de la línea del número, que termina redondeada en el margen derecho. El número queda separado del resto de los links y la franja indica que ese QR es el de WhatsApp."},
-  {id:"R5", kind:"doble", name:"Hoja + franja al borde", faces:["R4-f","R5-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
-   why:"Variante de R4: la franja entra desde el borde izquierdo de la tarjeta (al corte) en vez de empezar junto al número. Mismo frente."},
+  {id:"R5", kind:"doble", name:"Hoja + franja al borde", h:50, faces:["R5-f","R5-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
+   why:"Variante de R4: la franja entra desde el borde izquierdo de la tarjeta (al corte) en vez de empezar junto al número. Mismo frente. Formato 85 x 50 mm, QR de WhatsApp de 9 mm."},
   {id:"QT", kind:"test", name:"Prueba de QR", faces:["QT-f"], tags:["prueba"], qrtest:true,
    why:"No es un diseño: imprimila junto a las demás para medir con tu teléfono hasta qué tamaño leen el QR web y el de WhatsApp. Cada QR indica su tamaño y milímetros por módulo."}
 ];
@@ -724,14 +744,14 @@ if (tsheet) {
   document.body.classList.add("print","testsheet");
   const items = [["R5","light",0,"frente"],["R5","light",1,"dorso"],["R5","dark",0,"frente"],["R5","dark",1,"dorso"],["QT","light",0,""],["QT","dark",0,""]];
   const head = document.createElement("div"); head.className = "thead";
-  head.innerHTML = "Hoja de prueba de impresión · A4 · tamaño real 85 x 54 mm<br>R5 light/dark (frente y dorso) + QT light/dark";
+  head.innerHTML = "Hoja de prueba de impresión · A4 · tamaño real (R5 85 x 50 mm, QT 85 x 54 mm)<br>R5 light/dark (frente y dorso) + QT light/dark";
   document.body.appendChild(head);
   const grid = document.createElement("div"); grid.className = "tgrid";
   items.forEach(([id,th,i,side])=>{
     const d = DESIGNS.find(x=>x.id===id);
     const cell = document.createElement("div"); cell.className = `tcell t-${th}`;
     const fw = document.createElement("div"); fw.className = "face";
-    fw.appendChild(face(d.faces[i])); cell.appendChild(fw);
+    fw.appendChild(face(d.faces[i])); if (d.h) fw.style.height = d.h+"mm"; cell.appendChild(fw);
     const cap = document.createElement("div"); cap.className = "cap"; cap.textContent = `${id} ${th}${side?" "+side:""}`;
     cell.appendChild(cap); grid.appendChild(cell); modLabel(cell);
   });
@@ -739,7 +759,9 @@ if (tsheet) {
 } else
 if (params.get("print")) {
   document.body.classList.add("print");
-  if (params.get("bleed")==="0") { document.body.classList.add("nobleed"); const st=document.createElement("style"); st.textContent="@page{size:85mm 54mm}"; document.head.appendChild(st); }
+  const dsn = DESIGNS.find(x=>x.id===params.get("print")), H = dsn.h || 54;
+  if (H !== 54) { const st=document.createElement("style"); st.textContent=`.sheet{height:${H+6}mm}body.nobleed .sheet{height:${H}mm}@page{size:91mm ${H+6}mm}`; document.head.appendChild(st); }
+  if (params.get("bleed")==="0") { document.body.classList.add("nobleed"); const st=document.createElement("style"); st.textContent=`@page{size:85mm ${H}mm}`; document.head.appendChild(st); }
   const d = DESIGNS.find(x=>x.id===params.get("print"));
   const th = params.get("theme") || "light";
   d.faces.forEach(f=>{
