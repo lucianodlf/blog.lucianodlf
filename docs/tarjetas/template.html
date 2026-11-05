@@ -230,7 +230,7 @@ body[data-kind="simple"] section[data-kind="doble"],body[data-kind="doble"] sect
 .d5b .wsp .num{display:flex;align-items:center;gap:1mm;font:500 5.2pt/1 var(--mono);white-space:nowrap}
 .d5b .wsp .num .ic{width:2.2mm;height:2.2mm}
 
-/* R1-R3 serie Rizoma: base D5 + lenguaje organico */
+/* R2-R5 serie Hoja: base D5, fondos de QR con dos esquinas redondeadas */
 .rf .slab{left:8mm;top:-4mm;width:17mm;height:33mm;border-radius:1.2mm;background:var(--primary)}
 .rf .ink{left:29mm;top:5mm;width:60mm;height:28mm;border-radius:1.2mm;background:var(--text)}
 .rf .dots{left:29mm;top:5mm;width:60mm;height:28mm}
@@ -240,10 +240,6 @@ body[data-kind="simple"] section[data-kind="doble"],body[data-kind="doble"] sect
 .rf .band{left:58mm;top:42mm;width:32mm;height:16mm;border-radius:1.2mm;background:var(--soft)}
 .rf .wm{left:8mm;top:40mm;font-size:16pt}
 .rf .sub{left:8mm;top:47.2mm;font:500 5.4pt/1 var(--mono);color:var(--muted);letter-spacing:.04em}
-.card .ov{left:0;top:0;width:85mm;height:54mm;overflow:visible;pointer-events:none}
-.card .ov .st{fill:none;stroke:var(--primary);stroke-linecap:round;stroke-linejoin:round}
-.card .ov .nd{fill:var(--primary)}
-.card .ov .lf{fill:var(--primary)}
 .rb .id{left:7mm;top:7mm}
 .rb .name{font-size:12pt}
 .rb .role{margin-top:1mm;color:var(--muted);font-size:6.3pt;line-height:1.4}
@@ -251,23 +247,20 @@ body[data-kind="simple"] section[data-kind="doble"],body[data-kind="doble"] sect
 .rb .links{left:7mm;bottom:6.5mm;font:400 6.2pt/1.6 var(--mono)}
 .rb .links li{display:flex;align-items:center;gap:1.8mm}
 .rb .ic.hl{color:var(--primary)}
-/* R1 Micelio */
-.r1f .dots{opacity:.45}
-.r1f .hy{left:29mm;top:5mm;width:60mm;height:28mm;overflow:visible}
-.r1f .hy path{fill:none;stroke:var(--bg);stroke-width:.2;stroke-linecap:round;opacity:.8}
-.r1f .hy circle{fill:var(--bg)}
-.r1b .wsp{right:6.5mm;bottom:6.5mm;width:24mm;display:flex;flex-direction:column;align-items:center;gap:1.8mm}
-.r1b .wsp .qr{width:14mm;height:14mm;border-radius:.6mm;overflow:hidden}
-.r1b .wsp .num{display:flex;align-items:center;gap:1mm;font:500 5.2pt/1 var(--mono);white-space:nowrap}
-.r1b .wsp .num .ic{width:2.2mm;height:2.2mm}
-/* R2 Brote */
+/* R2 */
 .r2f .ink{width:53mm;border-radius:12mm 1.2mm 12mm 1.2mm}
 .r2f .dots{width:53mm;clip-path:inset(0 round 12mm 1.2mm 12mm 1.2mm)}
 .r2f .qr{left:53mm}
-.r2b .qr{left:61mm;top:21mm;width:16mm;height:16mm;border-radius:.8mm;overflow:hidden}
-/* R3 Rizoma */
+.r2b .qr{left:61mm;top:31.5mm;width:16mm;height:16mm;border-radius:.8mm;overflow:hidden}
+/* R3 */
 .r3b .leaf{left:51mm;top:19mm;width:27mm;height:27mm;border-radius:10mm 1.2mm 10mm 1.2mm;background:var(--soft)}
 .r3b .qr{left:56.5mm;top:24.5mm;width:16mm;height:16mm;border-radius:.6mm;overflow:hidden}
+
+/* R4/R5: frente R2, dorso R3 con el fondo del QR extendido en franja bajo el numero */
+.r4b .links li.ph{margin-top:1.6mm}
+.r4b .shape{left:0;top:0;width:85mm;height:54mm;overflow:visible}
+.r4b .shape path{fill:var(--soft)}
+.r4b .qr{left:57mm;top:22mm;width:16mm;height:16mm;border-radius:.6mm;overflow:hidden}
 
 /* D3 --verbose */
 .d3f .wm{left:7mm;top:17mm;font-size:17pt}
@@ -326,7 +319,7 @@ body.print .wrap{display:none}
   <header>
     <p class="eyebrow">$ ls tarjetas/ | wc -l</p>
     <h1>Tarjetas personales<span class="c">_</span></h1>
-    <p class="lead">Doce diseños sobre el design system lucianodlf: cuatro de simple faz, cinco de doble faz y la serie Rizoma (R1 a R3), cada uno en light y dark. Más una tarjeta de prueba para medir hasta qué tamaño se lee el QR de WhatsApp.</p>
+    <p class="lead">Trece diseños sobre el design system lucianodlf: cuatro de simple faz, cinco de doble faz y la serie Hoja (R2 a R5), cada uno en light y dark. Más una tarjeta de prueba para medir hasta qué tamaño se lee el QR de WhatsApp.</p>
     <ul class="facts">
       <li><b>85 x 54 mm</b> · 250 g</li>
       <li>QR web <b>{{MAIN_V}}</b> · {{MAIN_N}} módulos con margen</li>
@@ -339,7 +332,7 @@ body.print .wrap{display:none}
   <nav class="controls" aria-label="Filtros">
     <div><span class="seg-label">modo</span><span class="seg" data-ctl="show"><button aria-pressed="true" data-v="both">ambos</button><button aria-pressed="false" data-v="light">light</button><button aria-pressed="false" data-v="dark">dark</button></span></div>
     <div><span class="seg-label">tipo</span><span class="seg" data-ctl="kind"><button aria-pressed="true" data-v="all">todos</button><button aria-pressed="false" data-v="simple">simple faz</button><button aria-pressed="false" data-v="doble">doble faz</button></span></div>
-    <div class="toc"><a href="#S1">S1</a><a href="#S2">S2</a><a href="#S3">S3</a><a href="#S4">S4</a><a href="#D1">D1</a><a href="#D2">D2</a><a href="#D3">D3</a><a href="#D4">D4</a><a href="#D5">D5</a><a href="#R1">R1</a><a href="#R2">R2</a><a href="#R3">R3</a><a href="#QT">QR test</a></div>
+    <div class="toc"><a href="#S1">S1</a><a href="#S2">S2</a><a href="#S3">S3</a><a href="#S4">S4</a><a href="#D1">D1</a><a href="#D2">D2</a><a href="#D3">D3</a><a href="#D4">D4</a><a href="#D5">D5</a><a href="#R2">R2</a><a href="#R3">R3</a><a href="#R4">R4</a><a href="#R5">R5</a><a href="#QT">QR test</a></div>
   </nav>
 
   <main id="designs"></main>
@@ -563,62 +556,12 @@ body.print .wrap{display:none}
     <p class="num"><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</p>
   </div>
 </div>
-<!-- R1 Micelio -->
-<div class="card rf r1f" data-face="R1-f">
-  <i class="a slab"></i>
-  <i class="a ink"></i>
-  <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
-  <svg class="a hy" viewBox="0 0 60 28" aria-hidden="true">
-    <path d="M1 6C7 4 11 10 16.5 9S24 6 28 8"/>
-    <path d="M16.5 9C19 13 15 16 19.5 19.5S25.5 22 28 20"/>
-    <path d="M2 23C7 25 10 18 13.5 17S18 13.5 16.5 9"/>
-    <path d="M19.5 19.5C21 24 23.5 26 27 25.5"/>
-    <path d="M7.5 13C10 12.5 12 15 13.5 17"/>
-    <path d="M10 3C12 5 14 6.5 16.5 9"/>
-    <path d="M50 14C53 12 55 16 58 15"/><path d="M50 22C52 23.5 54 21 57 23"/>
-    <circle cx="16.5" cy="9" r=".55"/><circle cx="19.5" cy="19.5" r=".5"/><circle cx="13.5" cy="17" r=".45"/>
-    <circle cx="7.5" cy="13" r=".35"/><circle cx="28" cy="8" r=".35"/><circle cx="28" cy="20" r=".35"/>
-  </svg>
-  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
-  <i class="a bar"></i>
-  <i class="a band"></i>
-  <div class="a wm">lucianodlf<span class="cur">_</span></div>
-  <div class="a sub">SOFTWARE ENGINEER</div>
-</div>
-<div class="card rb r1b" data-face="R1-b">
-  <div class="a id">
-    <p class="name">Luciano Delfino</p>
-    <p class="role">Software Engineer | AI-Augmented</p>
-  </div>
-  <i class="a rule"></i>
-  <ul class="a links">
-    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
-    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
-    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
-  </ul>
-  <svg class="a ov" viewBox="0 0 85 54" aria-hidden="true">
-    <path class="st" stroke-width=".25" d="M13 24.1C18 24.1 20 22.6 24 23S30 25.4 34.5 24.6"/>
-    <path class="st" stroke-width=".2" d="M24 23C25.5 21.2 27.5 20.6 29.2 21"/>
-    <path class="st" stroke-width=".2" d="M34.5 24.6C36 24 37.5 25.6 39.4 25.3"/>
-    <circle class="nd" cx="24" cy="23" r=".45"/><circle class="nd" cx="29.2" cy="21" r=".4"/><circle class="nd" cx="39.4" cy="25.3" r=".4"/>
-  </svg>
-  <div class="a wsp">
-    <div class="qr" data-qr="wsp">{{QR_WSP}}</div>
-    <p class="num"><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</p>
-  </div>
-</div>
-
-<!-- R2 Brote -->
+<!-- R2 -->
 <div class="card rf r2f" data-face="R2-f">
   <i class="a slab"></i>
   <i class="a ink"></i>
   <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
-  <svg class="a ov" viewBox="0 0 85 54" aria-hidden="true">
-    <path class="st" stroke-width=".35" d="M45.8 45.6C49.5 45 49 38.5 51.6 33.4"/>
-    <path class="lf" transform="translate(49.4 40.2) scale(-1 1) rotate(20)" d="M0 0C1 -1.4 3 -1.9 4.4 -1.6C3.6 -.3 1.8 .6 0 0Z"/>
-  </svg>
   <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
-  
   <i class="a band"></i>
   <div class="a wm">lucianodlf<span class="cur">_</span></div>
   <div class="a sub">SOFTWARE ENGINEER</div>
@@ -633,34 +576,17 @@ body.print .wrap{display:none}
     <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
     <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
     <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
-    <li><i class="ic hl">{{I_WSP}}</i>{{WSP_TEXT}}</li>
+    <li><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</li>
   </ul>
-  <svg class="a ov" viewBox="0 0 85 54" aria-hidden="true">
-    <path class="st" stroke-width=".3" d="M37 45.75C45 45.75 52 46.2 57 43.5S63.5 40.2 64.5 37.9"/>
-    <path class="lf" transform="translate(50.5 45.6) rotate(-35)" d="M0 0C1 -1.4 3 -1.9 4.4 -1.6C3.6 -.3 1.8 .6 0 0Z"/>
-    <circle class="nd" cx="64.5" cy="37.9" r=".6"/>
-  </svg>
   <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
 </div>
 
-<!-- R3 Rizoma -->
+<!-- R3 -->
 <div class="card rf r3f" data-face="R3-f">
   <i class="a slab"></i>
   <i class="a ink"></i>
   <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
-  <svg class="a ov" viewBox="0 0 85 54" aria-hidden="true">
-    <path class="st" stroke-width=".3" d="M16.5 29C16.5 33 19 36.5 24 36.5C34 36.5 40 35.6 50 36.4S70 37.2 90 36"/>
-    <path class="st" stroke-width=".22" d="M68 36.7C67.5 39 66 40.5 64.5 43.5"/>
-    <path class="st" stroke-width=".22" d="M68 36.7C69 39.5 70.5 41 70.8 44.5"/>
-    <path class="st" stroke-width=".22" d="M82 36.3C82.5 39 84 40.5 86 42"/>
-    <path class="st" stroke-width=".22" d="M50 36.4C49.5 38.5 48 39.5 47.2 41.2"/>
-    <path class="st" stroke-width=".25" d="M68 36.7C68 35.5 68.2 34.2 68 33"/>
-    <path class="st" stroke-width=".25" d="M50 36.4C50 35.4 50.6 34.6 51.4 34.2"/>
-    <path class="lf" transform="translate(51.2 34.3) rotate(-25)" d="M0 0C1 -1.4 3 -1.9 4.4 -1.6C3.6 -.3 1.8 .6 0 0Z"/>
-    <circle class="nd" cx="50" cy="36.4" r=".55"/><circle class="nd" cx="68" cy="36.7" r=".55"/><circle class="nd" cx="82" cy="36.3" r=".5"/>
-  </svg>
   <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
-  
   <i class="a band"></i>
   <div class="a wm">lucianodlf<span class="cur">_</span></div>
   <div class="a sub">SOFTWARE ENGINEER</div>
@@ -678,9 +604,47 @@ body.print .wrap{display:none}
     <li><i class="ic hl">{{I_WSP}}</i>{{WSP_TEXT}}</li>
   </ul>
   <i class="a leaf"></i>
-  <svg class="a ov" viewBox="0 0 85 54" aria-hidden="true">
-    <path class="st" stroke-width=".3" d="M37 45.75C42 45.75 46 46.2 51.6 45.4"/>
-  </svg>
+  <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+<!-- R4 (frente compartido con R5) -->
+<div class="card rf r2f" data-face="R4-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
+<div class="card rb r4b" data-face="R4-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <svg class="a shape" viewBox="0 0 85 54" aria-hidden="true"><path d="M5.8 43.25H50A1.5 1.5 0 0 0 51.5 41.75V26.5A10 10 0 0 1 61.5 16.5H77.3A1.2 1.2 0 0 1 78.5 17.7V45.75A2.5 2.5 0 0 1 76 48.25H5.8A1.2 1.2 0 0 1 4.6 47.05V44.45A1.2 1.2 0 0 1 5.8 43.25Z"/></svg>
+  <ul class="a links">
+    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
+    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
+    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
+    <li class="ph"><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</li>
+  </ul>
+  <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+<!-- R5 -->
+<div class="card rb r4b" data-face="R5-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <svg class="a shape" viewBox="0 0 85 54" aria-hidden="true"><path d="M-4 43.25H50A1.5 1.5 0 0 0 51.5 41.75V26.5A10 10 0 0 1 61.5 16.5H77.3A1.2 1.2 0 0 1 78.5 17.7V45.75A2.5 2.5 0 0 1 76 48.25H-4Z"/></svg>
+  <ul class="a links">
+    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
+    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
+    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
+    <li class="ph"><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</li>
+  </ul>
   <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
 </div>
 </template>
@@ -706,12 +670,14 @@ const DESIGNS = [
    why:"El favicon del rediseño (l_) como monograma sobre la grilla de 4 px hecha puntos. Frente de marca mínimo; dorso con QR a la izquierda y datos a la derecha."},
   {id:"D5", kind:"doble", name:"Portada + QR", faces:["D5-f","D5-b"], tags:["doble faz","qr wsp 14 mm","iconos"], qrtest:true,
    why:"D1 y S3 combinadas: el frente conserva la composición de D1 con el QR web dentro del bloque de tinta, y solo lucianodlf_ y SOFTWARE ENGINEER. El dorso lleva los links con iconos monocromos y el QR de WhatsApp aparte, con el número debajo."},
-  {id:"R1", kind:"doble", name:"Micelio", faces:["R1-f","R1-b"], tags:["doble faz","serie rizoma","qr wsp 14 mm"], qrtest:true,
-   why:"Base D5. En el frente, la grilla de puntos se vuelve una red de micelio: hifas finas que unen nodos y convergen en el QR, la red que conecta. En el dorso, una hifa brota de la línea ámbar. Mantiene el número bajo el QR de WhatsApp."},
-  {id:"R2", kind:"doble", name:"Brote", faces:["R2-f","R2-b"], tags:["doble faz","serie rizoma","un solo bloque"], qrtest:true,
-   why:"Del cursor del wordmark brota un tallo con una hoja que sube hasta el bloque del QR, y el bloque toma forma de hoja. En el dorso hay un solo bloque de contactos: el tallo nace en la línea de WhatsApp y termina en el QR, así queda claro para qué es."},
-  {id:"R3", kind:"doble", name:"Rizoma", faces:["R3-f","R3-b"], tags:["doble faz","serie rizoma","un solo bloque"], qrtest:true,
-   why:"Un rizoma horizontal sale de la losa verde, con nodos, raíces hacia la banda y un brote que toca el bloque del QR. En el dorso el QR de WhatsApp vive dentro de una hoja; su pecíolo se une a la línea de WhatsApp del bloque de contactos."},
+  {id:"R2", kind:"doble", name:"Hoja", faces:["R2-f","R2-b"], tags:["doble faz","serie hoja","un solo bloque"], qrtest:true,
+   why:"Base D5 sin la barra ámbar. En el frente, el bloque de tinta del QR tiene dos esquinas opuestas muy redondeadas. En el dorso hay un solo bloque de contactos con iconos monocromos, y el QR de WhatsApp baja hasta alinearse con la línea del número."},
+  {id:"R3", kind:"doble", name:"Hoja clara", faces:["R3-f","R3-b"], tags:["doble faz","serie hoja","un solo bloque"], qrtest:true,
+   why:"Frente D5 sin la barra ámbar. En el dorso, el QR de WhatsApp está sobre un fondo verde claro con dos esquinas opuestas muy redondeadas, junto al bloque de contactos."},
+  {id:"R4", kind:"doble", name:"Hoja + franja", faces:["R4-f","R4-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
+   why:"Combina R2 y R3. Frente de R2. En el dorso, el fondo del QR baja y se prolonga en una franja recta, del alto justo de la línea del número, que termina redondeada en el margen derecho. El número queda separado del resto de los links y la franja indica que ese QR es el de WhatsApp."},
+  {id:"R5", kind:"doble", name:"Hoja + franja al borde", faces:["R4-f","R5-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
+   why:"Variante de R4: la franja entra desde el borde izquierdo de la tarjeta (al corte) en vez de empezar junto al número. Mismo frente."},
   {id:"QT", kind:"test", name:"Prueba de QR", faces:["QT-f"], tags:["prueba"], qrtest:true,
    why:"No es un diseño: imprimila junto a las demás para medir con tu teléfono hasta qué tamaño leen el QR web y el de WhatsApp. Cada QR indica su tamaño y milímetros por módulo."}
 ];
