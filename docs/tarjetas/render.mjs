@@ -1,5 +1,5 @@
 // Genera PDFs de imprenta (91 x 60 mm, 3 mm de sangrado) y previews PNG.
-// Uso: node docs/tarjetas/render.mjs   (requiere playwright y docs/tarjetas/index.html)
+// Uso: node docs/tarjetas/render.mjs [ID ...]   (sin IDs: todos; requiere playwright y docs/tarjetas/index.html)
 import { createRequire } from "node:module";
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -8,7 +8,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const { chromium } = createRequire(import.meta.url)("playwright");
 const url = pathToFileURL(join(here, "index.html")).href;
-const ids = ["S1", "S2", "S3", "S4", "D1", "D2", "D3", "D4", "D5", "QT"];
+const all = ["S1", "S2", "S3", "S4", "D1", "D2", "D3", "D4", "D5", "R2", "R3", "R4", "R5", "QT"];
+const ids = process.argv.length > 2 ? process.argv.slice(2) : all;
 const themes = ["light", "dark"];
 const outPdf = join(here, "print");
 const outPng = join(here, "preview");
