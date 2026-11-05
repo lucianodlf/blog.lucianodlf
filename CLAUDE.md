@@ -1,7 +1,7 @@
 # --verbose · Blog Hugo
 
 Sitio personal y blog de Luciano Delfino (`lucianodlf`): home de marca, blog, proyectos, CV y página de enlaces.
-URL: https://lucianodlf.is-a.dev/ (enlaces: `/links/`, alias `/l/`)
+URL: https://lucianodlf.com.ar/ (enlaces: `/links/`, alias `/l/`)
 Repo: git@github.com:lucianodlf/blog.lucianodlf.git
 
 ## Stack
@@ -87,7 +87,7 @@ make clean    # limpiar public/
 ## Configuraciones importantes
 
 ### hugo.toml
-- `baseURL = "https://lucianodlf.is-a.dev/"` (CI pasa `--baseURL` igual)
+- `baseURL = "https://lucianodlf.com.ar/"` (CI pasa `--baseURL` igual)
 - `title = "lucianodlf -v"`, `locale = "es"`
 - `[[menus.main]]`: Blog, Proyectos, CV
 - `params.status`, `params.role`, `params.description`, `params.socialLinks`

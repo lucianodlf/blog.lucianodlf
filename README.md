@@ -4,7 +4,7 @@
 
 Sitio personal y blog de Luciano Delfino (`lucianodlf`): home de marca, blog, proyectos, CV y una página de enlaces.
 
-- **URL**: https://lucianodlf.is-a.dev/ (enlaces: `/links/`, alias corto `/l/`)
+- **URL**: https://lucianodlf.com.ar/ (enlaces: `/links/`, alias corto `/l/`)
 - **Stack**: [Hugo](https://gohugo.io/) con layouts propios (sin theme), design system lucianodlf (IBM Plex, light y dark)
 - **Hosting**: GitHub Pages via GitHub Actions
 - **Búsqueda**: [Pagefind](https://pagefind.app/), indexado en CI post-build (posts, proyectos y CV)

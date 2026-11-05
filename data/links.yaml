@@ -5,7 +5,7 @@ intro: "Desarrollo software para ayudar a las personas a resolver problemas y co
 sections:
   - eyebrow: ""
     items:
-      - { title: "Sitio y blog", subtitle: "lucianodlf.is-a.dev", url: "/", icon: "fa-solid fa-house", primary: true }
+      - { title: "Sitio y blog", subtitle: "lucianodlf.com.ar", url: "/", icon: "fa-solid fa-house", primary: true }
       - { title: "CV completo", subtitle: "Experiencia, skills y formación", url: "/cv/", icon: "fa-solid fa-file-lines" }
       - { title: "Escribime", subtitle: "luciano.dlf@gmail.com", url: "mailto:luciano.dlf@gmail.com", icon: "fa-solid fa-envelope" }
 
