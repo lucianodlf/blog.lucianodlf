@@ -316,6 +316,14 @@ body.print .wrap{display:none}
 .sheet .card{overflow:visible}
 @page{margin:0;size:91mm 60mm}
 body.nobleed .sheet{width:85mm;height:54mm;padding:0}
+/* hoja de prueba A4: R5 (frente y dorso) y QT en light y dark, a 85 x 54 mm reales */
+@page testa4{size:A4;margin:0}
+body.testsheet{background:#fff;page:testa4;width:210mm;height:297mm;margin:0;padding:0}
+.tgrid{display:grid;grid-template-columns:repeat(2,85mm);column-gap:10mm;row-gap:6mm;justify-content:center;padding-top:34mm}
+.tcell .face{zoom:1;border-radius:0;box-shadow:none;overflow:hidden;width:85mm;height:54mm;outline:.15mm solid #b8b8b8;outline-offset:.4mm}
+.tcell .card{overflow:hidden}
+.tcell .cap{font:500 2.4mm/1 "IBM Plex Mono",monospace;color:#777;margin-top:2mm}
+.thead{position:absolute;top:12mm;left:0;right:0;text-align:center;font:500 3mm/1.5 "IBM Plex Mono",monospace;color:#444}
 </style>
 </head>
 <body>
@@ -711,6 +719,24 @@ function modLabel(root){
 }
 
 const params = new URLSearchParams(location.hash.slice(1));
+const tsheet = params.get("testsheet");
+if (tsheet) {
+  document.body.classList.add("print","testsheet");
+  const items = [["R5","light",0,"frente"],["R5","light",1,"dorso"],["R5","dark",0,"frente"],["R5","dark",1,"dorso"],["QT","light",0,""],["QT","dark",0,""]];
+  const head = document.createElement("div"); head.className = "thead";
+  head.innerHTML = "Hoja de prueba de impresión · A4 · tamaño real 85 x 54 mm<br>R5 light/dark (frente y dorso) + QT light/dark";
+  document.body.appendChild(head);
+  const grid = document.createElement("div"); grid.className = "tgrid";
+  items.forEach(([id,th,i,side])=>{
+    const d = DESIGNS.find(x=>x.id===id);
+    const cell = document.createElement("div"); cell.className = `tcell t-${th}`;
+    const fw = document.createElement("div"); fw.className = "face";
+    fw.appendChild(face(d.faces[i])); cell.appendChild(fw);
+    const cap = document.createElement("div"); cap.className = "cap"; cap.textContent = `${id} ${th}${side?" "+side:""}`;
+    cell.appendChild(cap); grid.appendChild(cell); modLabel(cell);
+  });
+  document.body.appendChild(grid);
+} else
 if (params.get("print")) {
   document.body.classList.add("print");
   if (params.get("bleed")==="0") { document.body.classList.add("nobleed"); const st=document.createElement("style"); st.textContent="@page{size:85mm 54mm}"; document.head.appendChild(st); }
