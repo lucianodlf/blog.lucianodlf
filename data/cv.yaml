@@ -1,0 +1,185 @@
+# CV web (/cv/). Fuentes: LinkedIn unificado (02/11/26) y CV base v1 (2026-11-04).
+# Orden y títulos del CV base; detalle y stack de LinkedIn. No publicar teléfono.
+
+name: "Luciano Javier Delfino"
+headline: "Software Engineer | Backend & Full Stack | AI-Augmented"
+location: "Santa Fe, Argentina"
+contact:
+  - { label: "luciano.dlf@gmail.com", url: "mailto:luciano.dlf@gmail.com", icon: "fa-solid fa-envelope" }
+  - { label: "in/lucianodelfino", url: "https://www.linkedin.com/in/lucianodelfino", icon: "fa-brands fa-linkedin" }
+  - { label: "github.com/lucianodlf", url: "https://github.com/lucianodlf", icon: "fa-brands fa-github" }
+pdf: "cv/luciano-delfino-cv.pdf"
+
+stats:
+  - { value: "2006", label: "en IT; desarrollo desde 2016" }
+  - { value: "+20", label: "clientes en implementaciones" }
+  - { value: "51", label: "issues en 9 fases (AppLogistic)" }
+  - { value: "ES / EN", label: "nativo / inglés técnico" }
+
+profile:
+  - "Software Engineer backend y full stack con trayectoria en IT desde 2006 y en desarrollo de software desde 2016. Desarrollo APIs REST con Python y FastAPI sobre PostgreSQL y Redis, más frontends con Vue. Antes de dedicarme al desarrollo fui líder implementador y coordiné implementaciones de software para más de 20 clientes de todo el país: de esa etapa traigo el trabajo cercano con producto, negocio y usuarios, ayudando a las personas a resolver problemas y a convertir ideas en procesos y herramientas simples."
+  - "Trabajo de forma AI-Augmented y mi experiencia y criterio guían el proceso: investigo y elijo las herramientas según el proyecto, gestiono el contexto, la memoria y las estrategias de prompting. Uso un workflow personalizado basado en specs para planificar, validar y mejorar los resultados. Los LLMs amplían lo que puedo hacer; la metodología, mi criterio y mis decisiones son con lo que más valor aporto."
+
+skills:
+  - { group: "Backend", items: ["Python", "FastAPI", "Node.js", "Express", "REST APIs"] }
+  - { group: "Frontend", items: ["Vue.js", "TypeScript", "Tailwind", "shadcn-vue"] }
+  - { group: "Datos", items: ["PostgreSQL", "MySQL", "Redis"] }
+  - { group: "Testing", items: ["Pytest", "Playwright"] }
+  - { group: "Infra / DevOps", items: ["Docker", "Linux", "Git", "GitLab CI", "GitHub Actions", "OCI"] }
+  - { group: "Integraciones", items: ["Odoo", "WooCommerce", "APIs de terceros"] }
+  - { group: "AI-Augmented", items: ["Claude Code", "Agents", "LiteLLM", "MCP", "Skills", "SDD"] }
+  - { group: "Explorando", items: ["RAG", "GraphRAG", "LLMOps", "LangChain"] }
+
+experience:
+  - role: "Software Engineer"
+    company: "Poliédrica"
+    period: "07/2026 – 10/2026"
+    place: "Santa Fe, Argentina"
+    mode: "Proyecto freelance · Híbrido"
+    summary: "Implementé Odoo 19 Community para una librería (inventario, ventas, punto de venta, CRM y facturación), con la migración del catálogo desde Excel y un módulo propio sobre el punto de venta."
+    highlights:
+      - "Desarrollé un módulo que busca y completa la información de cada libro con APIs (Open Library, Google Books), web scraping y búsqueda web, y genera con LLMs propuestas de reseña. Diseñé la orquestación en Python con LiteLLM, con fallback entre proveedores (Gemini, Groq, Mistral y OpenRouter)."
+      - "Desarrollé un catálogo web estático en Astro con islas Vue y búsqueda, generado desde Odoo con sincronización automatizada de productos y desplegado en Cloudflare Workers."
+      - "Configuré backups programados y una demo pública en un VPS."
+    stack: ["Odoo 19", "Python", "PostgreSQL", "Docker", "LiteLLM", "OpenRouter", "Gemini", "Groq", "Mistral", "BeautifulSoup", "Astro", "Vue.js", "Tailwind", "shadcn-vue", "Cloudflare Workers", "Caddy", "Claude Code"]
+
+  - role: "Software Engineer"
+    company: "AppLogistic, INGAR (CONICET-UTN)"
+    period: "04/2026 – 07/2026"
+    place: "Santa Fe, Argentina"
+    mode: "Proyecto freelance · Remoto"
+    summary: "Plataforma de logística para planificar rutas de recolección, con backoffice web y app mobile, para un cliente que planificaba en papel y Excel. Trabajé todo el proyecto con un workflow propio, spec-driven y aumentado con IA: generé el backlog desde el documento de alcance y resolví 51 issues en 9 fases, lo que me permitió entregar en dos meses un alcance planificado para tres."
+    highlights:
+      - "Con una investigación guiada con IA, aceleré el modelo de optimización MILP del equipo de matemática: en el escenario de 44 clientes pasó de no encontrar solución en 20 minutos a dar una válida en 10, con una heurística como punto de partida del solver y un benchmark de solvers y configuraciones que el equipo puede repetir."
+      - "Implementé la ejecución del modelo como tarea asíncrona con ARQ y Redis, para que el cálculo largo no bloqueara la API."
+      - "Renové por completo el frontend (de Bulma a Tailwind y shadcn-vue) y desarrollé el planificador semanal de rutas con drag and drop entre días, clientes, vehículos y conductores."
+      - "Coordiné con producto, analistas funcionales y el equipo de matemática para definir alcance, priorizar y validar las mejoras."
+    stack: ["Python", "FastAPI", "SQLAlchemy", "Alembic", "Pydantic", "PostgreSQL", "Redis", "ARQ", "MinIO", "Pytest", "MILP", "Pyomo", "HiGHS", "Vue.js", "TypeScript", "Tailwind", "shadcn-vue", "Playwright", "Docker", "Nginx", "Caddy", "GitLab", "Claude Code", "Spec-Driven Development"]
+
+  - role: "Software Engineer"
+    company: "Innovat, INGAR (CONICET-UTN)"
+    period: "07/2024 – 07/2026"
+    place: "Santa Fe, Argentina"
+    mode: "Proyecto freelance · Remoto"
+    summary: "Desarrollé funcionalidades para el backoffice de gestión institucional de la Fundación Innovat (UVT de CONICET): subsidios, vinculación, tesorería y contabilidad. Trabajé en el equipo de desarrollo junto a analistas funcionales y dueños de producto."
+    highlights:
+      - "Construí la base de un módulo propio de facturación electrónica con ARCA, extensible y con tests unitarios en Pytest, en reemplazo de un SDK cerrado."
+      - "Diseñé un benchmark de 7 modelos OCR y de visión con Ollama, con inferencia local en CPU frente a GPU en la nube, y entregué un informe técnico con una recomendación."
+      - "Investigué y diseñé un workflow de testing E2E aumentado con IA (Playwright, browser-use y Claude Code), a partir de la documentación del conocimiento del negocio."
+      - "Implementé procesos en segundo plano con ARQ y Redis y configuré los entornos de QA con Docker Compose, Nginx, Caddy y certbot."
+    stack: ["Python", "FastAPI", "SQLAlchemy", "Alembic", "Pydantic", "Poetry", "PostgreSQL", "Redis", "ARQ", "MinIO", "Pytest", "Playwright", "browser-use", "Ollama", "OCR", "Vue.js", "TypeScript", "Docker", "Nginx", "Caddy", "GitLab", "ARCA", "Claude Code"]
+
+  - role: "Ingeniero de Software Freelance"
+    company: "Independiente"
+    period: "01/2021 – actualidad"
+    place: "Santa Fe, Argentina"
+    mode: "Autónomo · Híbrido"
+    summary: "Trabajo de forma independiente con personas, emprendimientos y empresas que necesitan ordenar su gestión con software. Empiezo por entender cómo trabajan y qué información manejan, y desde ahí propongo, desarrollo y acompaño hasta que el sistema se usa."
+    highlights:
+      - "Desarrollo backend y full stack de sistemas internos y de gestión."
+      - "Integración entre plataformas: ERP, ecommerce y APIs."
+      - "Implementación y adaptación de Odoo."
+      - "Automatización de procesos y workflows, con IA cuando aporta valor y validación humana del resultado."
+      - "Relevamiento y análisis funcional, antes de escribir código."
+      - "Soporte y mantenimiento evolutivo."
+    stack: ["Python", "FastAPI", "Node.js", "Vue.js", "PostgreSQL", "Redis", "Docker", "Odoo", "LiteLLM", "Claude Code", "Spec-Driven Development"]
+
+  - role: "Software Engineer"
+    company: "Fenix App"
+    period: "11/2022 – 12/2023"
+    place: "Santa Fe, Argentina"
+    mode: "Proyecto freelance · Remoto"
+    summary: "Sistema web de cuentas corrientes, caja y stock para un comercio de artículos del hogar, integrado a un ERP que no cubría sus operaciones reales. Hice el relevamiento, la arquitectura, el desarrollo, las pruebas y la puesta en marcha."
+    highlights:
+      - "Digitalicé una caja gestionada en Excel y cuentas corrientes en fichas de papel: centralicé la conciliación de caja diaria y la trazabilidad de stock, listas de precios y financiaciones. El cierre de caja pasó a ser más ágil y con menos errores."
+      - "Agilicé de horas a minutos la identificación de morosos, el envío de notificaciones y los recuentos de stock, y reemplacé la lista de precios impresa por un catálogo mobile con cálculo de cuotas."
+      - "Integré la tienda online (WordPress y WooCommerce) con la actualización automática de productos, stock y precios, y le enseñé al dueño a administrarla."
+    stack: ["Node.js", "Express", "JavaScript", "Handlebars", "PostgreSQL", "jQuery", "DataTables", "WordPress", "WooCommerce REST API", "SheetJS", "jsPDF"]
+
+  - role: "Full Stack Developer · UDR Web UI"
+    company: "ANCA S.R.L. (freelance)"
+    period: "04/2022 – 07/2022"
+    place: "Santa Fe, Argentina"
+    mode: "Autónomo · Remoto"
+    summary: "ANCA me volvió a convocar para continuar el desarrollo de la interfaz web de su unidad de cinemómetro sobre Raspberry Pi, que había empezado durante mi etapa en la empresa. Desarrollé nuevas funcionalidades y mantuve la interfaz del sistema embebido."
+    highlights: []
+    stack: ["Node.js", "Express", "JavaScript", "Handlebars", "Socket.IO", "WebSocket", "IPC", "jQuery", "SQLite", "Raspberry Pi", "Linux"]
+
+  - role: "Full Stack Developer"
+    company: "DataLab Center"
+    period: "08/2019 – 03/2020"
+    place: "Quito, Ecuador"
+    mode: "Presencial"
+    summary: "Incubadora de software que desarrollaba sitios de comercio electrónico para emprendimientos. Desarrollé y mantuve plataformas web en PHP y CodeIgniter, y ayudé a mejorar el flujo de trabajo del equipo."
+    highlights:
+      - "Implementé Gitea self-hosted y deploy automatizado a entornos de demo con hooks de git en DigitalOcean, y le enseñé al equipo a configurar y desplegar los proyectos."
+      - "Impulsé la adopción de Linux en un equipo que trabajaba en Windows y desplegué un proyecto de un cliente en AWS."
+    stack: ["PHP", "CodeIgniter", "MySQL", "MongoDB", "JavaScript", "Bootstrap", "Apache", "Linux", "Git", "Gitea", "DigitalOcean", "AWS"]
+
+  - role: "Full Stack Developer & Help Desk"
+    company: "ANCA S.R.L."
+    period: "03/2016 – 12/2018"
+    place: "Santa Fe, Argentina"
+    mode: "Presencial"
+    summary: "Empresa de fotomultas y control vehicular. Desarrollé herramientas internas y aplicaciones web, y brindé soporte técnico de niveles 1 a 3 a operadores de campo, planta y administración, con diagnóstico a partir de trazas de log y consultas a la base."
+    highlights:
+      - "Rediseñé y automaticé la consulta al registro automotor, con logs por etapa, reintentos y notificaciones ante fallas. El error de fotomultas con titulares equivocados no volvió a ocurrir mientras estuvo a mi cargo."
+      - "Desarrollé la aplicación web de validación de capturas y patentes para una nueva concesión en Corrientes y capacité al equipo administrativo en su uso."
+      - "Colaboré con ingeniería electrónica en una nueva unidad de cinemómetro sobre Raspberry Pi y desarrollé su interfaz web (Node.js, WebSocket, IPC)."
+      - "Desarrollé un dashboard de monitoreo en tiempo real del estado de los cinemómetros instalados."
+    stack: ["PHP", "Laravel", "CodeIgniter", "Node.js", "Express", "JavaScript", "jQuery", "WebSocket", "IPC", "PostgreSQL", "SQLite", "Apache", "Linux", "Raspberry Pi", "Redmine"]
+
+  - role: "Líder Implementador"
+    company: "EMSER"
+    period: "06/2008 – 10/2013"
+    place: "Córdoba, Argentina"
+    mode: "Presencial; los últimos años remoto desde Santa Fe"
+    summary: "Coordiné implementaciones de software para más de 20 clientes de todo el país (consumo masivo, fuerza de venta, logística y servicios públicos)."
+    highlights:
+      - "Participé en la preventa como referente técnico, relevé el proceso de cada cliente y definí con desarrollo las adaptaciones del software."
+      - "Migré datos desde ERP, planillas, bases y CSV aplicando ETL, e integré el sistema con el ERP de cada cliente."
+      - "Instalé y configuré los entornos en sitio, hice testing en campo, capacité a los equipos y los acompañé en la puesta en marcha y el soporte posventa."
+    stack: ["Implementación de software", "Análisis funcional", "Preventa técnica", "ETL", "Migración de datos", "Integración con ERP", "Testing", "Capacitación de usuarios"]
+
+  - role: "Consultoría & Soporte Técnico"
+    company: "Raúl Torres Hogar"
+    period: "01/2006 – 05/2008"
+    place: "Santa Fe, Argentina"
+    mode: "Jornada parcial"
+    summary: "Brindé asesoramiento, soporte y mantenimiento a las áreas administrativa y comercial de un comercio, mientras estudiaba Analista de Sistemas. Armé, reparé y configuré PCs."
+    highlights: []
+    stack: []
+
+education:
+  - title: "Analista de Sistemas en Computación"
+    place: "Instituto Superior ICOP N.º 4021"
+    period: "2006 – 2009"
+    note: "Trabajo final: software de gestión ERP (POO, Java, MySQL), distinguido con Diploma de Reconocimiento (10/2011)."
+
+certifications:
+  - { title: "Google IT Automation with Python", place: "Coursera", period: "2023" }
+  - { title: "Testing QA Manual / Ágil", place: "UTN", period: "2023" }
+  - { title: "Getting Started with Google Cloud", place: "Google Cloud Skills Boost", period: "" }
+  - { title: "Análisis y Diseño Orientado a Objetos (Java, Web Apps)", place: "ICOP", period: "2008" }
+
+languages:
+  - { name: "Español", level: "Nativo" }
+  - { name: "Inglés", level: "Comprensión auditiva y lectura técnica intermedias; escritura y conversación básicas" }
+
+complementary:
+  - title: "Voluntariado · Asociación SER"
+    place: "Kuamar, comunidad shuar de la Amazonía ecuatoriana (Macas, Ecuador)"
+    period: "01/2019 – 07/2019"
+    text: "Instalé la primera computadora de escritorio de la comunidad, hice las instalaciones eléctricas necesarias y enseñé su uso básico."
+  - title: "Viaje en bicicleta reclinada"
+    place: "Santa Fe, Argentina al norte de Chile, cruzando los Andes y el desierto de Atacama"
+    period: "02/2014 – 09/2014"
+    text: "Armé la bicicleta reciclando un cuadro viejo en un taller popular de ciclomecánica. Ocho meses de planificación, autogestión e intercambio con personas y comunidades."
+
+# Trayectoria resumida (home): 5 hitos
+timeline:
+  - { year: "2026", text: "Poliédrica y AppLogistic · Odoo con LLMs, rutas con MILP" }
+  - { year: "2024", text: "Innovat · backoffice institucional en INGAR (CONICET-UTN)" }
+  - { year: "2022", text: "Fenix App · caja, stock y cuentas corrientes" }
+  - { year: "2016", text: "ANCA · desarrollo full stack y soporte" }
+  - { year: "2008", text: "EMSER · líder implementador, +20 clientes" }

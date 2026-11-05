@@ -1,28 +1,28 @@
-{{/* Pagefind search modal + help modal */}}
+{{/* Pagefind search modal + help modal (ids y estructura: contrato con keybindings.js) */}}
 
-<link href="{{ "pagefind/pagefind-ui.css" | absURL }}" rel="stylesheet">
-<script src="{{ "pagefind/pagefind-ui.js" | absURL }}"></script>
+<link href="{{ "pagefind/pagefind-ui.css" | relURL }}" rel="stylesheet">
+<script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
 
-<dialog id="search-modal" aria-label="Búsqueda">
+<dialog id="search-modal" aria-label="Búsqueda" data-pagefind-ignore="all">
   <div class="search-modal__inner">
+    <p class="modal__head"><span class="eyebrow">$ grep -ri</span><kbd>Esc</kbd></p>
     <div id="search"></div>
   </div>
 </dialog>
 
-<dialog id="help-modal" aria-label="Atajos de teclado">
+<dialog id="help-modal" aria-label="Atajos de teclado" data-pagefind-ignore="all">
   <div class="help-modal__inner">
-    <p>## atajos de teclado</p>
+    <p class="modal__head"><span class="eyebrow">$ man atajos</span><kbd>Esc</kbd></p>
     <table>
       <tr><td><kbd>/</kbd> <kbd>Ctrl+K</kbd></td><td>Abrir búsqueda</td></tr>
       <tr><td><kbd>Esc</kbd></td><td>Cerrar</td></tr>
-      <tr><td><kbd>↓</kbd> / <kbd>↑</kbd></td><td>Navegar resultados</td></tr>
+      <tr><td><kbd>↓</kbd> <kbd>↑</kbd></td><td>Navegar resultados</td></tr>
       <tr><td><kbd>Enter</kbd></td><td>Abrir resultado seleccionado</td></tr>
       <tr><td><kbd>gg</kbd></td><td>Ir al inicio de la página</td></tr>
       <tr><td><kbd>G</kbd></td><td>Ir al final de la página</td></tr>
       <tr><td><kbd>w</kbd></td><td>Ancho completo del post</td></tr>
       <tr><td><kbd>?</kbd></td><td>Esta ayuda</td></tr>
     </table>
-    <p class="help-modal__close"><kbd>Esc</kbd> para cerrar</p>
   </div>
 </dialog>
 

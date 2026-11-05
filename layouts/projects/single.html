@@ -1,0 +1,53 @@
+{{ define "main" }}
+{{- $img := .Resources.GetMatch "cover.*" }}
+<article class="container project">
+  <header class="project__header">
+    <p class="post__back"><a class="see-all" href="{{ "/projects/" | relURL }}">← Proyectos</a></p>
+    <p class="card__chips"><span class="chip chip--soft">{{ .Params.kind }}</span>{{ with .Params.status }}<span class="chip chip--status">{{ . }}</span>{{ end }}</p>
+    <h1 class="page-title">{{ .Title }}<span class="cursor" aria-hidden="true">_</span></h1>
+    <p class="lead">{{ .Params.summary }}</p>
+    <dl class="facts">
+      {{- with .Params.client }}<div><dt>Cliente</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{- with .Params.role }}<div><dt>Rol</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{- with .Params.period }}<div><dt>Período</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{- with .Params.status }}<div><dt>Estado</dt><dd>{{ . }}</dd></div>{{ end }}
+    </dl>
+    {{- $l := .Params.links }}
+    {{- if or $l.demo $l.repo $l.post }}
+    <p class="actions">
+      {{- with $l.demo }}<a class="btn btn--primary" href="{{ . }}" rel="noopener">Ver demo <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>{{ end }}
+      {{- with $l.repo }}<a class="btn btn--secondary" href="{{ . }}" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Código</a>{{ end }}
+      {{- with $l.post }}{{ with site.GetPage . }}<a class="btn btn--secondary" href="{{ .RelPermalink }}">Leer el post →</a>{{ end }}{{ end }}
+    </p>
+    {{- end }}
+  </header>
+
+  <div class="project__media{{ if and $img (eq .Params.coverFit "contain") }} card__media--contain{{ end }}">
+    {{- if $img }}
+    {{- $r := cond (eq .Params.coverFit "contain") ($img.Fit "480x480 webp") ($img.Fit "1200x800 webp") }}
+    <img src="{{ $r.RelPermalink }}" width="{{ $r.Width }}" height="{{ $r.Height }}" alt="{{ .Title }}">
+    {{- else }}
+    {{ partial "components/cover-svg.html" (dict "variant" "wide" "label" (.Params.coverLabel | default .Title)) }}
+    {{- end }}
+  </div>
+
+  {{- with .Params.metrics }}
+  <div class="stats stats--project">{{ range . }}{{ partial "components/stat.html" . }}{{ end }}</div>
+  {{- end }}
+
+  <div class="content__body prose project__body" data-pagefind-body>
+    {{ .Content }}
+    {{- with .Params.stack }}
+    <h2>Stack</h2>
+    <p class="card__tags">{{ range . }}<span class="chip chip--neutral">{{ . }}</span>{{ end }}</p>
+    {{- end }}
+  </div>
+
+  {{- $pages := .CurrentSection.Pages.ByWeight }}
+  {{- $prev := $pages.Prev . }}{{ $next := $pages.Next . }}
+  <nav class="prevnext" aria-label="Otros proyectos">
+    {{- with $next }}<a class="prevnext__item" href="{{ .RelPermalink }}"><span class="eyebrow">← anterior</span><span class="prevnext__title">{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
+    {{- with $prev }}<a class="prevnext__item prevnext__item--next" href="{{ .RelPermalink }}"><span class="eyebrow">siguiente →</span><span class="prevnext__title">{{ .Title }}</span></a>{{ end }}
+  </nav>
+</article>
+{{ end }}

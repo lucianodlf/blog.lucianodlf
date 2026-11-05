@@ -1,40 +1,36 @@
-baseURL = "https://lucianodlf.github.io/blog.lucianodlf/"
-theme = "risotto"
+baseURL = "https://lucianodlf.is-a.dev/"
 title = "lucianodlf -v"
-author = "Luciano Delfino"
-copyright = "© [Luciano Delfino](https://github.com/lucianodlf) · hecho con ❤️ + [Hugo](https://gohugo.io/) y [Risotto](https://github.com/joeroe/risotto)"
-languageCode = "es"
+
+copyright = "© {year} Luciano Delfino · hecho con [Hugo](https://gohugo.io/) · Santa Fe, Argentina"
+locale = "es"
 DefaultContentLanguage = "es"
 enableInlineShortcodes = true
-
-# Agrega automáticamente las secciones de content al menú principal
-sectionPagesMenu = "main"
 
 [pagination]
 pagerSize = 10
 
 [params]
+author = "Luciano Delfino"
 noindex = false
+# Meta description por defecto (las páginas pueden definir `description` o `summary`)
+description = "Luciano Delfino, Software Engineer backend y full stack. Desarrollo software para ayudar a las personas a resolver problemas, convertir ideas en procesos y herramientas simples que aporten claridad."
+role = "Software Engineer | Backend & Full Stack | AI-Augmented"
+# Línea de estado (header de la home, footer, enlaces)
+status = "disponible para proyectos freelance y equipos de producto"
+email = "luciano.dlf@gmail.com"
+location = "Santa Fe, Argentina"
+avatar = "img/avatar.jpg"
+ogImage = "img/og-default.png"
 
-[params.theme]
-palette = "dracula"
-
-# Sidebar: bio
 [params.about]
-title = "lucianodlf -v"
-description = "cosas por compartir"
-logo_image = "img/avatar.jpg"
+title = "lucianodlf --verbose"
+description = "Desarrollo software para ayudar a las personas a resolver problemas, convertir ideas en procesos y herramientas simples que aporten claridad."
 
-# Sidebar: links sociales
+# Redes (footer, enlaces, CV)
 [[params.socialLinks]]
 icon = "fa-brands fa-github"
 title = "GitHub"
 url = "https://github.com/lucianodlf"
-
-[[params.socialLinks]]
-icon = "fa-brands fa-gitlab"
-title = "GitLab"
-url = ""
 
 [[params.socialLinks]]
 icon = "fa-brands fa-linkedin"
@@ -46,20 +42,40 @@ icon = "fa-solid fa-envelope"
 title = "Email"
 url = "mailto:luciano.dlf@gmail.com"
 
+[[params.socialLinks]]
+icon = "fa-solid fa-rss"
+title = "RSS"
+url = "/posts/index.xml"
+
+# Navegación principal
+[[menus.main]]
+name = "Blog"
+pageRef = "/posts"
+weight = 10
+
+[[menus.main]]
+name = "Proyectos"
+pageRef = "/projects"
+weight = 20
+
+[[menus.main]]
+name = "CV"
+pageRef = "/cv"
+weight = 30
+
 [taxonomies]
 category = "categories"
 tag = "tags"
 series = "series"
 
-# Habilita HTML inline en markdown (necesario para algunos shortcodes)
-[markup.goldmark.renderer]
-unsafe = true
-
 [markup]
+  [markup.goldmark.renderer]
+    # Habilita HTML inline en markdown (necesario para algunos shortcodes)
+    unsafe = true
+
   [markup.highlight]
-    style              = "dracula"
     lineNos            = false
-    noClasses          = true
+    noClasses          = false
     tabWidth           = 2
     guessSyntax        = true
 

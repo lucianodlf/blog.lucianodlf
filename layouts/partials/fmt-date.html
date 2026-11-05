@@ -1,0 +1,12 @@
+{{- /* Fecha en español sin depender de la localización de Hugo.
+   Uso: partial "fmt-date.html" (dict "date" .Date "style" "short|long|year") */ -}}
+{{- $m := slice "ene" "feb" "mar" "abr" "may" "jun" "jul" "ago" "sep" "oct" "nov" "dic" -}}
+{{- $d := .date -}}
+{{- $mon := index $m (sub (int ($d.Format "1")) 1) -}}
+{{- $out := "" -}}
+{{- if eq .style "short" -}}
+  {{- $out = printf "%s %s" ($d.Format "02") $mon -}}
+{{- else -}}
+  {{- $out = printf "%s %s %s" ($d.Format "2") $mon ($d.Format "2006") -}}
+{{- end -}}
+{{- return $out -}}

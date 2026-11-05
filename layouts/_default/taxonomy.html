@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="container section-page">
+  {{ partial "components/page-title.html" (dict "eyebrow" (printf "$ grep -l '#%s' posts/*" (.Title | lower)) "title" (printf "#%s" (.Title | lower)) "lead" (printf "%d %s con este tag." (len .Pages) (cond (eq (len .Pages) 1) "post" "posts"))) }}
+  <ul class="post-list">
+    {{- range .Pages }}{{ partial "components/post-row.html" . }}{{ end }}
+  </ul>
+  <p class="back-links"><a class="see-all" href="{{ "/tags/" | relURL }}">← todos los tags</a> <a class="see-all" href="{{ "/posts/" | relURL }}">blog →</a></p>
+</div>
+{{ end }}

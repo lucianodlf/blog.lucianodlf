@@ -1,0 +1,9 @@
+{{- /* Fila de post para listados (blog, tags) */ -}}
+<li class="post-row">
+  <time class="post-row__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "fmt-date.html" (dict "date" .Date "style" "short") }}</time>
+  <div class="post-row__body">
+    <h3 class="post-row__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="post-row__excerpt">{{ .Summary | plainify | htmlUnescape | truncate 120 }}</p>
+    <p class="post-row__meta">{{ .ReadingTime }} min{{ with .Params.tags }} · {{ range $i, $t := first 3 . }}{{ if $i }} {{ end }}#{{ lower $t }}{{ end }}{{ end }}</p>
+  </div>
+</li>

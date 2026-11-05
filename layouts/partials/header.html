@@ -1,0 +1,29 @@
+<header class="site-header" data-pagefind-ignore="all">
+  <div class="container site-header__inner">
+    <a class="wordmark" href="{{ "/" | relURL }}" aria-label="lucianodlf, inicio">
+      <span class="wordmark__name">lucianodlf</span><span class="wordmark__cursor" aria-hidden="true">_</span><span class="wordmark__flag" aria-hidden="true"> -v</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <ul>
+        {{- $page := . }}
+        {{- range site.Menus.main }}
+        {{- $active := or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }}
+        {{- with .Page }}{{ if and (ne .Section "") (eq .Section $page.Section) }}{{ $active = true }}{{ end }}{{ end }}
+        {{- if and (eq .Name "Blog") (eq $page.Type "tags") }}{{ $active = true }}{{ end }}
+        <li><a class="site-nav__link{{ if $active }} is-active{{ end }}" href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+    <div class="site-tools">
+      <button type="button" id="search-open" class="tool-btn tool-btn--search" aria-label="Buscar (atajo /)">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span class="tool-btn__label">Buscar</span><kbd>/</kbd>
+      </button>
+      <button type="button" id="theme-toggle" class="tool-btn tool-btn--round" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+        <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+      </button>
+      <button type="button" id="help-open" class="tool-btn tool-btn--round" title="Atajos de teclado" aria-label="Ver atajos de teclado (atajo ?)">
+        <span aria-hidden="true">?</span>
+      </button>
+    </div>
+  </div>
+</header>

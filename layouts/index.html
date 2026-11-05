@@ -1,0 +1,125 @@
+{{ define "main" }}
+{{- $h := hugo.Data.home }}
+{{- $cv := hugo.Data.cv }}
+
+<section class="hero container" aria-labelledby="hero-title">
+  <div class="hero__text">
+    <h1 id="hero-title" class="display">{{ $h.hero.name }}<span class="cursor cursor--neon" aria-hidden="true">_</span></h1>
+    <p class="hero__role">{{ $h.hero.role }}</p>
+    <p class="lead">{{ $h.hero.lead }}</p>
+    {{ with site.Params.status }}{{ partial "components/status-pill.html" . }}{{ end }}
+    <p class="actions">
+      {{- range $h.hero.ctas }}
+      {{- $url := cond (hasPrefix .url "/") (relURL .url) .url }}
+      {{- if eq .style "link" }}<a class="text-link" href="{{ $url }}">{{ .label }} →</a>
+      {{- else }}<a class="btn btn--{{ .style }}" href="{{ $url }}">{{ .label }}</a>{{ end }}
+      {{- end }}
+    </p>
+  </div>
+  <div class="hero__art">
+    {{ partial "components/cover-svg.html" (dict "variant" "hero" "avatar" (site.Params.avatar | relURL) "id" "hero") }}
+  </div>
+</section>
+
+<section class="container section section--tight" aria-label="Métricas">
+  <div class="stats stats--open">
+    {{- range $h.metrics }}{{ partial "components/stat.html" . }}{{ end }}
+  </div>
+</section>
+
+<section class="container section" aria-labelledby="services-title">
+  <div class="section__head">
+    <div class="section__heading"><h2 id="services-title" class="section__title">{{ $h.services.title }}</h2><p class="prompt">{{ $h.services.eyebrow }}</p></div>
+  </div>
+  <ul class="manpage">
+    {{- range $h.services.items }}
+    <li class="manpage__item">
+      <h3 class="manpage__title"><i class="{{ .icon }}" aria-hidden="true"></i>{{ .title }}</h3>
+      <p class="manpage__text">{{ .text }}</p>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+
+{{- $projects := where (where site.RegularPages "Section" "projects") "Params.featured" true }}
+{{- if $projects }}
+<section class="container section" aria-labelledby="projects-title">
+  <div class="section__head">
+    <div class="section__heading"><h2 id="projects-title" class="section__title">Proyectos</h2><p class="prompt">$ ls proyectos/</p></div>
+    <a class="see-all" href="{{ "/projects/" | relURL }}">ver todos →</a>
+  </div>
+  <div class="grid grid--3">
+    {{- range first 3 $projects.ByWeight }}{{ partial "components/card-project.html" . }}{{ end }}
+  </div>
+</section>
+{{- end }}
+
+<section class="container section" aria-labelledby="workflow-title">
+  <div class="workflow">
+    <div class="workflow__text">
+      <div class="section__heading"><h2 id="workflow-title" class="section__title">{{ $h.workflow.title }}</h2><p class="prompt">{{ $h.workflow.eyebrow }}</p></div>
+      <p>{{ $h.workflow.text }}</p>
+      <blockquote class="pull-quote"><p>{{ $h.workflow.quote }}</p></blockquote>
+    </div>
+    <ol class="steps">
+      {{- range $i, $s := $h.workflow.steps }}
+      <li class="step"><span class="step__n">0{{ add $i 1 }}</span><code class="step__cmd">{{ $s.cmd }}</code><span class="step__text">{{ $s.text }}</span></li>
+      {{- end }}
+    </ol>
+  </div>
+</section>
+
+<section class="container section" aria-labelledby="writing-title">
+  <div class="section__head">
+    <div class="section__heading"><h2 id="writing-title" class="section__title">Escritos</h2><p class="prompt">$ cat destacados.txt</p></div>
+    <a class="see-all" href="{{ "/posts/" | relURL }}">ver el blog →</a>
+  </div>
+  <div class="writing">
+    <div class="grid grid--3 writing__featured">
+      {{- range $h.featuredPosts }}{{ with site.GetPage . }}{{ partial "components/card-post.html" . }}{{ end }}{{ end }}
+    </div>
+    <div class="terminal writing__recent">
+      <p class="terminal__bar">$ ls -t posts/ | head -3</p>
+      <ul class="recent-list">
+        {{- range first 3 (where site.RegularPages "Type" "posts") }}
+        <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "fmt-date.html" (dict "date" .Date "style" "short") }}</time> <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{- end }}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="container section" aria-labelledby="timeline-title">
+  <div class="section__head">
+    <div class="section__heading"><h2 id="timeline-title" class="section__title">Trayectoria</h2><p class="prompt">$ git log --oneline</p></div>
+    <a class="see-all" href="{{ "/cv/" | relURL }}">CV completo →</a>
+  </div>
+  <ol class="gitlog">
+    {{- range $cv.timeline }}
+    <li><span class="gitlog__year">{{ .year }}</span><span class="gitlog__text">{{ .text }}</span></li>
+    {{- end }}
+  </ol>
+</section>
+
+{{- with .Content }}
+<section class="container section" aria-label="README">
+  <div class="terminal terminal--readme">
+    <p class="terminal__bar">~/readme.txt</p>
+    <div class="terminal__body">{{ . }}</div>
+  </div>
+</section>
+{{- end }}
+
+<section class="container section" aria-labelledby="contact-title">
+  <div class="contact-band">
+    <div>
+      <h2 id="contact-title" class="section__title">{{ $h.contact.title }}</h2>
+      <p>{{ $h.contact.text }}</p>
+    </div>
+    <p class="actions">
+      <a class="btn btn--primary" href="{{ $h.contact.cta.url }}">{{ $h.contact.cta.label }}</a>
+      <a class="btn btn--secondary" href="{{ $h.contact.secondary.url }}" rel="me">{{ $h.contact.secondary.label }}</a>
+    </p>
+  </div>
+</section>
+{{ end }}

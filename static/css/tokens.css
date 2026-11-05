@@ -1,0 +1,87 @@
+/* lucianodlf: tokens del design system, generados a mano desde tokens.json (DS v2,
+   https://claude.ai/artifact/1Cb555udMz1t4gBdSJczcs). Incluye primary-soft y primary-deep por tema,
+   primary-hover, danger, code-bg, backdrop y el espaciado 3/6/12/16.
+   Extensión local (no está en el DS): glow-primary, glow-accent, glow-ambient y ease-out.
+   Dark es el default del sitio (:root). Light se activa con html.light (keybindings.js). */
+
+:root {
+  /* color · dark (técnico) */
+  --background:   #09120e;
+  --surface:      #111e19;
+  --border:       #24312c;
+  --text:         #edebe4;
+  --muted:        #84938d;
+  --primary:      #68b986;
+  --primary-hover:#7fc89a;
+  --on-primary:   var(--background);
+  --primary-soft: #17301f;
+  --primary-deep: #3a8357;
+  --accent:       #e4ac59;
+  --danger:       #ec8b80;
+  --code-bg:      #0d1813;
+  --backdrop:     rgb(9 18 14 / 0.72);
+  --qr-ink:       var(--surface);
+  --qr-ground:    var(--text);
+  /* neón: luz difusa de primary y accent (glows, fósforo del hero) */
+  --glow-primary: rgb(104 185 134 / 0.42);
+  --glow-accent:  rgb(228 172 89 / 0.75);
+  --glow-ambient: 0.4;
+  color-scheme: dark;
+
+  /* tipografía */
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* espaciado (base 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* forma */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 9999px;
+
+  /* medidas */
+  --measure: 39rem; /* DS: 42rem; acotada a ~75 caracteres a 17px */
+  --measure-wide: 64rem;
+  --container: 72rem;
+  --container-wide: 90rem;
+  --header-h: 64px;
+  --gutter: 16px;
+
+  --ease: 120ms ease;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.light {
+  --background:   #f7f5ec;
+  --surface:      #fdfcf7;
+  --border:       #dad8cd;
+  --text:         #111e19;
+  --muted:        #53615c;
+  --primary:      #2a7449;
+  --primary-hover:#22613d;
+  --on-primary:   var(--surface);
+  --primary-soft: #c5e8d0;
+  --primary-deep: #2a7449;
+  --accent:       #965719;
+  --danger:       #a8382f;
+  --code-bg:      #f1efe6;
+  --backdrop:     rgb(17 30 25 / 0.45);
+  --qr-ink:       var(--text);
+  --qr-ground:    var(--surface);
+  --glow-primary: rgb(42 116 73 / 0.16);
+  --glow-accent:  rgb(150 87 25 / 0.30);
+  --glow-ambient: 0.22;
+  color-scheme: light;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 32px; }
+}

@@ -1,0 +1,10 @@
+{{ define "main" }}
+<div class="container section-page">
+  {{ partial "components/page-title.html" (dict "eyebrow" (printf "$ ls %s/ | sort -rn" .Data.Plural) "title" .Title "lead" "Todos los temas del blog, ordenados por cantidad de posts.") }}
+  <ul class="tag-cloud">
+    {{- range .Data.Terms.ByCount }}
+    <li><a class="chip chip--soft" href="{{ .Page.RelPermalink }}">#{{ .Page.Title | lower }} <span class="chip__count">{{ .Count }}</span></a></li>
+    {{- end }}
+  </ul>
+</div>
+{{ end }}

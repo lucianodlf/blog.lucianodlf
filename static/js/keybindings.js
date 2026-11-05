@@ -1,6 +1,7 @@
 /**
  * --verbose · keybindings.js
  * Búsqueda (/  Ctrl+K) + ayuda (?) + scroll (gg, G) + theme toggle
+ * + botones #search-open y #help-open del header
  */
 (function () {
   'use strict';
@@ -106,6 +107,12 @@
       if (e.target === helpModal) helpModal.close();
     });
   }
+
+  // --- Botones visibles del header (mismas funciones que los atajos) ---
+  const searchBtn = document.getElementById('search-open');
+  if (searchBtn) searchBtn.addEventListener('click', openSearch);
+  const helpBtn = document.getElementById('help-open');
+  if (helpBtn) helpBtn.addEventListener('click', toggleHelp);
 
   // --- gg scroll ---
 

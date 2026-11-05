@@ -1,56 +1,65 @@
-<!-- Anti-flash: aplicar tema antes del render -->
-<script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');if(localStorage.getItem('wide')==='1')document.documentElement.classList.add('wide')</script>
-<title>{{ if not .IsHome }}{{ .Title }} &ndash; {{ end }}{{ .Site.Title }}</title>
-{{ with .Site.Params.about }}<meta name="description" content="{{ .description }}">{{ end }}
-
+{{- /* Anti-flash: aplicar tema y ancho antes del render (contrato con keybindings.js) */ -}}
+<script>try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');if(localStorage.getItem('wide')==='1')document.documentElement.classList.add('wide')}catch(e){}</script>
+{{- $title := cond .IsHome (printf "Luciano Delfino · %s" site.Title) (printf "%s · %s" .Title site.Title) }}
+{{- $desc := "" }}
+{{- with .Description }}{{ $desc = . }}{{ else }}{{ with .Params.summary }}{{ $desc = . }}{{ else }}{{ if and .IsPage (eq .Type "posts") }}{{ $desc = .Summary | plainify | htmlUnescape | strings.TrimSpace | truncate 160 }}{{ end }}{{ end }}{{ end }}
+{{- if not $desc }}{{ $desc = site.Params.description }}{{ end }}
+{{- $og := site.Params.ogImage | absURL }}
+{{- with .Resources.GetMatch "cover.*" }}{{ $og = .Permalink }}{{ end }}
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8"/>
-{{ if .Site.Params.noindex }}<meta name="robots" content="noindex" /> {{ end }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<meta name="author" content="{{ site.Params.author | default "Luciano Delfino" }}">
+{{ if site.Params.noindex }}<meta name="robots" content="noindex">{{ end }}
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="theme-color" content="#09120e">
 
-<!-- FontAwesome <https://fontawesome.com/> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{- /* Fuentes: IBM Plex (DS lucianodlf) */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
 
-<!-- Academicons <https://jpswalsh.github.io/academicons/> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{- /* FontAwesome <https://fontawesome.com/> (callouts, redes, íconos) */}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-<!-- risotto theme -->
-<link rel="stylesheet" href="{{ printf "css/palettes/%s.css" (.Site.Params.theme.palette | default "base16-dark") | absURL }}">
-<link rel="stylesheet" href="{{ "css/risotto.css" | absURL }}">
-<link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/tokens.css" | relURL }}">
+{{- if eq .Type "links" }}
+<link rel="stylesheet" href="{{ "css/links.css" | relURL }}">
+{{- else }}
+<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/chroma.css" | relURL }}">
+{{- end }}
 
-<!-- favicon -->
-{{ if os.FileExists "static/favicon.ico" }}<link rel="icon" href="{{ "favicon.ico" | absURL }}">{{ end }}
-{{ if os.FileExists "static/favicon-32x32.png" }}<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">{{ end }}
-{{ if os.FileExists "static/favicon-16x16.png" }}<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}">{{ end }}
-{{ if os.FileExists "static/apple-touch-icon.png" }}<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">{{ end }}
-{{ if os.FileExists "static/site.webmanifest" }}<link rel="manifest" href="{{ "site.webmanifest" | absURL }}">{{ end }}
+{{- /* favicon */}}
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 
-<!-- RSS -->
+{{- /* RSS */}}
 {{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
-{{ end }}
+{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end -}}
+{{ with site.GetPage "/posts" }}{{ with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="Blog · {{ site.Title }}">
+{{ end }}{{ end }}
 
-<!-- OG meta -->
-<meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} &ndash; {{ end }}{{ .Site.Title }}" />
-<meta property="og:url" content="{{ .Page.Permalink }}" />
-{{ if isset .Params "description" }}
-  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ end }}"/>
-{{ else }}
-  {{ with .Site.Params.about }}
-    <meta property="og:description" content="{{ .description }}"/>
-  {{ end }}
-{{ end }}
-{{ with .Site.LanguageCode}}<meta property="og:locale" content="{{ . }}" />{{ end }}
-{{ with .Site.Params.about }}<meta property="og:image" content="{{ with .logo_image }}{{ . | absURL }}{{ end }}" />{{ end }}
+{{- /* Open Graph / Twitter */}}
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if and .IsPage (eq .Type "posts") }}article{{ else }}website{{ end }}">
+<meta property="og:locale" content="es_AR">
+<meta property="og:image" content="{{ $og }}">
+<meta name="twitter:card" content="summary_large_image">
+{{- if and .IsPage (eq .Type "posts") }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
 
-<!-- Callout boxes (Obsidian > [!TYPE] syntax) -->
-<script src="{{ "js/callouts.js" | absURL }}" defer></script>
-
-<!-- Keyboard navigation -->
-<script src="{{ "js/keybindings.js" | absURL }}" defer></script>
-
-<!-- Tablas: scroll horizontal + toggle markdown crudo -->
-<script src="{{ "js/tables.js" | absURL }}" defer></script>
-
-<!-- Diagramas Mermaid (solo se activa si hay un bloque .mermaid en la página) -->
-<script src="{{ "js/mermaid.js" | absURL }}" defer></script>
+{{- /* Scripts (defer): mismo set y orden que antes */}}
+<script src="{{ "js/callouts.js" | relURL }}" defer></script>
+<script src="{{ "js/keybindings.js" | relURL }}" defer></script>
+<script src="{{ "js/tables.js" | relURL }}" defer></script>
+<script src="{{ "js/mermaid.js" | relURL }}" defer></script>

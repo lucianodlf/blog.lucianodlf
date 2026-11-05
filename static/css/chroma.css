@@ -1,0 +1,32 @@
+/* lucianodlf: resaltado de código (Chroma, noClasses = false) mapeado a tokens.
+   Un solo archivo para ambos temas vía variables. */
+.chroma { background: var(--code-bg); color: var(--text); -webkit-text-size-adjust: none; }
+.chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+.chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+.chroma .hl { background: var(--primary-soft); }
+.chroma .lnt, .chroma .ln { white-space: pre; user-select: none; margin-right: .4em; padding: 0 .4em; color: var(--muted); }
+.chroma .line { display: flex; }
+.chroma .lnlinks { outline: none; text-decoration: none; color: inherit; }
+
+/* keywords */
+.chroma .k, .chroma .kc, .chroma .kd, .chroma .kn, .chroma .kp, .chroma .kr, .chroma .kt,
+.chroma .ow, .chroma .nt { color: var(--primary); font-weight: 600; }
+/* strings y números (excepción documentada: ámbar en tramos cortos) */
+.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl, .chroma .sd, .chroma .s2,
+.chroma .se, .chroma .sh, .chroma .si, .chroma .sx, .chroma .sr, .chroma .s1, .chroma .ss,
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi, .chroma .il, .chroma .mo { color: var(--accent); }
+/* funciones y clases */
+.chroma .nf, .chroma .fm, .chroma .nc, .chroma .nn, .chroma .nd, .chroma .nb, .chroma .bp { color: var(--text); font-weight: 600; }
+/* nombres, atributos, variables */
+.chroma .n, .chroma .na, .chroma .nx, .chroma .no, .chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi, .chroma .vm,
+.chroma .ni, .chroma .nl, .chroma .ge, .chroma .go { color: var(--text); }
+/* comentarios */
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs, .chroma .cp, .chroma .cpf { color: var(--muted); font-style: italic; }
+/* operadores y puntuación */
+.chroma .o, .chroma .or, .chroma .p { color: var(--muted); }
+/* diff y errores */
+.chroma .err { color: var(--danger); }
+.chroma .gd { color: var(--danger); }
+.chroma .gi { color: var(--primary); }
+.chroma .gh, .chroma .gu { color: var(--muted); font-weight: 600; }
+.chroma .gl { text-decoration: underline; }
