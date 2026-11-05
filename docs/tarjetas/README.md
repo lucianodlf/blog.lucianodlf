@@ -1,7 +1,7 @@
 # Tarjetas personales
 
 Diseños de tarjeta 85 x 54 mm (250 g) sobre el design system lucianodlf.
-Diez diseños (S1-S4 simple faz, D1-D6 doble faz) en light y dark, más la tarjeta de prueba QT.
+Nueve diseños (S1-S4 simple faz, D1-D5 doble faz) en light y dark, más la tarjeta de prueba QT.
 
 - `index.html`: galería (generada, no editar a mano).
 - `template.html`: diseños (HTML/CSS en mm).
