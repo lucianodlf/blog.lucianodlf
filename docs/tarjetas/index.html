@@ -314,7 +314,8 @@ body.print .wrap{display:none}
 .sheet{width:91mm;height:60mm;padding:3mm;overflow:hidden;break-after:page;page-break-after:always}
 .sheet .face{zoom:1;border-radius:0;box-shadow:none;overflow:visible}
 .sheet .card{overflow:visible}
-@page{margin:0}
+@page{margin:0;size:91mm 60mm}
+body.nobleed .sheet{width:85mm;height:54mm;padding:0}
 </style>
 </head>
 <body>
@@ -712,6 +713,7 @@ function modLabel(root){
 const params = new URLSearchParams(location.hash.slice(1));
 if (params.get("print")) {
   document.body.classList.add("print");
+  if (params.get("bleed")==="0") { document.body.classList.add("nobleed"); const st=document.createElement("style"); st.textContent="@page{size:85mm 54mm}"; document.head.appendChild(st); }
   const d = DESIGNS.find(x=>x.id===params.get("print"));
   const th = params.get("theme") || "light";
   d.faces.forEach(f=>{

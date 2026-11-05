@@ -1,4 +1,4 @@
-// Genera PDFs de imprenta (91 x 60 mm, 3 mm de sangrado) y previews PNG.
+// Genera PDFs al corte (85 x 54 mm), PDFs de imprenta con sangrado (91 x 60 mm, *-sangrado.pdf) y previews PNG.
 // Uso: node docs/tarjetas/render.mjs [ID ...]   (sin IDs: todos; requiere playwright y docs/tarjetas/index.html)
 import { createRequire } from "node:module";
 import { mkdirSync } from "node:fs";
@@ -24,7 +24,14 @@ for (const id of ids) {
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(150);
     const name = `${id}-${th}`;
-    await page.pdf({ path: join(outPdf, `${name}.pdf`), width: "91mm", height: "60mm", printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
+    await page.pdf({ path: join(outPdf, `${name}-sangrado.pdf`), preferCSSPageSize: true, printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
+    // PDF al corte final 85 x 54 mm (sin sangrado)
+    const trim = await browser.newPage();
+    await trim.goto(`${url}#print=${id}&theme=${th}&bleed=0`);
+    await trim.evaluate(() => document.fonts.ready);
+    await trim.waitForTimeout(150);
+    await trim.pdf({ path: join(outPdf, `${name}.pdf`), preferCSSPageSize: true, printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
+    await trim.close();
     // PNG por cara, recortado al formato final (sin sangrado)
     const cards = await page.$$(".sheet .card");
     for (let i = 0; i < cards.length; i++) {
