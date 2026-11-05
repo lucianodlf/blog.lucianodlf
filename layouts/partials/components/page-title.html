@@ -1,6 +1,8 @@
 {{- /* dict "eyebrow" "..." "title" "..." "lead" "..." */ -}}
 <header class="page-head">
-  {{ with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
-  <h1 class="page-title">{{ .title }}<span class="cursor" aria-hidden="true">_</span></h1>
+  <div class="page-head__heading">
+    <h1 class="page-title">{{ .title }}<span class="cursor" aria-hidden="true">_</span></h1>
+    {{- with .eyebrow }}<p class="prompt">{{ . }}</p>{{ end }}
+  </div>
   {{ with .lead }}<p class="lead">{{ . }}</p>{{ end }}
 </header>

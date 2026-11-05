@@ -18,6 +18,14 @@ Plan implementado completo (fases 0 a 8 de `roadmap.md`). El sitio buildea limpi
 - 404, alias `/l/`, sitemap sin `/links/`, favicon, og:image, RSS. Repos enlazados públicos (API de GitHub).
 - Comparación visual: `antes-despues.png`.
 
+## Pasada de UI con impeccable (2026-11-05)
+
+- Home: hero con display hasta 92px, cursor ámbar de neón que se enciende al cargar, fósforo difuso detrás del arte, métricas sin caja, servicios como página de manual (sin cards con icon-tile), pipeline de "Cómo trabajo" unido, quote con `>` en vez de borde lateral, banda de contacto más grande con glow.
+- Títulos de sección y de página: comando como anotación en la misma línea (`.prompt`).
+- Header: cursor fijo con halo (sin parpadeo). Superficies del navegador: scrollbar, caret, accent-color, cifras tabulares, `text-wrap: pretty`.
+- Medida de lectura 39rem; CV con párrafos a 64ch (en impresión sin límite, sigue en 3 páginas).
+- Detector de impeccable: queda solo `dark-glow` (intencional, pedido) y headings salteados del post de benchmark (se corrige en Obsidian).
+
 ## Pendiente
 
 1. Lectura final de textos por el usuario (home, CV, proyectos).
