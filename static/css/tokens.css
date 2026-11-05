@@ -1,6 +1,7 @@
 /* lucianodlf: tokens del design system, generados a mano desde tokens.json (DS v2,
    https://claude.ai/artifact/1Cb555udMz1t4gBdSJczcs). Incluye primary-soft y primary-deep por tema,
    primary-hover, danger, code-bg, backdrop y el espaciado 3/6/12/16.
+   Extensión local (no está en el DS): glow-primary, glow-accent, glow-ambient y ease-out.
    Dark es el default del sitio (:root). Light se activa con html.light (keybindings.js). */
 
 :root {
@@ -21,6 +22,10 @@
   --backdrop:     rgb(9 18 14 / 0.72);
   --qr-ink:       var(--surface);
   --qr-ground:    var(--text);
+  /* neón: luz difusa de primary y accent (glows, fósforo del hero) */
+  --glow-primary: rgb(104 185 134 / 0.42);
+  --glow-accent:  rgb(228 172 89 / 0.75);
+  --glow-ambient: 0.4;
   color-scheme: dark;
 
   /* tipografía */
@@ -43,7 +48,7 @@
   --radius-full: 9999px;
 
   /* medidas */
-  --measure: 42rem;
+  --measure: 39rem; /* DS: 42rem; acotada a ~75 caracteres a 17px */
   --measure-wide: 64rem;
   --container: 72rem;
   --container-wide: 90rem;
@@ -51,6 +56,7 @@
   --gutter: 16px;
 
   --ease: 120ms ease;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html.light {
@@ -70,6 +76,9 @@ html.light {
   --backdrop:     rgb(17 30 25 / 0.45);
   --qr-ink:       var(--text);
   --qr-ground:    var(--surface);
+  --glow-primary: rgb(42 116 73 / 0.16);
+  --glow-accent:  rgb(150 87 25 / 0.30);
+  --glow-ambient: 0.22;
   color-scheme: light;
 }
 

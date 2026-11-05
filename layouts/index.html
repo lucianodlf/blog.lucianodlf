@@ -4,8 +4,7 @@
 
 <section class="hero container" aria-labelledby="hero-title">
   <div class="hero__text">
-    <p class="eyebrow">{{ $h.hero.eyebrow }}</p>
-    <h1 id="hero-title" class="display">{{ $h.hero.name }}<span class="cursor" aria-hidden="true">_</span></h1>
+    <h1 id="hero-title" class="display">{{ $h.hero.name }}<span class="cursor cursor--neon" aria-hidden="true">_</span></h1>
     <p class="hero__role">{{ $h.hero.role }}</p>
     <p class="lead">{{ $h.hero.lead }}</p>
     {{ with site.Params.status }}{{ partial "components/status-pill.html" . }}{{ end }}
@@ -23,31 +22,30 @@
 </section>
 
 <section class="container section section--tight" aria-label="Métricas">
-  <div class="stats">
+  <div class="stats stats--open">
     {{- range $h.metrics }}{{ partial "components/stat.html" . }}{{ end }}
   </div>
 </section>
 
 <section class="container section" aria-labelledby="services-title">
   <div class="section__head">
-    <div><p class="eyebrow">{{ $h.services.eyebrow }}</p><h2 id="services-title" class="section__title">{{ $h.services.title }}</h2></div>
+    <div class="section__heading"><h2 id="services-title" class="section__title">{{ $h.services.title }}</h2><p class="prompt">{{ $h.services.eyebrow }}</p></div>
   </div>
-  <div class="grid grid--3">
+  <ul class="manpage">
     {{- range $h.services.items }}
-    <article class="card card--service">
-      <span class="icon-tile" aria-hidden="true"><i class="{{ .icon }}"></i></span>
-      <h3 class="card__title">{{ .title }}</h3>
-      <p class="card__excerpt">{{ .text }}</p>
-    </article>
+    <li class="manpage__item">
+      <h3 class="manpage__title"><i class="{{ .icon }}" aria-hidden="true"></i>{{ .title }}</h3>
+      <p class="manpage__text">{{ .text }}</p>
+    </li>
     {{- end }}
-  </div>
+  </ul>
 </section>
 
 {{- $projects := where (where site.RegularPages "Section" "projects") "Params.featured" true }}
 {{- if $projects }}
 <section class="container section" aria-labelledby="projects-title">
   <div class="section__head">
-    <div><p class="eyebrow">$ ls proyectos/</p><h2 id="projects-title" class="section__title">Proyectos</h2></div>
+    <div class="section__heading"><h2 id="projects-title" class="section__title">Proyectos</h2><p class="prompt">$ ls proyectos/</p></div>
     <a class="see-all" href="{{ "/projects/" | relURL }}">ver todos →</a>
   </div>
   <div class="grid grid--3">
@@ -59,8 +57,7 @@
 <section class="container section" aria-labelledby="workflow-title">
   <div class="workflow">
     <div class="workflow__text">
-      <p class="eyebrow">{{ $h.workflow.eyebrow }}</p>
-      <h2 id="workflow-title" class="section__title">{{ $h.workflow.title }}</h2>
+      <div class="section__heading"><h2 id="workflow-title" class="section__title">{{ $h.workflow.title }}</h2><p class="prompt">{{ $h.workflow.eyebrow }}</p></div>
       <p>{{ $h.workflow.text }}</p>
       <blockquote class="pull-quote"><p>{{ $h.workflow.quote }}</p></blockquote>
     </div>
@@ -74,7 +71,7 @@
 
 <section class="container section" aria-labelledby="writing-title">
   <div class="section__head">
-    <div><p class="eyebrow">$ cat destacados.txt</p><h2 id="writing-title" class="section__title">Escritos</h2></div>
+    <div class="section__heading"><h2 id="writing-title" class="section__title">Escritos</h2><p class="prompt">$ cat destacados.txt</p></div>
     <a class="see-all" href="{{ "/posts/" | relURL }}">ver el blog →</a>
   </div>
   <div class="writing">
@@ -94,7 +91,7 @@
 
 <section class="container section" aria-labelledby="timeline-title">
   <div class="section__head">
-    <div><p class="eyebrow">$ git log --oneline</p><h2 id="timeline-title" class="section__title">Trayectoria</h2></div>
+    <div class="section__heading"><h2 id="timeline-title" class="section__title">Trayectoria</h2><p class="prompt">$ git log --oneline</p></div>
     <a class="see-all" href="{{ "/cv/" | relURL }}">CV completo →</a>
   </div>
   <ol class="gitlog">

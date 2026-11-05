@@ -6,13 +6,13 @@
   {{- $own := where $all "Params.kind" "propio" }}
   {{- with $clients }}
   <section class="section section--first" aria-labelledby="clients-title">
-    <div class="section__head"><div><p class="eyebrow">$ ls clientes/</p><h2 id="clients-title" class="section__title">Trabajo con clientes</h2></div></div>
+    <div class="section__head"><div class="section__heading"><h2 id="clients-title" class="section__title">Trabajo con clientes</h2><p class="prompt">$ ls clientes/</p></div></div>
     <div class="grid grid--3">{{ range . }}{{ partial "components/card-project.html" . }}{{ end }}</div>
   </section>
   {{- end }}
   {{- with $own }}
   <section class="section" aria-labelledby="own-title">
-    <div class="section__head"><div><p class="eyebrow">$ ls ~/proyectos/</p><h2 id="own-title" class="section__title">Proyectos propios</h2></div></div>
+    <div class="section__head"><div class="section__heading"><h2 id="own-title" class="section__title">Proyectos propios</h2><p class="prompt">$ ls ~/proyectos/</p></div></div>
     <div class="grid grid--3">{{ range . }}{{ partial "components/card-project.html" . }}{{ end }}</div>
   </section>
   {{- end }}

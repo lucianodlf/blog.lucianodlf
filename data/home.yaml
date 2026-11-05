@@ -2,7 +2,6 @@
 # Fuentes: mensaje BIORG (versión final 04/11/2026), CV base y LinkedIn unificado (ver docs/feat-brand-redesign/research.md §4).
 
 hero:
-  eyebrow: "$ whoami"
   name: "Luciano Delfino"
   role: "Software Engineer | Backend & Full Stack | AI-Augmented"
   lead: "Trabajo en IT desarrollando software para ayudar a las personas a resolver problemas, convertir ideas en procesos y herramientas simples que aporten claridad."

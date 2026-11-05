@@ -149,6 +149,9 @@ tags: []
 `#theme-toggle`, `#wide-toggle`, `#search-modal`, `#help-modal`, `#search-open`, `#help-open`, `html.light`, `html.wide`, `.content__body table`, `.kb-selected`, `.pagefind-ui__result`, `.mermaid`, `.callout*`.
 Colores siempre por tokens (`var(--primary)`, etc.); nunca hex en `main.css`.
 Reglas del DS: sin emojis ni em-dash, bordes antes que sombras, sin gradientes, ámbar solo como acento.
+Extensión local de tokens (no está en el DS): `--glow-primary`, `--glow-accent`, `--glow-ambient`, `--ease-out` y `--measure: 39rem`. El neón (cursor `.cursor--neon`, fósforo del hero, glow en hover) es un pedido explícito del usuario.
+Títulos de sección: `.section__heading` / `.page-head__heading` con el comando como `.prompt` en la misma línea (no eyebrow encima).
+Impeccable (skill de diseño) se instala en `.claude/` (no versionado): `npx impeccable install -y --providers=claude --scope=project`. Contexto de producto en `PRODUCT.md`.
 
 ## Workflow de trabajo
 Directorio: `.agents/working-progress` (sobreescribible con `WORKFLOW_DIR` en `.env`)
@@ -164,5 +167,6 @@ Al iniciar sesión nueva (sin contexto de trabajo activo): sugerir al usuario ej
 ## Pendientes conocidos
 - Comentarios Giscus (opcional)
 - PDF del CV en `static/cv/luciano-delfino-cv.pdf` (el botón aparece solo si existe)
-- Si cambia el DS (artifact `1Cb555udMz1t4gBdSJczcs`), regenerar a mano `static/css/tokens.css` (hoy DS v2)
+- Si cambia el DS (artifact `1Cb555udMz1t4gBdSJczcs`), regenerar a mano `static/css/tokens.css` (hoy DS v2 + extensión glow)
+- Llevar los tokens glow y la medida 39rem al DS si se adoptan
 - og:image por post (opcional)
