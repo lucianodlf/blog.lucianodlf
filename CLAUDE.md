@@ -40,8 +40,8 @@ layouts/
 .github/workflows/deploy.yml ← build + fix paths Enveloppe + pagefind + deploy
 Makefile                    ← comandos de desarrollo local
 .obsidian-backup/enveloppe.json ← backup config Enveloppe (versionado)
-.agents/                    ← documentación interna (no versionado, ver .gitignore)
-  working-progress/          ← sesiones de trabajo
+.agents/                    ← gestión del trabajo
+  working-progress/          ← WP: ítems, plan, estado (versionado; solo _scratch/ en .gitignore)
 ```
 
 ## Flujo de publicación
@@ -133,15 +133,8 @@ Todos los overrides van en `layouts/` y `static/css/custom.css`.
 Hugo prioriza `layouts/` sobre `themes/risotto/layouts/` automáticamente.
 
 ## Workflow de trabajo
-Directorio: `.agents/working-progress` (sobreescribible con `WORKFLOW_DIR` en `.env`)
-Sesiones: `init` · `feat-[nombre]` · `feat-[nombre]-[issue]` · `fix-[nombre]` · `refactor-[nombre]`
-Archivos por sesión: `prompt.md` · `research.md` · `plan.md` · `fase-N-plan.md` · `roadmap.md`
-Nueva sesión: `/ns` — crea subdirectorio y `prompt.md`
-Al retomar: leer `prompt.md` y `plan.md` de la sesión activa
-TODOs: editar directamente el archivo de plan marcando `[x]`
-No incluir credenciales ni datos sensibles en documentos de trabajo
-Guía completa: `.agents/working-progress/WORKFLOW.md` (leer solo si hay dudas sobre el proceso)
-Al iniciar sesión nueva (sin contexto de trabajo activo): sugerir al usuario ejecutar `/ns` para crear la sesión.
+Gestión con WP en `.agents/working-progress/` (ver `PROJECT.md`, `STATUS.md`, `items/`). Estado: `wp status`; al retomar, leer `STATUS.md`.
+No incluir credenciales ni datos sensibles en documentos de trabajo.
 
 ## Pendientes conocidos
 - SEO: og:image, favicon (Etapa 5c)
