@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const { chromium } = createRequire(import.meta.url)("playwright");
 const url = pathToFileURL(join(here, "index.html")).href;
-const ids = ["S1", "S2", "S3", "S4", "D1", "D2", "D3", "D4", "D5", "D6", "QT"];
+const ids = ["S1", "S2", "S3", "S4", "D1", "D2", "D3", "D4", "D5", "QT"];
 const themes = ["light", "dark"];
 const outPdf = join(here, "print");
 const outPng = join(here, "preview");
