@@ -42,5 +42,12 @@ for (const id of ids) {
     await page.close();
   }
 }
+// Hoja de prueba A4: R5 (frente/dorso) y QT en light y dark, una sola cara
+const tp = await browser.newPage();
+await tp.goto(`${url}#testsheet=1`);
+await tp.evaluate(() => document.fonts.ready);
+await tp.waitForTimeout(150);
+await tp.pdf({ path: join(outPdf, "prueba-impresion-A4.pdf"), preferCSSPageSize: true, printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
+await tp.close();
 await browser.close();
 console.log("ok");
