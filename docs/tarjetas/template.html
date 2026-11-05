@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarjetas lucianodlf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== Página (galería): tokens del DS lucianodlf ===== */
+:root{
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --pg-bg:#f7f5ec;--pg-surface:#fdfcf7;--pg-border:#dad8cd;--pg-text:#111e19;--pg-muted:#53615c;
+  --pg-primary:#2a7449;--pg-soft:#c5e8d0;--pg-accent:#965719;--pg-code:#f1efe6;--pg-on-primary:#fdfcf7;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --pg-bg:#09120e;--pg-surface:#111e19;--pg-border:#24312c;--pg-text:#edebe4;--pg-muted:#84938d;
+    --pg-primary:#68b986;--pg-soft:#17301f;--pg-accent:#e4ac59;--pg-code:#0d1813;--pg-on-primary:#09120e;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --pg-bg:#09120e;--pg-surface:#111e19;--pg-border:#24312c;--pg-text:#edebe4;--pg-muted:#84938d;
+  --pg-primary:#68b986;--pg-soft:#17301f;--pg-accent:#e4ac59;--pg-code:#0d1813;--pg-on-primary:#09120e;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--pg-bg);color:var(--pg-text);font:400 16px/24px var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--pg-primary)}
+:focus-visible{outline:2px solid var(--pg-primary);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:48px 24px 64px}
+.eyebrow{font:500 12px/16px var(--mono);letter-spacing:.04em;color:var(--pg-muted);margin:0 0 12px}
+h1{font:600 40px/44px var(--sans);letter-spacing:-.01em;margin:0}
+h1 .c{color:var(--pg-accent)}
+.lead{font-size:18px;line-height:28px;color:var(--pg-muted);max-width:42rem;margin:16px 0 0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.facts li{font:500 12px/16px var(--mono);letter-spacing:.02em;background:var(--pg-surface);border:1px solid var(--pg-border);border-radius:4px;padding:6px 10px;color:var(--pg-muted)}
+.facts b{color:var(--pg-text);font-weight:600}
+.note{margin:24px 0 0;padding:12px 16px;border:1px solid var(--pg-border);border-radius:8px;background:var(--pg-surface);font-size:14px;line-height:20px;max-width:56rem}
+.note code{font:500 13px var(--mono);background:var(--pg-code);padding:1px 4px;border-radius:4px}
+.controls{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin:32px -24px 0;padding:12px 24px;background:var(--pg-bg);border-bottom:1px solid var(--pg-border)}
+.seg{display:inline-flex;border:1px solid var(--pg-border);border-radius:8px;overflow:hidden;background:var(--pg-surface)}
+.seg button{font:500 13px/20px var(--mono);border:0;background:none;color:var(--pg-muted);padding:6px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--pg-border)}
+.seg button[aria-pressed="true"]{background:var(--pg-primary);color:var(--pg-on-primary)}
+.seg-label{font:500 12px/16px var(--mono);color:var(--pg-muted);margin-right:8px}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.toc a{font:500 12px/16px var(--mono);text-decoration:none;color:var(--pg-muted);border:1px solid var(--pg-border);border-radius:4px;padding:4px 8px}
+.toc a:hover{color:var(--pg-primary);border-color:var(--pg-primary)}
+section.design{padding:48px 0 0;scroll-margin-top:72px}
+.dhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px}
+.dhead h2{font:600 28px/34px var(--sans);margin:0}
+.dhead .id{font:600 14px/20px var(--mono);color:var(--pg-primary)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font:500 12px/16px var(--mono);letter-spacing:.04em;border-radius:4px;padding:2px 8px;background:var(--pg-soft);color:var(--pg-text)}
+.tag.qrtest{background:none;border:1px solid var(--pg-accent);color:var(--pg-accent)}
+.why{max-width:48rem;color:var(--pg-muted);margin:8px 0 0}
+.rows{display:flex;flex-direction:column;gap:24px;margin-top:24px}
+.row{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-start}
+.row-label{flex:0 0 72px;font:500 12px/16px var(--mono);color:var(--pg-muted);padding-top:4px}
+.fig{margin:0;display:flex;flex-direction:column;gap:8px}
+.fig figcaption{font:500 12px/16px var(--mono);color:var(--pg-muted)}
+body[data-show="light"] .row.dark,body[data-show="dark"] .row.light{display:none}
+body[data-kind="simple"] section[data-kind="doble"],body[data-kind="doble"] section[data-kind="simple"]{display:none}
+.face{zoom:1.5;border-radius:1.2mm;overflow:hidden;box-shadow:0 0 0 .25px var(--pg-border)}
+.foot{margin-top:64px;border-top:1px solid var(--pg-border);padding-top:24px;font-size:14px;line-height:22px;color:var(--pg-muted);max-width:56rem}
+.foot h3{font:600 20px/28px var(--sans);color:var(--pg-text);margin:0 0 8px}
+.foot ul{padding-left:20px;margin:0}
+@media (max-width: 1100px){ .face{zoom:1.25} }
+@media (max-width: 720px){
+  .wrap{padding:32px 16px 48px}
+  .controls{margin:24px -16px 0;padding:12px 16px}
+  h1{font-size:32px;line-height:36px}
+  .face{zoom:1}
+  .row-label{flex-basis:100%;padding:0}
+  .toc{margin-left:0}
+  .controls{position:static}
+}
+
+/* ===== Tarjetas: 85 x 54 mm ===== */
+.t-light{
+  --bg:#f7f5ec;--surface:#fdfcf7;--border:#dad8cd;--text:#111e19;--muted:#53615c;
+  --primary:#2a7449;--on-primary:#fdfcf7;--soft:#c5e8d0;--deep:#2a7449;--accent:#965719;
+  --code:#f1efe6;--qr-ink:#111e19;--qr-ground:#fdfcf7;
+  --hero-bg:#2a7449;--hero-ink:#fdfcf7;--hero-muted:#c5e8d0;--hero-cur:#e4ac59;
+}
+.t-dark{
+  --bg:#09120e;--surface:#111e19;--border:#24312c;--text:#edebe4;--muted:#84938d;
+  --primary:#68b986;--on-primary:#09120e;--soft:#17301f;--deep:#3a8357;--accent:#e4ac59;
+  --code:#0d1813;--qr-ink:#111e19;--qr-ground:#edebe4;
+  --hero-bg:#17301f;--hero-ink:#edebe4;--hero-muted:#68b986;--hero-cur:#e4ac59;
+}
+.card{position:relative;width:85mm;height:54mm;overflow:hidden;background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-size:6.5pt;line-height:1.35;font-feature-settings:"liga" 0,"calt" 0;}
+.card *{box-sizing:border-box}
+.card p,.card ul{margin:0;padding:0;list-style:none}
+.card .a{position:absolute}
+.card .mono{font-family:var(--mono)}
+.card .wm{font-family:var(--mono);font-weight:600;letter-spacing:-.01em;line-height:1;white-space:nowrap}
+.card .cur{color:var(--accent)}
+.card .muted{color:var(--muted)}
+.card .pri{color:var(--primary)}
+.card .qr svg{display:block;width:100%;height:100%}
+.card .links li{font-family:var(--mono);white-space:nowrap}
+.card .links b{font-weight:600;color:var(--primary);display:inline-block;width:6.6mm}
+.card .name{font-weight:600;letter-spacing:-.01em;line-height:1.1}
+.card .blk{display:inline-block;width:1.5mm;height:2.5mm;background:var(--accent);vertical-align:-.45mm}
+
+/* S1 Wordmark */
+.s1 .stripe{left:-4mm;top:-4mm;bottom:-4mm;width:6mm;background:var(--primary)}
+.s1 .id{left:7.5mm;top:6.5mm}
+.s1 .wm{font-size:14pt}
+.s1 .name{font-size:8.5pt;margin-top:3.2mm}
+.s1 .role{margin-top:.6mm;color:var(--muted)}
+.s1 .links{left:7.5mm;bottom:6mm;font-size:6.3pt;line-height:1.6}
+.s1 .qr{right:6mm;bottom:9mm;width:23mm;height:23mm;border-radius:.8mm;overflow:hidden}
+.s1 .url{right:6mm;bottom:6mm;width:23mm;text-align:center;font:500 5.6pt/1 var(--mono);color:var(--muted)}
+
+/* S2 Terminal */
+.s2{background:var(--code)}
+.s2 .bar{left:0;right:0;top:-4mm;height:9mm;padding:4mm 4.5mm 0;display:flex;justify-content:space-between;align-items:center;
+  background:var(--surface);border-bottom:.25mm solid var(--border);font:500 5.4pt/1 var(--mono);color:var(--muted)}
+.s2 .bar i{font-style:normal;display:inline-flex;gap:1.2mm}
+.s2 .bar i span{width:1.4mm;height:1.4mm;border:.25mm solid var(--muted);border-radius:50%}
+.s2 .body{left:4.5mm;top:8mm;font:400 6.3pt/1.55 var(--mono)}
+.s2 .body .p{color:var(--primary);font-weight:600}
+.s2 .body .name{font-family:var(--sans);font-size:11pt;line-height:1.15;margin:.4mm 0 .2mm}
+.s2 .body .role{font-family:var(--sans);color:var(--muted)}
+.s2 .body .gap{margin-top:1.6mm}
+.s2 .body b{font-weight:600;color:var(--primary);display:inline-block;width:6.2mm}
+.s2 .qr.main{right:4.5mm;top:8mm;width:21mm;height:21mm;border-radius:.8mm;overflow:hidden}
+.s2 .qr.wsp{right:4.5mm;bottom:4.5mm;width:11mm;height:11mm;border-radius:.6mm;overflow:hidden}
+.s2 .wsplab{right:17.5mm;bottom:4.5mm;text-align:right;font:500 5.4pt/1.35 var(--mono);color:var(--muted)}
+.s2 .wsplab b{display:block;color:var(--primary);font-weight:600}
+
+/* S3 Bloques */
+.s3 .slab{left:44mm;top:-4mm;width:10mm;height:38mm;border-radius:1.2mm;background:var(--primary)}
+.s3 .ink{left:56mm;top:6mm;width:34mm;height:38mm;border-radius:1.2mm;background:var(--text)}
+.s3 .dots{left:56mm;top:6mm;width:34mm;height:38mm}
+.s3 .dots circle{fill:var(--bg)}
+.s3 .qr{left:59.5mm;top:14mm;width:22mm;height:22mm;border-radius:.8mm;overflow:hidden}
+.s3 .bar{left:56mm;top:46.5mm;width:6mm;height:1.5mm;background:var(--accent)}
+.s3 .band{left:44mm;top:50mm;width:46mm;height:9mm;border-radius:1.2mm;background:var(--soft)}
+.s3 .id{left:7mm;top:6.5mm;width:34mm}
+.s3 .wm{font-size:6.5pt;color:var(--primary)}
+.s3 .name{font-size:13pt;line-height:1.02;margin-top:2.6mm}
+.s3 .role{margin-top:1.6mm;color:var(--muted);font-size:6.2pt}
+.s3 .links{left:7mm;bottom:6mm;font-size:5.9pt;line-height:1.6}
+.s3 .links b{width:6mm}
+
+/* S4 man page */
+.s4{background:var(--surface);font-family:var(--mono)}
+.s4 .hd,.s4 .ft{left:5mm;right:5mm;display:flex;justify-content:space-between;font:500 5.2pt/1 var(--mono);color:var(--muted)}
+.s4 .hd{top:4.5mm}.s4 .ft{bottom:4.5mm}
+.s4 .rule{left:5mm;right:5mm;height:0;border-top:.25mm solid var(--border)}
+.s4 .body{left:5mm;top:9.6mm;width:52mm;font:400 5.6pt/1.5 var(--mono)}
+.s4 .body h4{margin:0;font:600 5.6pt/1.5 var(--mono);color:var(--primary);letter-spacing:.04em}
+.s4 .body p{padding-left:3.4mm}
+.s4 .body p+h4{margin-top:.9mm}
+.s4 .body .nm{font-weight:600;font-size:7.6pt;line-height:1.35}
+.s4 .body .o{color:var(--muted)}
+.s4 .qr.main{right:5mm;top:9.6mm;width:19mm;height:19mm;border-radius:.6mm;overflow:hidden}
+.s4 .qr.wsp{right:5mm;top:35mm;width:10mm;height:10mm;border-radius:.5mm;overflow:hidden}
+.s4 .wsplab{right:16.5mm;top:39.2mm;text-align:right;font:500 5.2pt/1.3 var(--mono);color:var(--muted)}
+.s4 .wsplab b{color:var(--primary)}
+
+/* D1 Portada */
+.d1f .slab{left:8mm;top:-4mm;width:17mm;height:33mm;border-radius:1.2mm;background:var(--primary)}
+.d1f .ink{left:29mm;top:7mm;width:60mm;height:24mm;border-radius:1.2mm;background:var(--text)}
+.d1f .dots{left:29mm;top:7mm;width:60mm;height:24mm}
+.d1f .dots circle{fill:var(--bg)}
+.d1f .bar{left:29mm;top:34mm;width:6mm;height:1.5mm;background:var(--accent)}
+.d1f .band{left:58mm;top:42mm;width:32mm;height:16mm;border-radius:1.2mm;background:var(--soft)}
+.d1f .wm{left:8mm;top:40mm;font-size:16pt}
+.d1f .sub{left:8mm;top:47.2mm;font:500 5.4pt/1 var(--mono);color:var(--muted);letter-spacing:.04em}
+.d1b .id{left:7mm;top:7mm}
+.d1b .name{font-size:12pt}
+.d1b .role{margin-top:1mm;color:var(--muted);font-size:6.3pt;line-height:1.4}
+.d1b .rule{left:7mm;top:23.5mm;width:6mm;height:1.2mm;background:var(--accent)}
+.d1b .links{left:7mm;bottom:6.5mm;font-size:6.2pt;line-height:1.6}
+.d1b .links b{width:6.4mm}
+.d1b .qr{right:6.5mm;top:7mm;width:24mm;height:24mm;border-radius:.8mm;overflow:hidden}
+.d1b .url{right:6.5mm;top:33mm;width:24mm;text-align:center;font:500 5.6pt/1 var(--mono);color:var(--muted)}
+.d1b .wm{right:6.5mm;bottom:6.5mm;font-size:6.5pt;color:var(--muted)}
+
+/* D2 QR al frente */
+.d2f{background:var(--hero-bg);color:var(--hero-ink)}
+.d2f .qr{left:7mm;top:9.5mm;width:35mm;height:35mm;border-radius:1.2mm;overflow:hidden}
+.d2f .txt{left:47mm;top:9.5mm;right:5mm;height:35mm;display:flex;flex-direction:column;justify-content:space-between}
+.d2f .wm{font-size:11pt}
+.d2f .wm .cur{color:var(--hero-cur)}
+.d2f .cmd{font:400 6.3pt/1.5 var(--mono)}
+.d2f .cmd .p{color:var(--hero-muted)}
+.d2f .cmd .u{font-weight:600}
+.d2f .what{font:400 6.3pt/1.4 var(--sans);color:var(--hero-muted)}
+.d2b .id{left:7mm;top:7mm}
+.d2b .name{font-size:12pt}
+.d2b .role{margin-top:1mm;color:var(--muted);font-size:6.3pt;line-height:1.4}
+.d2b .links{left:7mm;bottom:6.5mm;font-size:6.2pt;line-height:1.6}
+.d2b .qr{right:6.5mm;bottom:6.5mm;width:12mm;height:12mm;border-radius:.6mm;overflow:hidden}
+.d2b .wsplab{right:6.5mm;bottom:20.3mm;text-align:right;font:400 5.6pt/1.35 var(--mono);color:var(--muted)}
+.d2b .wsplab b{display:block;font-weight:600;color:var(--primary)}
+.d2b .rule{left:7mm;top:23.5mm;width:6mm;height:1.2mm;background:var(--accent)}
+
+/* D5 Portada + QR (D1 x S3), con iconos */
+.card .ic{display:inline-flex;width:2.5mm;height:2.5mm;color:var(--muted)}
+.card .ic svg{width:100%;height:100%;fill:currentColor}
+.d5f .slab{left:8mm;top:-4mm;width:17mm;height:33mm;border-radius:1.2mm;background:var(--primary)}
+.d5f .ink{left:29mm;top:5mm;width:60mm;height:28mm;border-radius:1.2mm;background:var(--text)}
+.d5f .dots{left:29mm;top:5mm;width:60mm;height:28mm}
+.d5f .dots circle{fill:var(--bg)}
+.d5f .qr{left:57mm;top:8mm;width:22mm;height:22mm;border-radius:.8mm;overflow:hidden}
+.d5f .bar{left:29mm;top:36mm;width:6mm;height:1.5mm;background:var(--accent)}
+.d5f .band{left:58mm;top:42mm;width:32mm;height:16mm;border-radius:1.2mm;background:var(--soft)}
+.d5f .wm{left:8mm;top:40mm;font-size:16pt}
+.d5f .sub{left:8mm;top:47.2mm;font:500 5.4pt/1 var(--mono);color:var(--muted);letter-spacing:.04em}
+.d5b .id{left:7mm;top:7mm}
+.d5b .name{font-size:12pt}
+.d5b .role{margin-top:1mm;color:var(--muted);font-size:6.3pt;line-height:1.4}
+.d5b .rule{left:7mm;top:23.5mm;width:6mm;height:1.2mm;background:var(--accent)}
+.d5b .links{left:7mm;bottom:6.5mm;font:400 6.2pt/1.6 var(--mono)}
+.d5b .links li{display:flex;align-items:center;gap:1.8mm}
+.d5b .wsp{right:6.5mm;bottom:6.5mm;width:24mm;display:flex;flex-direction:column;align-items:center;gap:1.8mm}
+.d5b .wsp .qr{width:14mm;height:14mm;border-radius:.6mm;overflow:hidden}
+.d5b .wsp .num{display:flex;align-items:center;gap:1mm;font:500 5.2pt/1 var(--mono);white-space:nowrap}
+.d5b .wsp .num .ic{width:2.2mm;height:2.2mm}
+
+/* R2-R5 serie Hoja: base D5, fondos de QR con dos esquinas redondeadas */
+.rf .slab{left:8mm;top:-4mm;width:17mm;height:33mm;border-radius:1.2mm;background:var(--primary)}
+.rf .ink{left:29mm;top:5mm;width:60mm;height:28mm;border-radius:1.2mm;background:var(--text)}
+.rf .dots{left:29mm;top:5mm;width:60mm;height:28mm}
+.rf .dots circle{fill:var(--bg)}
+.rf .qr{left:57mm;top:8mm;width:22mm;height:22mm;border-radius:.8mm;overflow:hidden}
+.rf .bar{left:29mm;top:36mm;width:6mm;height:1.5mm;background:var(--accent)}
+.rf .band{left:58mm;top:42mm;width:32mm;height:16mm;border-radius:1.2mm;background:var(--soft)}
+.rf .wm{left:8mm;top:40mm;font-size:16pt}
+.rf .sub{left:8mm;top:47.2mm;font:500 5.4pt/1 var(--mono);color:var(--muted);letter-spacing:.04em}
+.rb .id{left:7mm;top:7mm}
+.rb .name{font-size:12pt}
+.rb .role{margin-top:1mm;color:var(--muted);font-size:6.3pt;line-height:1.4}
+.rb .rule{left:7mm;top:23.5mm;width:6mm;height:1.2mm;background:var(--accent)}
+.rb .links{left:7mm;bottom:6.5mm;font:400 6.2pt/1.6 var(--mono)}
+.rb .links li{display:flex;align-items:center;gap:1.8mm}
+.rb .ic.hl{color:var(--primary)}
+/* R2 */
+.r2f .ink{width:53mm;border-radius:12mm 1.2mm 12mm 1.2mm}
+.r2f .dots{width:53mm;clip-path:inset(0 round 12mm 1.2mm 12mm 1.2mm)}
+.r2f .qr{left:53mm}
+.r2b .qr{left:61mm;top:31.5mm;width:16mm;height:16mm;border-radius:.8mm;overflow:hidden}
+/* R3 */
+.r3b .leaf{left:51mm;top:19mm;width:27mm;height:27mm;border-radius:10mm 1.2mm 10mm 1.2mm;background:var(--soft)}
+.r3b .qr{left:56.5mm;top:24.5mm;width:16mm;height:16mm;border-radius:.6mm;overflow:hidden}
+
+/* R4/R5 (r5b = ajustes compartidos: QR 9 mm, franja fina, linea bajo el rol): frente R2, dorso R3 con el fondo del QR extendido en franja bajo el numero */
+.r4b .links{bottom:6mm}
+.r4b .links li.ph{margin-top:3.6mm}
+.r4b .shape{left:0;top:0;width:85mm;height:54mm;overflow:visible}
+.r4b .shape path{fill:var(--soft)}
+.r4b .qr{left:57.5mm;top:32mm;width:16mm;height:16mm;border-radius:.6mm;overflow:hidden}
+.r5b .qr{left:60.5mm;top:32.885mm;width:11mm;height:11mm;border-radius:.4mm}
+.r5b .rule{top:16.76mm}
+
+/* D3 --verbose */
+.d3f .wm{left:7mm;top:17mm;font-size:17pt}
+.d3f .wm .fl{color:var(--primary)}
+.d3f .sub{left:7mm;top:26.5mm;font:400 6.3pt/1.4 var(--mono);color:var(--muted)}
+.d3f .band{left:-4mm;right:-4mm;bottom:-4mm;height:13mm;background:var(--soft);padding:2.8mm 11mm 0;
+  display:flex;justify-content:space-between;font:500 6pt/1 var(--mono);color:var(--text)}
+.d3f .band .p{color:var(--primary);font-weight:600}
+.d3b .log{left:5.5mm;top:6mm;font:400 6.2pt/1.62 var(--mono);white-space:nowrap}
+.d3b .log .k{display:inline-block;width:9.3mm;font-weight:600}
+.d3b .log .ok{color:var(--primary)}
+.d3b .log .in{color:var(--muted)}
+.d3b .log .ln{color:var(--primary)}
+.d3b .log .nm{font-weight:600;font-size:7.6pt}
+.d3b .log .ex{color:var(--muted)}
+.d3b .qr{right:5.5mm;top:6mm;width:21mm;height:21mm;border-radius:.8mm;overflow:hidden}
+.d3b .url{right:5.5mm;top:28.6mm;width:21mm;text-align:center;font:500 5.4pt/1 var(--mono);color:var(--muted)}
+
+/* D4 Monograma */
+.d4f .grid{left:-4mm;top:-4mm;width:93mm;height:62mm}
+.d4f .grid circle{fill:var(--border)}
+.d4f .mark{left:29.5mm;top:14mm;width:26mm;height:26mm}
+.d4f .mark rect.sq{fill:#09120e}
+.t-dark .d4f .mark rect.sq{stroke:var(--deep);stroke-width:.5}
+.d4f .cap{left:0;right:0;bottom:5.5mm;text-align:center;font:500 6pt/1 var(--mono);color:var(--muted);letter-spacing:.06em}
+.d4b .qr{left:6.5mm;top:6.5mm;width:24mm;height:24mm;border-radius:.8mm;overflow:hidden}
+.d4b .url{left:6.5mm;top:32.6mm;width:24mm;text-align:center;font:500 5.6pt/1 var(--mono);color:var(--muted)}
+.d4b .id{left:39.5mm;top:6.5mm}
+.d4b .name{font-size:11.5pt}
+.d4b .role{margin-top:1mm;color:var(--muted);font-size:6.2pt;line-height:1.4}
+.d4b .links{left:39.5mm;bottom:6.5mm;font-size:6.2pt;line-height:1.6}
+.d4b .side{left:-4mm;bottom:-4mm;width:41mm;height:12.5mm;background:var(--soft)}
+.d4b .wm{left:6.5mm;bottom:3.2mm;font-size:6.5pt}
+
+/* QT tarjeta de prueba */
+.qt{background:var(--surface)}
+.qt .hd{left:4mm;top:3.5mm;right:4mm;display:flex;justify-content:space-between;font:500 5.2pt/1 var(--mono);color:var(--muted)}
+.qt .cells{left:6mm;right:6mm;display:flex;align-items:flex-end;justify-content:space-between}
+.qt .c1{top:8mm;right:22mm}.qt .c2{bottom:3.5mm}
+.qt .cell{display:flex;flex-direction:column;align-items:center;gap:1.2mm}
+.qt .cell .qr{border-radius:.4mm;overflow:hidden}
+.qt .cell span{font:500 4.8pt/1.2 var(--mono);color:var(--muted);text-align:center;white-space:nowrap}
+.qt .cell span b{color:var(--text);font-weight:600}
+
+/* ===== Modo impresión (render.mjs): sangrado 3 mm ===== */
+body.print{background:#fff}
+body.print .wrap{display:none}
+.sheet{width:91mm;height:60mm;padding:3mm;overflow:hidden;break-after:page;page-break-after:always}
+.sheet .face{zoom:1;border-radius:0;box-shadow:none;overflow:visible}
+.sheet .card{overflow:visible}
+@page{margin:0;size:91mm 60mm}
+body.nobleed .sheet{width:85mm;height:54mm;padding:0}
+/* hoja de prueba A4: R5 (frente y dorso) y QT en light y dark, a 85 x 54 mm reales */
+@page testa4{size:A4;margin:0}
+body.testsheet{background:#fff;page:testa4;width:210mm;height:297mm;margin:0;padding:0}
+.tgrid{display:grid;grid-template-columns:repeat(2,85mm);column-gap:10mm;row-gap:6mm;justify-content:center;padding-top:34mm}
+.tcell .face{zoom:1;border-radius:0;box-shadow:none;overflow:hidden;width:85mm;height:54mm;outline:.15mm solid #b8b8b8;outline-offset:.4mm}
+.tcell .card{overflow:hidden}
+.tcell .cap{font:500 2.4mm/1 "IBM Plex Mono",monospace;color:#777;margin-top:2mm}
+.thead{position:absolute;top:12mm;left:0;right:0;text-align:center;font:500 3mm/1.5 "IBM Plex Mono",monospace;color:#444}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">$ ls tarjetas/ | wc -l</p>
+    <h1>Tarjetas personales<span class="c">_</span></h1>
+    <p class="lead">Trece diseños sobre el design system lucianodlf: cuatro de simple faz, cinco de doble faz y la serie Hoja (R2 a R5), cada uno en light y dark. Más una tarjeta de prueba para medir hasta qué tamaño se lee el QR de WhatsApp.</p>
+    <ul class="facts">
+      <li><b>85 x 54 mm</b> · 250 g</li>
+      <li>QR web <b>{{MAIN_V}}</b> · {{MAIN_N}} módulos con margen</li>
+      <li>QR wsp <b>{{WSP_V}}</b> · {{WSP_N}} módulos con margen</li>
+      <li>IBM Plex Sans + Mono</li>
+    </ul>
+    <p class="note"><b>Datos.</b> QR principal a <code>{{MAIN_URL}}</code>, WhatsApp <code>{{WSP_TEXT}}</code>. Se cambian en <code>docs/tarjetas/build.py</code> y se regeneran QR y PDFs. D5 es la combinación de D1 y S3 con iconos.</p>
+  </header>
+
+  <nav class="controls" aria-label="Filtros">
+    <div><span class="seg-label">modo</span><span class="seg" data-ctl="show"><button aria-pressed="true" data-v="both">ambos</button><button aria-pressed="false" data-v="light">light</button><button aria-pressed="false" data-v="dark">dark</button></span></div>
+    <div><span class="seg-label">tipo</span><span class="seg" data-ctl="kind"><button aria-pressed="true" data-v="all">todos</button><button aria-pressed="false" data-v="simple">simple faz</button><button aria-pressed="false" data-v="doble">doble faz</button></span></div>
+    <div class="toc"><a href="#S1">S1</a><a href="#S2">S2</a><a href="#S3">S3</a><a href="#S4">S4</a><a href="#D1">D1</a><a href="#D2">D2</a><a href="#D3">D3</a><a href="#D4">D4</a><a href="#D5">D5</a><a href="#R2">R2</a><a href="#R3">R3</a><a href="#R4">R4</a><a href="#R5">R5</a><a href="#QT">QR test</a></div>
+  </nav>
+
+  <main id="designs"></main>
+
+  <footer class="foot">
+    <h3>Para imprenta</h3>
+    <ul>
+      <li>PDFs vectoriales con 3 mm de sangrado (91 x 60 mm) en <code>docs/tarjetas/print/</code>, uno por diseño y modo; en doble faz, página 1 frente y página 2 dorso.</li>
+      <li>Los colores están en RGB (hex del DS). Pedí prueba de color: el verde de marca y el fondo dark (<code>#09120e</code>) cambian al pasar a CMYK. Para el dark, pedí negro enriquecido.</li>
+      <li>El QR va siempre oscuro sobre recuadro claro, también en dark, con margen de 4 módulos (regla del DS). Mínimo recomendado: 0,4 mm por módulo para el QR principal.</li>
+      <li>Texto mínimo 5,2 pt (metadatos en Plex Mono). Margen de seguridad de 4,5 mm desde el corte para todo el texto.</li>
+      <li>Lectura verificada con zxing-cpp sobre los PNG renderizados (<code>verify.py</code>): todos los QR decodifican a resolución completa y simulando una cámara a 150 dpi con desenfoque; a 100 dpi fallan los de WhatsApp de 11 y 12 mm (0,33 mm/módulo). Es una simulación: la prueba real es imprimir la tarjeta QT y escanear con tu teléfono.</li>
+      <li>Laminado mate recomendado en 250 g: el brillo puede generar reflejos que complican la lectura del QR.</li>
+    </ul>
+  </footer>
+</div>
+
+<!-- ============ Plantillas de caras ============ -->
+<template id="faces">
+
+<!-- S1 -->
+<div class="card s1" data-face="S1-f">
+  <i class="a stripe"></i>
+  <div class="a id">
+    <div class="wm">lucianodlf<span class="cur">_</span></div>
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | Backend &amp; Full Stack</p>
+  </div>
+  <ul class="a links">
+    <li><b>in</b>{{LINKEDIN}}</li>
+    <li><b>gh</b>{{GITHUB}}</li>
+    <li><b>wsp</b>{{WSP_TEXT}}</li>
+  </ul>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <div class="a url">{{DOMAIN}}</div>
+</div>
+
+<!-- S2 -->
+<div class="card s2" data-face="S2-f">
+  <div class="a bar"><i><span></span><span></span><span></span></i><span>~/lucianodlf · bash</span></div>
+  <div class="a body">
+    <p><span class="p">$</span> whoami</p>
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | Backend &amp; Full Stack</p>
+    <p class="gap"><span class="p">$</span> cat contacto.txt</p>
+    <p><b>web</b>{{DOMAIN}}</p>
+    <p><b>in</b>{{LINKEDIN}}</p>
+    <p><b>gh</b>{{GITHUB}}</p>
+    <p><span class="p">$</span> <span class="blk"></span></p>
+  </div>
+  <div class="a qr main" data-qr="main">{{QR_MAIN}}</div>
+  <div class="a wsplab"><b>wsp →</b>escaneá<br>para escribirme</div>
+  <div class="a qr wsp" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+
+<!-- S3 -->
+<div class="card s3" data-face="S3-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 34 38" aria-hidden="true"><g>DOTS_S3</g></svg>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <i class="a bar"></i>
+  <i class="a band"></i>
+  <div class="a id">
+    <div class="wm">lucianodlf<span class="cur">_</span></div>
+    <p class="name">Luciano<br>Delfino</p>
+    <p class="role">Software Engineer<br>Backend &amp; Full Stack<br>AI-Augmented</p>
+  </div>
+  <ul class="a links">
+    <li><b>web</b>{{DOMAIN}}</li>
+    <li><b>in</b>{{LINKEDIN}}</li>
+    <li><b>gh</b>{{GITHUB}}</li>
+    <li><b>wsp</b>{{WSP_TEXT}}</li>
+  </ul>
+</div>
+
+<!-- S4 -->
+<div class="card s4" data-face="S4-f">
+  <div class="a hd"><span>LUCIANODLF(1)</span><span>Manual de usuario</span><span>LUCIANODLF(1)</span></div>
+  <div class="a body">
+    <h4>NOMBRE</h4>
+    <p class="nm">Luciano Delfino</p>
+    <h4>SINOPSIS</h4>
+    <p>lucianodlf <span class="o">[--backend]</span><br><span class="o">[--full-stack] [--ai-augmented]</span></p>
+    <h4>DESCRIPCIÓN</h4>
+    <p>Software Engineer. Convierto ideas<br>en procesos y herramientas simples.</p>
+    <h4>VER TAMBIÉN</h4>
+    <p>in/{{LINKEDIN}} · gh/{{GITHUB}}</p>
+  </div>
+  <div class="a qr main" data-qr="main">{{QR_MAIN}}</div>
+  <div class="a wsplab"><b>wsp</b> →</div>
+  <div class="a qr wsp" data-qr="wsp">{{QR_WSP}}</div>
+  <div class="a ft"><span>Santa Fe, AR</span><span>{{DOMAIN}}</span><span>v2026</span></div>
+</div>
+
+<!-- D1 -->
+<div class="card d1f" data-face="D1-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 24" aria-hidden="true"><g>DOTS_D1</g></svg>
+  <i class="a bar"></i>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
+<div class="card d1b" data-face="D1-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer<br>Backend &amp; Full Stack | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <ul class="a links">
+    <li><b>web</b>{{DOMAIN}}</li>
+    <li><b>in</b>{{LINKEDIN}}</li>
+    <li><b>gh</b>{{GITHUB}}</li>
+    <li><b>wsp</b>{{WSP_TEXT}}</li>
+  </ul>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <div class="a url">{{DOMAIN}}</div>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+</div>
+
+<!-- D2 -->
+<div class="card d2f" data-face="D2-f">
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <div class="a txt">
+    <div class="wm">lucianodlf<span class="cur">_</span></div>
+    <p class="cmd"><span class="p">$ open</span><br><span class="u">{{DOMAIN}}</span></p>
+    <p class="what">Proyectos, CV y blog.<br>Escaneá y seguimos por ahí.</p>
+  </div>
+</div>
+<div class="card d2b" data-face="D2-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer<br>Backend &amp; Full Stack | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <ul class="a links">
+    <li><b>web</b>{{DOMAIN}}</li>
+    <li><b>in</b>{{LINKEDIN}}</li>
+    <li><b>gh</b>{{GITHUB}}</li>
+  </ul>
+  <div class="a wsplab"><b>wsp</b>{{WSP_TEXT}}</div>
+  <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+
+<!-- D3 -->
+<div class="card d3f" data-face="D3-f">
+  <div class="a wm">lucianodlf <span class="fl">-v</span><span class="cur">_</span></div>
+  <div class="a sub"># Software Engineer | Backend &amp; Full Stack</div>
+  <div class="a band"><span><span class="p">$</span> flip --verbose</span><span>↻</span></div>
+</div>
+<div class="card d3b" data-face="D3-b">
+  <div class="a log">
+    <p><span class="k ok">[ok]</span><span class="nm">Luciano Delfino</span></p>
+    <p><span class="k in">[info]</span>Software Engineer</p>
+    <p><span class="k in">[info]</span>Backend &amp; Full Stack</p>
+    <p><span class="k in">[info]</span>AI-Augmented · Santa Fe</p>
+    <p><span class="k ln">[web]</span>{{DOMAIN}}</p>
+    <p><span class="k ln">[in]</span>{{LINKEDIN}}</p>
+    <p><span class="k ln">[gh]</span>{{GITHUB}}</p>
+    <p><span class="k ln">[wsp]</span>{{WSP_TEXT}}</p>
+    <p class="ex">exit 0 <span class="blk"></span></p>
+  </div>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <div class="a url">escaneá: web</div>
+</div>
+
+<!-- D4 -->
+<div class="card d4f" data-face="D4-f">
+  <svg class="a grid" viewBox="0 0 93 62" aria-hidden="true"><g>DOTS_D4</g></svg>
+  <svg class="a mark" viewBox="0 0 32 32" aria-label="l_"><rect class="sq" width="32" height="32" rx="4"/><text x="4" y="23" font-family="IBM Plex Mono, ui-monospace, Menlo, Consolas, monospace" font-weight="600" font-size="21" fill="#edebe4">l</text><rect x="17" y="21" width="11" height="3" fill="#e4ac59"/></svg>
+  <div class="a cap">LUCIANODLF</div>
+</div>
+<div class="card d4b" data-face="D4-b">
+  <i class="a side"></i>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <div class="a url">{{DOMAIN}}</div>
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer<br>Backend &amp; Full Stack<br>AI-Augmented</p>
+  </div>
+  <ul class="a links">
+    <li><b>in</b>{{LINKEDIN}}</li>
+    <li><b>gh</b>{{GITHUB}}</li>
+    <li><b>wsp</b>{{WSP_TEXT}}</li>
+  </ul>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+</div>
+
+<!-- QT -->
+<div class="card qt" data-face="QT-f">
+  <div class="a hd"><span>web {{MAIN_V}} · wsp {{WSP_V}}</span><span>prueba de lectura</span></div>
+  <div class="a cells c1"><div class="cell"><div class="qr" data-qr="main" style="width:15mm;height:15mm">{{QR_MAIN}}</div><span><b>main 15 mm</b><br>MOD</span></div><div class="cell"><div class="qr" data-qr="main" style="width:12mm;height:12mm">{{QR_MAIN}}</div><span><b>main 12 mm</b><br>MOD</span></div><div class="cell"><div class="qr" data-qr="main" style="width:10mm;height:10mm">{{QR_MAIN}}</div><span><b>main 10 mm</b><br>MOD</span></div></div>
+  <div class="a cells c2"><div class="cell"><div class="qr" data-qr="wsp" style="width:13mm;height:13mm">{{QR_WSP}}</div><span><b>wsp 13 mm</b><br>MOD</span></div><div class="cell"><div class="qr" data-qr="wsp" style="width:11mm;height:11mm">{{QR_WSP}}</div><span><b>wsp 11 mm</b><br>MOD</span></div><div class="cell"><div class="qr" data-qr="wsp" style="width:9mm;height:9mm">{{QR_WSP}}</div><span><b>wsp 9 mm</b><br>MOD</span></div><div class="cell"><div class="qr" data-qr="wsp" style="width:7.5mm;height:7.5mm">{{QR_WSP}}</div><span><b>wsp 7,5 mm</b><br>MOD</span></div></div>
+</div>
+<!-- D5 -->
+<div class="card d5f" data-face="D5-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" aria-hidden="true"><g>DOTS_D5</g></svg>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <i class="a bar"></i>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
+<div class="card d5b" data-face="D5-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer<br>Backend &amp; Full Stack | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <ul class="a links">
+    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
+    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
+    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
+  </ul>
+  <div class="a wsp">
+    <div class="qr" data-qr="wsp">{{QR_WSP}}</div>
+    <p class="num"><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</p>
+  </div>
+</div>
+<!-- R2 -->
+<div class="card rf r2f" data-face="R2-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
+<div class="card rb r2b" data-face="R2-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <ul class="a links">
+    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
+    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
+    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
+    <li><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</li>
+  </ul>
+  <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+
+<!-- R3 -->
+<div class="card rf r3f" data-face="R3-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
+<div class="card rb r3b" data-face="R3-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <ul class="a links">
+    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
+    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
+    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
+    <li><i class="ic hl">{{I_WSP}}</i>{{WSP_TEXT}}</li>
+  </ul>
+  <i class="a leaf"></i>
+  <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+<!-- R4 (frente compartido con R5) -->
+<div class="card rf r2f" data-face="R4-f">
+  <i class="a slab"></i>
+  <i class="a ink"></i>
+  <svg class="a dots" viewBox="0 0 60 28" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><g>DOTS_R</g></svg>
+  <div class="a qr" data-qr="main">{{QR_MAIN}}</div>
+  <i class="a band"></i>
+  <div class="a wm">lucianodlf<span class="cur">_</span></div>
+  <div class="a sub">SOFTWARE ENGINEER</div>
+</div>
+<div class="card rb r4b r5b" data-face="R4-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <svg class="a shape" viewBox="0 0 85 54" aria-hidden="true"><path d="M5.52 42.73H52A1.5 1.5 0 0 0 53.5 41.23V37A10 10 0 0 1 63.5 27H77.3A1.2 1.2 0 0 1 78.5 28.2V39.77A10 10 0 0 1 68.5 49.77H5.52A3.52 3.52 0 0 1 5.52 42.73Z"/></svg>
+  <ul class="a links">
+    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
+    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
+    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
+    <li class="ph"><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</li>
+  </ul>
+  <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+<!-- R5 -->
+<div class="card rb r4b r5b" data-face="R5-b">
+  <div class="a id">
+    <p class="name">Luciano Delfino</p>
+    <p class="role">Software Engineer | AI-Augmented</p>
+  </div>
+  <i class="a rule"></i>
+  <svg class="a shape" viewBox="0 0 85 54" aria-hidden="true"><path d="M-4 42.73H52A1.5 1.5 0 0 0 53.5 41.23V37A10 10 0 0 1 63.5 27H77.3A1.2 1.2 0 0 1 78.5 28.2V39.77A10 10 0 0 1 68.5 49.77H-4Z"/></svg>
+  <ul class="a links">
+    <li><i class="ic">{{I_WEB}}</i>{{DOMAIN}}</li>
+    <li><i class="ic">{{I_IN}}</i>{{LINKEDIN_PATH}}</li>
+    <li><i class="ic">{{I_GH}}</i>{{GITHUB_URL}}</li>
+    <li class="ph"><i class="ic">{{I_WSP}}</i>{{WSP_TEXT}}</li>
+  </ul>
+  <div class="a qr" data-qr="wsp">{{QR_WSP}}</div>
+</div>
+</template>
+
+<script>
+const META = {{META}};
+const DESIGNS = [
+  {id:"S1", kind:"simple", name:"Wordmark", faces:["S1-f"], tags:["simple faz"],
+   why:"La versión más sobria. El wordmark lucianodlf_ manda, el nombre acompaña y el QR ocupa la columna derecha. Una franja verde al borde da firma sin decorar. Pensada para entregar en contexto laboral."},
+  {id:"S2", kind:"simple", name:"Terminal", faces:["S2-f"], tags:["simple faz","qr wsp 11 mm"], qrtest:true,
+   why:"La tarjeta como una sesión: $ whoami y $ cat contacto.txt. El QR principal arriba y un QR chico de WhatsApp abajo, con 9 mm de aire entre ambos para que la cámara no los confunda."},
+  {id:"S3", kind:"simple", name:"Bloques", faces:["S3-f"], tags:["simple faz"],
+   why:"Traslada la portada del design system (losa primary, bloque de tinta con grilla de puntos, cursor ámbar, banda suave) a 85 x 54. El QR vive dentro del bloque de tinta, en su recuadro claro."},
+  {id:"S4", kind:"simple", name:"man lucianodlf", faces:["S4-f"], tags:["simple faz","qr wsp 10 mm"], qrtest:true,
+   why:"Una página de manual: NOMBRE, SINOPSIS con flags, DESCRIPCIÓN y VER TAMBIÉN. Guiño para quien reconoce el formato. Prueba el QR de WhatsApp a 10 mm. Es la más densa: texto de 5,2 a 5,6 pt."},
+  {id:"D1", kind:"doble", name:"Portada", faces:["D1-f","D1-b"], tags:["doble faz"],
+   why:"Frente gráfico puro con la composición de bloques y el wordmark grande, sin datos. El dorso concentra todo: nombre, rol, contacto y QR. Es la que mejor construye recordación de marca."},
+  {id:"D2", kind:"doble", name:"QR al frente", faces:["D2-f","D2-b"], tags:["doble faz","qr wsp 12 mm"], qrtest:true,
+   why:"El QR es la acción principal: ocupa 35 mm del frente sobre un relleno de marca. El dorso tiene los datos y un QR de WhatsApp de 12 mm con el número impreso como respaldo."},
+  {id:"D3", kind:"doble", name:"--verbose", faces:["D3-f","D3-b"], tags:["doble faz"],
+   why:"El frente es solo el flag lucianodlf -v y una invitación a darla vuelta. El dorso es la salida verbose: un log con [ok], [info] y los links. La más alineada al nombre del blog."},
+  {id:"D4", kind:"doble", name:"Monograma", faces:["D4-f","D4-b"], tags:["doble faz"],
+   why:"El favicon del rediseño (l_) como monograma sobre la grilla de 4 px hecha puntos. Frente de marca mínimo; dorso con QR a la izquierda y datos a la derecha."},
+  {id:"D5", kind:"doble", name:"Portada + QR", faces:["D5-f","D5-b"], tags:["doble faz","qr wsp 14 mm","iconos"], qrtest:true,
+   why:"D1 y S3 combinadas: el frente conserva la composición de D1 con el QR web dentro del bloque de tinta, y solo lucianodlf_ y SOFTWARE ENGINEER. El dorso lleva los links con iconos monocromos y el QR de WhatsApp aparte, con el número debajo."},
+  {id:"R2", kind:"doble", name:"Hoja", faces:["R2-f","R2-b"], tags:["doble faz","serie hoja","un solo bloque"], qrtest:true,
+   why:"Base D5 sin la barra ámbar. En el frente, el bloque de tinta del QR tiene dos esquinas opuestas muy redondeadas. En el dorso hay un solo bloque de contactos con iconos monocromos, y el QR de WhatsApp baja hasta alinearse con la línea del número."},
+  {id:"R3", kind:"doble", name:"Hoja clara", faces:["R3-f","R3-b"], tags:["doble faz","serie hoja","un solo bloque"], qrtest:true,
+   why:"Frente D5 sin la barra ámbar. En el dorso, el QR de WhatsApp está sobre un fondo verde claro con dos esquinas opuestas muy redondeadas, junto al bloque de contactos."},
+  {id:"R4", kind:"doble", name:"Hoja + franja", faces:["R4-f","R4-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
+   why:"Combina R2 y R3. Frente de R2. En el dorso, el fondo del QR baja y se prolonga en una franja recta, del alto justo de la línea del número, que termina redondeada en el margen derecho. El número queda separado del resto de los links y la franja indica que ese QR es el de WhatsApp."},
+  {id:"R5", kind:"doble", name:"Hoja + franja al borde", faces:["R4-f","R5-b"], tags:["doble faz","serie hoja","franja wsp"], qrtest:true,
+   why:"Variante de R4: la franja entra desde el borde izquierdo de la tarjeta (al corte) en vez de empezar junto al número. Mismo frente."},
+  {id:"QT", kind:"test", name:"Prueba de QR", faces:["QT-f"], tags:["prueba"], qrtest:true,
+   why:"No es un diseño: imprimila junto a las demás para medir con tu teléfono hasta qué tamaño leen el QR web y el de WhatsApp. Cada QR indica su tamaño y milímetros por módulo."}
+];
+
+function dots(w,h,x0,y0,step,r,skip){
+  let s="";
+  for(let y=y0;y<h;y+=step) for(let x=x0;x<w;x+=step){
+    if(skip && skip(x,y)) continue;
+    s+=`<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${r}"/>`;
+  }
+  return s;
+}
+const tpl = document.getElementById("faces").innerHTML
+  .replace("DOTS_S3", dots(34,38,3.5,2.4,2.4,.28,(x,y)=>y>6.5&&y<31.5))
+  .replace("DOTS_D1", dots(60,24,3,3,3,.32))
+  .replace("DOTS_D5", dots(60,28,3,3,3,.32))
+  .replaceAll("DOTS_R", dots(60,28,3,3,3,.32))
+  .replace("DOTS_D4", dots(93,62,2.25,2.25,2.5,.3));
+const lib = document.createElement("div"); lib.innerHTML = tpl;
+const face = id => lib.querySelector(`[data-face="${id}"]`).cloneNode(true);
+
+function modLabel(root){
+  root.querySelectorAll(".qt .cell").forEach(c=>{
+    const q = c.querySelector(".qr"); const mm = parseFloat(q.style.width);
+    c.querySelector("span").innerHTML = c.querySelector("span").innerHTML.replace("MOD", (mm/META[q.dataset.qr].modules).toFixed(2).replace(".",",")+" mm/mód");
+  });
+}
+
+const params = new URLSearchParams(location.hash.slice(1));
+const tsheet = params.get("testsheet");
+if (tsheet) {
+  document.body.classList.add("print","testsheet");
+  const items = [["R5","light",0,"frente"],["R5","light",1,"dorso"],["R5","dark",0,"frente"],["R5","dark",1,"dorso"],["QT","light",0,""],["QT","dark",0,""]];
+  const head = document.createElement("div"); head.className = "thead";
+  head.innerHTML = "Hoja de prueba de impresión · A4 · tamaño real 85 x 54 mm<br>R5 light/dark (frente y dorso) + QT light/dark";
+  document.body.appendChild(head);
+  const grid = document.createElement("div"); grid.className = "tgrid";
+  items.forEach(([id,th,i,side])=>{
+    const d = DESIGNS.find(x=>x.id===id);
+    const cell = document.createElement("div"); cell.className = `tcell t-${th}`;
+    const fw = document.createElement("div"); fw.className = "face";
+    fw.appendChild(face(d.faces[i])); cell.appendChild(fw);
+    const cap = document.createElement("div"); cap.className = "cap"; cap.textContent = `${id} ${th}${side?" "+side:""}`;
+    cell.appendChild(cap); grid.appendChild(cell); modLabel(cell);
+  });
+  document.body.appendChild(grid);
+} else
+if (params.get("print")) {
+  document.body.classList.add("print");
+  if (params.get("bleed")==="0") { document.body.classList.add("nobleed"); const st=document.createElement("style"); st.textContent="@page{size:85mm 54mm}"; document.head.appendChild(st); }
+  const d = DESIGNS.find(x=>x.id===params.get("print"));
+  const th = params.get("theme") || "light";
+  d.faces.forEach(f=>{
+    const sheet = document.createElement("div");
+    sheet.className = `sheet t-${th}`;
+    const fw = document.createElement("div"); fw.className = "face";
+    const c = face(f); fw.appendChild(c); sheet.appendChild(fw);
+    document.body.appendChild(sheet);
+    sheet.style.background = getComputedStyle(c).backgroundColor;
+    modLabel(sheet);
+  });
+} else {
+  const main = document.getElementById("designs");
+  DESIGNS.forEach(d=>{
+    const s = document.createElement("section");
+    s.className = "design"; s.id = d.id; s.dataset.kind = d.kind;
+    const tags = d.tags.map(t=>`<span class="tag${t.startsWith("qr wsp")?" qrtest":""}">${t}</span>`).join("");
+    s.innerHTML = `<div class="dhead"><span class="id">${d.id}</span><h2>${d.name}</h2><div class="tags">${tags}</div></div><p class="why">${d.why}</p><div class="rows"></div>`;
+    const rows = s.querySelector(".rows");
+    ["light","dark"].forEach(th=>{
+      const row = document.createElement("div"); row.className = `row ${th}`;
+      row.innerHTML = `<div class="row-label">${th}</div>`;
+      d.faces.forEach((f,i)=>{
+        const fig = document.createElement("figure"); fig.className = "fig";
+        const fw = document.createElement("div"); fw.className = `face t-${th}`;
+        fw.appendChild(face(f)); fig.appendChild(fw);
+        const cap = document.createElement("figcaption");
+        cap.textContent = d.faces.length>1 ? (i===0?"frente":"dorso") : (d.kind==="test"?"una cara":"simple faz");
+        fig.appendChild(cap); row.appendChild(fig);
+      });
+      rows.appendChild(row);
+    });
+    main.appendChild(s);
+  });
+  modLabel(main);
+  document.querySelectorAll(".seg").forEach(seg=>{
+    seg.addEventListener("click",e=>{
+      const b = e.target.closest("button"); if(!b) return;
+      seg.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+      document.body.dataset[seg.dataset.ctl] = b.dataset.v;
+    });
+  });
+}
+</script>
+</body>
+</html>
