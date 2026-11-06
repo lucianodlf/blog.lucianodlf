@@ -1,0 +1,137 @@
+# Sección "Servicios" de la home (layouts/index.html, ancla #servicios).
+# Cuatro variantes de textos; se elige con `active`. Skills solo con uso real
+# (fuente: mi-profile/piezas/skills.md y pitch.md, "Evidencia por promesa").
+# Comparación de variantes: .agents/working-progress/items/004-feat-ajustes-home-cv-servicios/inputs/propuestas.md
+
+active: "a"
+
+cta:
+  title: "¿No sabés por dónde empezar?"
+  text: "Contame qué querés resolver y vemos juntos qué conviene construir primero."
+  label: "Escribime"
+  url: "mailto:luciano.dlf@gmail.com"
+
+variants:
+  # A. Cercana a los textos actuales (CV, pitch de servicios, home)
+  a:
+    eyebrow: "$ man luciano"
+    title: "En qué te puedo ayudar"
+    intro: "Desde el relevamiento hasta un sistema que tu equipo usa todos los días."
+    items:
+      - title: "Desarrollo backend y full stack"
+        text: "Sistemas internos y de gestión: diseño soluciones desde cero o mejoro las que ya tenés."
+        skills: ["Python", "FastAPI", "Node.js", "Vue.js", "PostgreSQL", "Redis"]
+      - title: "Integraciones"
+        text: "Integración entre plataformas: ERP, ecommerce y APIs, para sincronizar datos y evitar procesos duplicados."
+        skills: ["APIs REST", "WooCommerce", "ARCA", "ETL", "Migración de datos"]
+      - title: "Implementaciones Odoo"
+        text: "Implementación y adaptación de Odoo, con módulos propios cuando hace falta."
+        skills: ["Odoo 19", "Módulos propios", "Punto de venta", "Migración desde Excel"]
+      - title: "Automatización con IA"
+        text: "Procesos, workflows y documentos, con IA cuando aporta valor y validación humana del resultado."
+        skills: ["LiteLLM", "n8n", "OCR", "Ollama", "MCP"]
+      - title: "Web scraping"
+        text: "Recolección y enriquecimiento de datos desde APIs públicas y sitios web."
+        skills: ["Requests", "BeautifulSoup", "Playwright", "Open Library", "Google Books"]
+      - title: "Estructura técnica"
+        text: "Entornos, despliegues y backups para que el sistema funcione y se pueda mantener."
+        skills: ["Docker", "Linux", "Caddy", "Nginx", "GitLab CI", "Cloudflare"]
+      - title: "Análisis funcional"
+        text: "Relevamiento y análisis antes de escribir código, para diseñar la estrategia que se adapte a tu caso."
+        skills: ["Relevamiento", "Preventa técnica", "Specs", "Criterios de aceptación"]
+      - title: "Formación y capacitación"
+        text: "Capacito a los usuarios, acompaño la adopción y sostengo el mantenimiento evolutivo."
+        skills: ["Capacitación de usuarios", "Puesta en marcha", "Soporte", "Mentoría técnica"]
+
+  # B. Desde el problema del cliente: el título es la situación que trae
+  b:
+    eyebrow: "$ grep -r problema ./tu-empresa"
+    title: "Lo que puedo resolver"
+    intro: "Si alguna de estas te suena conocida, hablemos."
+    items:
+      - title: "La planilla ya no alcanza"
+        text: "Llevo la caja, el stock o las cuentas corrientes de Excel y papel a un sistema hecho para cómo trabajás."
+        skills: ["Python", "FastAPI", "Node.js", "Vue.js", "PostgreSQL"]
+      - title: "Tus sistemas no se hablan"
+        text: "Conecto el ERP, la tienda online y los servicios que usás para que los datos se carguen una sola vez."
+        skills: ["APIs REST", "WooCommerce", "ARCA", "ETL"]
+      - title: "Necesitás un ERP"
+        text: "Implemento Odoo con lo que tu negocio usa de verdad y desarrollo módulos propios para lo que falta."
+        skills: ["Odoo 19", "Módulos propios", "Punto de venta", "Facturación"]
+      - title: "Tareas que se repiten"
+        text: "Automatizo lo que hoy se hace a mano, con IA solo donde suma y siempre con una persona que valida."
+        skills: ["n8n", "LiteLLM", "OCR", "Gemini", "MCP"]
+      - title: "Los datos están en la web"
+        text: "Armo scrapers y consultas a APIs que completan tu información sin copiar y pegar."
+        skills: ["BeautifulSoup", "Requests", "Playwright", "APIs públicas"]
+      - title: "Nadie sabe dónde corre"
+        text: "Ordeno servidores, despliegues y backups para que el sistema no dependa de una sola persona."
+        skills: ["Docker", "Linux", "Caddy", "GitLab CI", "VPS"]
+      - title: "No sabés qué pedir"
+        text: "Relevo cómo trabajás y convierto la necesidad en un alcance claro antes de presupuestar."
+        skills: ["Relevamiento", "Análisis funcional", "Specs"]
+      - title: "El sistema está, pero no se usa"
+        text: "Capacito al equipo y acompaño la adopción hasta que lo usan sin mí."
+        skills: ["Capacitación", "Puesta en marcha", "Soporte", "Mentoría"]
+
+  # C. Terminal: cada servicio es un comando, en línea con los títulos "$ ..." del sitio
+  c:
+    eyebrow: "$ luciano --help"
+    title: "Comandos disponibles"
+    intro: "Uso: luciano [servicio] --para tu-proyecto"
+    items:
+      - title: "build"
+        text: "Desarrollo backend y full stack de sistemas internos y de gestión, desde la base de datos hasta la interfaz."
+        skills: ["Python", "FastAPI", "Node.js", "Vue.js", "PostgreSQL"]
+      - title: "integrate"
+        text: "Sincroniza ERP, ecommerce y APIs de terceros. Sin cargas duplicadas."
+        skills: ["APIs REST", "WooCommerce", "ARCA", "ETL"]
+      - title: "implement --odoo"
+        text: "Odoo configurado a tu negocio, con migración de datos y módulos propios."
+        skills: ["Odoo 19", "Módulos propios", "Migración desde Excel"]
+      - title: "automate --with-ai"
+        text: "Workflows y documentos automatizados. La IA propone, una persona valida."
+        skills: ["n8n", "LiteLLM", "OCR", "Ollama", "MCP"]
+      - title: "scrape"
+        text: "Datos de sitios y APIs públicas, limpios y listos para usar."
+        skills: ["BeautifulSoup", "Requests", "Playwright"]
+      - title: "deploy"
+        text: "Contenedores, proxy, certificados, CI y backups programados."
+        skills: ["Docker", "Caddy", "Nginx", "GitLab CI", "Cloudflare"]
+      - title: "analyze"
+        text: "Relevamiento y análisis funcional antes de la primera línea de código."
+        skills: ["Relevamiento", "Specs", "Criterios de aceptación"]
+      - title: "teach"
+        text: "Capacitación, acompañamiento en la puesta en marcha y mantenimiento evolutivo."
+        skills: ["Capacitación", "Puesta en marcha", "Soporte", "Mentoría"]
+
+  # D. Recorrido de un proyecto: los servicios ordenados como etapas, de la idea al uso
+  d:
+    eyebrow: "$ cat recorrido.md"
+    title: "De la idea al sistema que se usa"
+    intro: "Puedo sumarme en una etapa o acompañar el recorrido completo."
+    items:
+      - title: "Entender"
+        text: "Relevo cómo trabaja la gente y qué información maneja. Ahí aparece lo que hay que construir."
+        skills: ["Relevamiento", "Análisis funcional", "Preventa técnica"]
+      - title: "Diseñar"
+        text: "Convierto la necesidad en specs, fases chicas y criterios de aceptación."
+        skills: ["Specs", "Spec-Driven Development", "Criterios de aceptación"]
+      - title: "Construir"
+        text: "Backend, frontend y base de datos para sistemas internos y de gestión."
+        skills: ["Python", "FastAPI", "Node.js", "Vue.js", "PostgreSQL"]
+      - title: "Conectar"
+        text: "Integro ERP, ecommerce y APIs, y traigo datos de la web cuando hacen falta."
+        skills: ["Odoo", "WooCommerce", "ARCA", "BeautifulSoup", "ETL"]
+      - title: "Automatizar"
+        text: "Saco del medio las tareas repetitivas, con IA donde aporta y validación humana."
+        skills: ["n8n", "LiteLLM", "OCR", "MCP"]
+      - title: "Desplegar"
+        text: "Entornos reproducibles, despliegue continuo y backups."
+        skills: ["Docker", "Linux", "Caddy", "GitLab CI"]
+      - title: "Acompañar"
+        text: "Capacito a los usuarios y sostengo el mantenimiento evolutivo."
+        skills: ["Capacitación", "Puesta en marcha", "Soporte"]
+      - title: "Enseñar"
+        text: "Transfiero lo técnico al equipo: control de versiones, despliegue y flujos con IA."
+        skills: ["Mentoría técnica", "Git", "Claude Code"]

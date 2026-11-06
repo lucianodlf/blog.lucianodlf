@@ -21,21 +21,34 @@
   </div>
 </section>
 
+{{- if $h.showMetrics }}
 <section class="container section section--tight" aria-label="Métricas">
   <div class="stats stats--open">
     {{- range $h.metrics }}{{ partial "components/stat.html" . }}{{ end }}
   </div>
 </section>
+{{- end }}
 
-<section class="container section" aria-labelledby="services-title">
+{{- $sd := hugo.Data.services }}
+{{- $s := index $sd.variants $sd.active }}
+<section id="servicios" class="container section services" aria-labelledby="services-title">
   <div class="section__head">
-    <div class="section__heading"><h2 id="services-title" class="section__title">{{ $h.services.title }}</h2><p class="prompt">{{ $h.services.eyebrow }}</p></div>
+    <div class="section__heading"><h2 id="services-title" class="section__title">{{ $s.title }}</h2><p class="prompt">{{ $s.eyebrow }}</p></div>
   </div>
-  <ul class="manpage">
-    {{- range $h.services.items }}
-    <li class="manpage__item">
-      <h3 class="manpage__title"><i class="{{ .icon }}" aria-hidden="true"></i>{{ .title }}</h3>
-      <p class="manpage__text">{{ .text }}</p>
+  {{- with $s.intro }}<p class="services__intro">{{ . }}</p>{{ end }}
+  <ul class="services__grid">
+    {{- range $s.items }}
+    <li class="service">
+      <h3 class="service__title{{ if eq $sd.active "c" }} service__title--cmd{{ end }}">{{ .title }}</h3>
+      <p class="service__text">{{ .text }}</p>
+      {{- with .skills }}<p class="service__skills">{{ range . }}<span class="chip chip--neutral">{{ . }}</span>{{ end }}</p>{{ end }}
+    </li>
+    {{- end }}
+    {{- with $sd.cta }}
+    <li class="service service--cta">
+      <h3 class="service__title">{{ .title }}</h3>
+      <p class="service__text">{{ .text }}</p>
+      <p><a class="btn btn--primary" href="{{ .url }}">{{ .label }}</a></p>
     </li>
     {{- end }}
   </ul>
@@ -116,10 +129,11 @@
       <h2 id="contact-title" class="section__title">{{ $h.contact.title }}</h2>
       <p>{{ $h.contact.text }}</p>
     </div>
-    <p class="actions">
-      <a class="btn btn--primary" href="{{ $h.contact.cta.url }}">{{ $h.contact.cta.label }}</a>
-      <a class="btn btn--secondary" href="{{ $h.contact.secondary.url }}" rel="me">{{ $h.contact.secondary.label }}</a>
-    </p>
+    <ul class="icon-links" aria-label="Contacto">
+      {{- range $h.contact.links }}
+      <li><a class="icon-link" href="{{ .url }}" title="{{ .label }}" aria-label="{{ .label }}"{{ if hasPrefix .url "http" }} rel="me noopener" target="_blank"{{ end }}><i class="{{ .icon }}" aria-hidden="true"></i></a></li>
+      {{- end }}
+    </ul>
   </div>
 </section>
 {{ end }}

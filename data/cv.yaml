@@ -10,6 +10,8 @@ contact:
   - { label: "github.com/lucianodlf", url: "https://github.com/lucianodlf", icon: "fa-brands fa-github" }
 pdf: "cv/luciano-delfino-cv.pdf"
 
+# Métricas ocultas por ahora (showStats: true para volver a mostrarlas).
+showStats: false
 stats:
   - { value: "2006", label: "en IT; desarrollo desde 2016" }
   - { value: "+20", label: "clientes en implementaciones" }

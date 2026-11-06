@@ -16,10 +16,21 @@ Sitio personal de `lucianodlf` en Hugo (tema Risotto, GitHub Pages). Hoy es solo
 Sitio propio de Luciano Delfino. La nueva página está en la rama `claude/blissful-meitner-vg30tk`, pendiente de validar y ajustar; hay más cambios pendientes en PR del repo.
 
 ## Problemas que resuelve
+- Presentar quién es Luciano y cómo trabaja (AI-Augmented, workflow basado en specs) a clientes potenciales y equipos de producto.
+- Mostrar proyectos reales con su resultado (home, proyectos, CV online imprimible).
+- Publicar escritos técnicos (blog) y facilitar el contacto (mail, LinkedIn, `/links/`).
 
 ## Restricciones
+- Hugo con layouts propios (la rama `claude/blissful-meitner-vg30tk` quita el tema Risotto); búsqueda con Pagefind; deploy por GitHub Actions a GitHub Pages.
+- Contenido escrito en Obsidian y publicado con Enveloppe (ver `CLAUDE.md`).
+- Los contratos de JS listados en `CLAUDE.md` (ids y clases) no se rompen.
+- Colores solo por tokens (`static/css/tokens.css`), nunca hex en `main.css`.
+- Sin emojis ni em-dash; dark por defecto, light con `html.light`.
+- WCAG AA como piso; respetar `prefers-reduced-motion`.
 
 ## No-objetivos
+- No inventar testimonios ni logos de clientes.
+- No modificar `themes/risotto/` (mientras exista); los overrides van en `layouts/` y `static/css/`.
 
 ## Estructura del producto
 <!-- Carpetas principales del repo y qué contienen. Solo lo que no se deduce mirando. -->

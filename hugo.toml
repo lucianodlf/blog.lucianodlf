@@ -54,6 +54,11 @@ pageRef = "/posts"
 weight = 10
 
 [[menus.main]]
+name = "Servicios"
+url = "/#servicios"
+weight = 15
+
+[[menus.main]]
 name = "Proyectos"
 pageRef = "/projects"
 weight = 20

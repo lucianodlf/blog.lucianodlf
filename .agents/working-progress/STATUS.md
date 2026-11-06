@@ -12,15 +12,12 @@ focus: ["001"]
 - [002] cerrado con `/wp-done`: `LAST-STATUS.md` a `.agents/working-progress/INBOX.md` y `.agents/working-progress/log/legacy/LAST-STATUS.md`, plan de MilPathsX convertido en [003], `CLAUDE.md` sin el workflow viejo. Cosecha: nada. `wp check` ok.
 
 ## Próximo paso
-- Traer las ramas `claude/blissful-meitner-vg30tk` y `claude/laughing-lamport-omyrbh` y revisarlas (criterio C2 de [001]).
-- Completar `PROJECT.md` (Problemas que resuelve, Restricciones, No-objetivos) con lo que salga del análisis de la rama.
+- `blissful-meitner` mergeada en `main` local (88cb81b) y dominio a `lucianodlf.com.ar` (a3f4b1e), sin push. `make build` + `npx pagefind` ok con Hugo 0.169.0.
+- Antes del push: en GitHub Pages el custom domain es `lucianodlf.is-a.dev` y Cloudflare redirige `lucianodlf.com.ar` (301) hacia ahí. Para servir en `.com.ar`: cambiar el custom domain en Pages y los DNS de Cloudflare (sin redirect).
+- `laughing-lamport` mergeada (9227ac8). Después del push: borrar las ramas remotas `claude/blissful-meitner-vg30tk` y `claude/laughing-lamport-omyrbh` y el worktree `.agents/working-progress/_scratch/vb30tk`.
+- Restos sin trackear del submódulo: `.gitmodules`, `themes/risotto/` (borrar a mano).
 
 ## Esperando tu decisión
-- Aceptar el commit de cierre de [002].
 - [003] (post MilPathsX, backlog): el borrador `content/posts/Desarrollo agentico MilPathsX.md.draft` sigue sin publicar.
-
-## Verificación manual pendiente
-- `wp strays` marca `assets/` e `i18n/` sin trackear hace más de 14 días (ajenos a la migración).
-- `.vscode/` no pudo crear el enlace de commits de Copilot dentro del sandbox; `wp doctor` lo seguirá marcando.
 
 <!-- wp:status -->

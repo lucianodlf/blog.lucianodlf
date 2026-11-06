@@ -3,4 +3,6 @@ public/
 resources/
 .claude
 .env
-.agents/working-progress/_scratch/
+.agents/working-progress/_scratch/*
+.agents/working-progress/_scratch/last-response.md
+
