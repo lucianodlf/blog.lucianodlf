@@ -55,13 +55,11 @@ a { color: var(--primary); }
 .link-btn__text { display: flex; flex-direction: column; min-width: 0; flex: 1; }
 .link-btn__title { font-weight: 600; font-size: 15px; line-height: 20px; }
 .link-btn__sub { font-size: 13px; line-height: 18px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.link-btn__arrow { flex: none; color: var(--muted); font-size: 16px; }
-.link-btn:hover .link-btn__arrow { color: var(--primary); }
 
 .link-btn--primary { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
 .link-btn--primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
 .link-btn--primary .link-btn__icon { background: var(--on-primary); color: var(--primary); }
-.link-btn--primary .link-btn__sub, .link-btn--primary .link-btn__arrow, .link-btn--primary:hover .link-btn__arrow { color: var(--on-primary); }
+.link-btn--primary .link-btn__sub { color: var(--on-primary); }
 
 .links__foot { margin-top: var(--space-12); display: flex; flex-direction: column; align-items: center; gap: var(--space-4); font-family: var(--font-mono); font-size: 13px; }
 .links__foot a { color: var(--muted); text-decoration: none; }

@@ -30,7 +30,6 @@
         {{- else if .image }}<img class="link-btn__thumb link-btn__thumb--mark" src="{{ .image | absURL }}" width="40" height="40" alt="">
         {{- else }}<span class="link-btn__icon" aria-hidden="true"><i class="{{ .icon | default "fa-solid fa-link" }}"></i></span>{{ end }}
         <span class="link-btn__text"><span class="link-btn__title">{{ .title }}</span>{{ with .subtitle }}<span class="link-btn__sub">{{ . }}</span>{{ end }}</span>
-        <span class="link-btn__arrow" aria-hidden="true">{{ if and $external (hasPrefix .url "http") }}↗{{ else if hasPrefix .url "mailto:" }}<i class="fa-regular fa-envelope"></i>{{ else }}→{{ end }}</span>
       </a></li>
       {{- end }}{{ end }}
       {{- with .posts }}
@@ -38,7 +37,6 @@
       <li><a class="link-btn" href="{{ .Permalink }}">
         <span class="link-btn__icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
         <span class="link-btn__text"><span class="link-btn__title">{{ .Title }}</span><span class="link-btn__sub">{{ partial "fmt-date.html" (dict "date" .Date) }} · {{ .ReadingTime }} min</span></span>
-        <span class="link-btn__arrow" aria-hidden="true">→</span>
       </a></li>
       {{- end }}
       {{- end }}
