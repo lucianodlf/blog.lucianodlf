@@ -2,7 +2,7 @@
 id: "001"
 title: "Convertir el blog en sitio personal: portfolio, blog y CV online"
 type: epic
-status: backlog         # backlog | todo | doing | verify | done | blocked | dropped
+status: verify          # backlog | todo | doing | verify | done | blocked | dropped
 priority: media         # alta | media | baja (la asigna el agente, ver `wp conv items`)
 size: L                 # S = 1 sesión | M = 2-3 | L = épica
 parent:
@@ -32,11 +32,11 @@ el proyecto actualmente es de blog solo, pero se conviente en pagina persona, po
 5. Integrar los cambios pendientes de los PR.
 
 ## Criterios de aceptación
-- [ ] C1 El proyecto opera con WP (`wp check` ok, `PROJECT.md` completo).
-- [ ] C2 Las ramas de los PR están traídas y revisadas.
-- [ ] C3 La nueva página está validada y ajustada.
-- [ ] C4 Los cambios pendientes de los PR están integrados en `main`.
-- [ ] C5 Verificación de punta a punta: el sitio construye (`make build`) y muestra página personal, portfolio, blog y CV.
+- [x] C1 El proyecto opera con WP (`wp check` ok, `PROJECT.md` completo).
+- [x] C2 Las ramas de los PR están traídas y revisadas.
+- [x] C3 La nueva página está validada y ajustada.
+- [x] C4 Los cambios pendientes de los PR están integrados en `main`.
+- [x] C5 Verificación de punta a punta: el sitio construye (`make build`) y muestra página personal, portfolio, blog y CV.
 
 ## Fuera de alcance
 - Detalle de diseño y de producto: se define al analizar la rama de la nueva página.
@@ -46,10 +46,10 @@ el proyecto actualmente es de blog solo, pero se conviente en pagina persona, po
 
 ## Verificación
 <!-- La completa el agente al pasar a verify. -->
-Veredicto: verified | partial | failed
-- Evidencia: comando + resultado, captura o caso reproducido.
-- Señales de desvío: funcionalidad no pedida / tests tocados / idas y vueltas: ninguna | detalle.
-- Pendiente manual (usuario): ...
+Veredicto: verified
+- Evidencia (2026-11-06): push de `main` (`71afde8..d31516e`), CI `deploy` en success (https://github.com/lucianodlf/blog.lucianodlf/actions/runs/42310953981). En https://lucianodlf.com.ar responden 200 `/`, `/posts/`, `/projects/`, `/cv/`, `/links/`, `/l/` y `/pagefind/pagefind.js`; canonical `https://lucianodlf.com.ar/`. `make build` ok en local. gitleaks sobre todo el historial: sin hallazgos (falso positivo de LinkedIn en `.gitleaksignore`).
+- Señales de desvío: antes del push se hizo una limpieza de seguridad (archivos de migración fuera del historial no publicado, `CLAUDE.local.md` para la ruta del vault).
+- Pendiente manual (usuario): borrar las ramas remotas `claude/blissful-meitner-vg30tk` y `claude/laughing-lamport-omyrbh` y el worktree `.agents/working-progress/_scratch/vb30tk` (hoy `wp check` falla solo por esa ruta citada en `STATUS.md`).
 
 ## Cierre
 <!-- La completa /wp-done: 2-3 líneas, commits, knowledge actualizado, futures. -->
