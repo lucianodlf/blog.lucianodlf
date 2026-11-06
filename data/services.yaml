@@ -25,23 +25,23 @@ variants:
         text: "Integración entre plataformas: ERP, ecommerce y APIs, para sincronizar datos y evitar procesos duplicados."
         skills: ["APIs REST", "WooCommerce", "ARCA", "ETL", "Migración de datos"]
       - title: "Implementaciones"
-        text: "Implemento sistemas en tu empresa: programo lo que falta, instalo y configuro, migro tus datos y dejo todo en producción, con soporte después."
-        skills: ["Odoo", "Módulos propios", "Migración desde Excel", "Puesta en marcha", "Soporte"]
+        text: "Implemento sistemas para tu empresa: instalaciones, configuraciones, migraciones de datos, acopañamiento en produción y soporte."
+        skills: ["Odoo", "Migración desde Excel", "Puesta en marcha", "Soporte"]
       - title: "Automatización con IA"
-        text: "Procesos, workflows y documentos, con IA cuando aporta valor y validación humana del resultado."
-        skills: ["LiteLLM", "n8n", "OCR", "Ollama", "MCP"]
+        text: "Procesos, workflows y bases de conocimiento y gestion de memoria para agentes"
+        skills: ["LiteLLM", "n8n", "OCR", "Claude Code", "MCP", "RAG"]
       - title: "Web scraping"
-        text: "Recolección y enriquecimiento de datos desde APIs públicas y sitios web."
-        skills: ["Requests", "BeautifulSoup", "Playwright", "APIs públicas"]
+        text: "Recolección y enriquecimiento de datos desde APIs y sitios web."
+        skills: ["BeautifulSoup", "Playwright", "Browser-use", Puppeteer]
       - title: "Administración de sistemas"
         text: "Servidores, contenedores, certificados y backups, para que el sistema funcione y se pueda mantener."
-        skills: ["Docker", "Linux", "Caddy", "Nginx", "GitLab CI", "Cloudflare"]
-      - title: "Análisis funcional"
+        skills: ["Docker", "Linux", "Caddy", "Nginx", "Apache", "GitLab CI", "Cloudflare"]
+      - title: "Análisis Funcional"
         text: "Relevamiento y análisis antes de escribir código, para diseñar la estrategia que se adapte a tu caso."
-        skills: ["Relevamiento", "Preventa técnica"]
+        skills: ["Relevamiento", "Diseño", "Lluvia de ideas", "Preventa técnica"]
       - title: "Formación y capacitación"
-        text: "Capacito a los usuarios y al equipo técnico, y acompaño la adopción hasta que lo usan sin mí."
-        skills: ["Capacitación de usuarios", "Mentoría técnica"]
+        text: "Impulso la inclusión tecnológica mediante la transferencia de conocimiento, facilitando que las personas desarrollen competencias clave para el entorno digital."
+        skills: ["Capacitación de usuarios", "Mentoría técnica", "Alfabetización digital"]
 
   # B. Desde el problema del cliente: el título es la situación que trae
   b:

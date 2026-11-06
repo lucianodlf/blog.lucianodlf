@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="container section-page">
-  {{ partial "components/page-title.html" (dict "eyebrow" "$ ls proyectos/" "title" "Proyectos" "lead" "Sistemas para clientes y herramientas propias. Cada uno con su contexto, lo que hice y el resultado.") }}
+  {{ partial "components/page-title.html" (dict "eyebrow" "$ ls proyectos/" "title" "Proyectos" "lead" "Sistemas para clientes y herramientas propias.") }}
   {{- $all := .Pages.ByWeight }}
   {{- $clients := where $all "Params.kind" "cliente" }}
   {{- $own := where $all "Params.kind" "propio" }}

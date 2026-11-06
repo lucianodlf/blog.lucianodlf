@@ -6,7 +6,7 @@ client: "Poliédrica Librería Nómade"
 role: "Software Engineer"
 period: "07/2026 – 10/2026"
 date: 2026-07-01
-status: finalizado
+status: en curso
 featured: true
 weight: 2
 coverLabel: "Poliédrica"

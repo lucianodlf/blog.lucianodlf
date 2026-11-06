@@ -3,7 +3,7 @@
 <article class="container project">
   <header class="project__header">
     <p class="post__back"><a class="see-all" href="{{ "/projects/" | relURL }}">← Proyectos</a></p>
-    <p class="card__chips"><span class="chip chip--soft">{{ .Params.kind }}</span>{{ with .Params.status }}<span class="chip chip--status">{{ . }}</span>{{ end }}</p>
+    <p class="card__chips"><span class="chip chip--soft">{{ .Params.kind }}</span>{{ with .Params.status }}<span class="chip chip--status{{ if eq (lower .) "en curso" }} chip--status-active{{ end }}">{{ . }}</span>{{ end }}</p>
     <h1 class="page-title">{{ .Title }}<span class="cursor" aria-hidden="true">_</span></h1>
     <p class="lead">{{ .Params.summary }}</p>
     <dl class="facts">

@@ -4,7 +4,7 @@
 hero:
   name: "Luciano Delfino"
   role: "Software Engineer | Backend & Full Stack | AI-Augmented"
-  lead: "Trabajo en IT desarrollando software para ayudar a las personas a resolver problemas con herramientas simples y claras. Acá dejo el registro: proyectos, ideas y escritos sueltos de un proceso de pensamiento. Ya estás leyendo una versión desactualizada."
+  lead: "Desarrollo software para ayudar a las personas a resolver problemas y convertir ideas en herramientas simples que aporten claridad. Este sitio es el '--verbose' de ese proceso: proyectos, notas, pensamientos y reflexiones de un flujo de vida que nunca termina de compilar."
   ctas:
     - { label: "Ver proyectos", url: "/projects/", style: "primary" }
     - { label: "Escribime", url: "mailto:luciano.dlf@gmail.com", style: "link" }
@@ -22,12 +22,14 @@ metrics:
 workflow:
   eyebrow: "$ cat workflow.md"
   title: "Cómo trabajo"
-  text: "Trabajo de forma AI-Augmented con un workflow propio basado en specs: genero el backlog desde el documento de alcance y cada issue pasa por investigación, plan, implementación y validación. Así entregué AppLogistic en dos meses para un alcance planificado en tres, con 51 issues en 9 fases."
+  text: "Mi workflow es spec-driven y AI-Augmented: primero entiendo el problema y acordamos qué, cómo y para qué construir; después lo construimos."
   steps:
-    - { cmd: "investigación", text: "Entiendo el problema, el contexto y las herramientas que convienen." }
-    - { cmd: "plan", text: "Fases chicas, cada una con su criterio de aceptación." }
-    - { cmd: "implementación", text: "Código con agentes, guiado por la spec y versionado por fase." }
-    - { cmd: "validación", text: "Tests, métricas y la persona que lo va a usar." }
+    - { cmd: "investigación", text: "Entiendo el problema y busco las herramientas adecuadas para darles a mis agentes un contexto relevante." }
+    - { cmd: "exploración", text: "Intercambio ideas con un agente para tomar mejores decisiones, fundamentadas en la investigación y en las necesidades reales." }
+    - { cmd: "especificación", text: "Reviso y corrijo con la IA el alcance, las decisiones y los criterios de aceptación, o parto de los que ella propone." }
+    - { cmd: "plan", text: "Si la tarea lo demanda, planifico, reviso el plan e itero con un agente hasta llegar al resultado que busco." }
+    - { cmd: "implementación", text: "Los agentes escriben el código guiados por la especificación y yo lo reviso." }
+    - { cmd: "validación", text: "Tests, métricas, usabilidad y feedback de los usuarios." }
   quote: "Los LLMs amplían lo que puedo hacer; la metodología, mi criterio y mis decisiones son con lo que más valor aporto."
 
 # Posts destacados en la home (D14). Rutas de contenido relativas a content/.
