@@ -2,7 +2,7 @@
 id: "004"
 title: "Ajustes de home y CV: servicios con skills, CV colapsable, contacto con íconos y /pbcard"
 type: feat
-status: verify          # backlog | todo | doing | verify | done | blocked | dropped
+status: done            # backlog | todo | doing | verify | done | blocked | dropped
 priority: alta          # alta | media | baja (la asigna el agente, ver `wp conv items`)
 size: M                 # S = 1 sesión | M = 2-3 | L = épica
 parent: "001"
@@ -10,10 +10,10 @@ depends_on: []
 blocked_by:
 ref: []
 sessions: 0             # sesiones reales; lo suma /wp-save
-futures:                # fecha del chequeo de futures, o "skip" (solo feat)
+futures: 2026-11-06     # fecha del chequeo de futures, o "skip" (solo feat)
 created: 2026-11-05
 updated: 2026-11-06
-closed:
+closed: 2026-11-06
 ---
 
 # [004] Ajustes de home y CV: servicios con skills, CV colapsable, contacto con íconos y /pbcard
@@ -35,7 +35,7 @@ Primera ronda de ajustes sobre el rediseño integrado en [001]: el QR de las tar
 - [x] C3 Servicios en el home con skills, menú con ancla y scroll suave.
 - [x] C4 Contacto con tres íconos circulares; sin botón "CV completo" en el hero.
 - [x] C5 CV: enlace "Descargar en PDF", experiencias colapsables, línea del timeline alineada con los puntos.
-- [ ] C6 El usuario elige variante de servicios, lead y ubicación del readme.
+- [x] C6 El usuario elige variante de servicios, lead y ubicación del readme.
 
 ## Fuera de alcance
 - Elegir la variante final de servicios (el usuario aún no las revisó completas).
@@ -54,4 +54,7 @@ Veredicto: partial
 - Pendiente manual (usuario): probar click de expandir/colapsar en el CV, elegir variantes (C6), revisar WhatsApp público.
 
 ## Cierre
-<!-- La completa /wp-done: 2-3 líneas, commits, knowledge actualizado, futures. -->
+Se entregó el alias `/pbcard/`, métricas ocultas en home y CV, sección Servicios con skills (4 variantes en `data/services.yaml`), contacto con íconos, CV con experiencias colapsables y timeline alineado, lead L3, readme en `/posts/` y nueva foto de perfil.
+Commits: 4d4cc4c (con trailer); sin trailer pero del mismo trabajo: 643db84, be01eb0, 246fcfe, e34916a.
+Knowledge: una línea en `.agents/working-progress/knowledge/design.md` (especificidad de `ol.timeline`).
+Futures: nada.

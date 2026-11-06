@@ -2,7 +2,7 @@
 id: "001"
 title: "Convertir el blog en sitio personal: portfolio, blog y CV online"
 type: epic
-status: verify          # backlog | todo | doing | verify | done | blocked | dropped
+status: done            # backlog | todo | doing | verify | done | blocked | dropped
 priority: media         # alta | media | baja (la asigna el agente, ver `wp conv items`)
 size: L                 # S = 1 sesión | M = 2-3 | L = épica
 parent:
@@ -12,8 +12,8 @@ ref: []
 sessions: 0             # sesiones reales; lo suma /wp-save
 futures:                # fecha del chequeo de futures, o "skip" (solo feat)
 created: 2026-11-05
-updated: 2026-11-05
-closed:
+updated: 2026-11-06
+closed: 2026-11-06
 ---
 
 # [001] Convertir el blog en sitio personal: portfolio, blog y CV online
@@ -52,4 +52,7 @@ Veredicto: verified
 - Pendiente manual (usuario): borrar las ramas remotas `claude/blissful-meitner-vg30tk` y `claude/laughing-lamport-omyrbh` y el worktree `.agents/working-progress/_scratch/vb30tk` (hoy `wp check` falla solo por esa ruta citada en `STATUS.md`).
 
 ## Cierre
-<!-- La completa /wp-done: 2-3 líneas, commits, knowledge actualizado, futures. -->
+El proyecto opera con WP y el blog pasó a sitio personal (home de marca, blog, proyectos, CV y enlaces), integrado en `main` y desplegado en https://lucianodlf.com.ar con CI en success.
+Commits: aa62dba chore(wp): pasar [001] a verify con la evidencia del deploy; 1cb4b07 chore: usar lucianodlf.com.ar como dominio del sitio; 98af13a chore(wp): iniciar WP y resguardar antes de migrar.
+Knowledge: nada.
+Futures: no aplica (épica).

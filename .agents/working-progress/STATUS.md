@@ -1,23 +1,30 @@
 ---
-updated: 2026-11-05
-focus: ["001"]
+updated: 2026-11-06
+focus: ["003"]
 ---
 
 # Estado
 
 ## Foco
-- [001] Convertir el blog en sitio personal (épica, backlog): traer y revisar las ramas de los PR.
+- [003] Post MilPathsX (backlog): único ítem abierto.
 
 ## Último hecho
-- [002] cerrado con `/wp-done`: `LAST-STATUS.md` a `.agents/working-progress/INBOX.md` y `.agents/working-progress/log/legacy/LAST-STATUS.md`, plan de MilPathsX convertido en [003], `CLAUDE.md` sin el workflow viejo. Cosecha: nada. `wp check` ok.
+- [004] cerrado con `/wp-done`, forzado. Futures: nada. Cosecha: una línea en `.agents/working-progress/knowledge/design.md` (especificidad de `ol.timeline`). `wp check` ok.
+- [001] cerrado antes en esta sesión, forzado (sitio desplegado en https://lucianodlf.com.ar).
 
 ## Próximo paso
-- `blissful-meitner` mergeada en `main` local (88cb81b) y dominio a `lucianodlf.com.ar` (a3f4b1e), sin push. `make build` + `npx pagefind` ok con Hugo 0.169.0.
-- Antes del push: en GitHub Pages el custom domain es `lucianodlf.is-a.dev` y Cloudflare redirige `lucianodlf.com.ar` (301) hacia ahí. Para servir en `.com.ar`: cambiar el custom domain en Pages y los DNS de Cloudflare (sin redirect).
-- `laughing-lamport` mergeada (9227ac8). Después del push: borrar las ramas remotas `claude/blissful-meitner-vg30tk` y `claude/laughing-lamport-omyrbh` y el worktree `.agents/working-progress/_scratch/vb30tk`.
-- Restos sin trackear del submódulo: `.gitmodules`, `themes/risotto/` (borrar a mano).
+- Elegir variante de servicios (las 4 siguen en `data/services.yaml`) y, si hace falta, abrir un ítem nuevo (próximo ID 005).
+- Borrar a mano las ramas remotas `claude/blissful-meitner-vg30tk` y `claude/laughing-lamport-omyrbh` y el worktree de `blissful-meitner` en `_scratch/` (`git worktree remove`, `git push origin --delete`).
+- Borrar restos sin trackear del submódulo: `.gitmodules`, `themes/risotto/`.
 
 ## Esperando tu decisión
 - [003] (post MilPathsX, backlog): el borrador `content/posts/Desarrollo agentico MilPathsX.md.draft` sigue sin publicar.
+
+## Verificación manual pendiente
+- Probar expandir y colapsar experiencias en `/cv/`.
+- Revisar el WhatsApp público del contacto del home.
+
+## Futures
+- Últimos 3 cerrados: 1 feat, 0 refactor/chore/fix.
 
 <!-- wp:status -->
