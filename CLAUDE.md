@@ -40,6 +40,7 @@ static/
     callouts.js             ← convierte > [!TYPE] a callout boxes
     tables.js               ← scroll horizontal + toggle markdown crudo
     mermaid.js              ← mermaid con colores desde tokens
+  brand/isotipo.svg         ← fuente única del isotipo (paths, sin fuentes); `node scripts/build-brand.mjs` genera favicon.svg y los PNG
   favicon.svg, *.png, img/og-default.png
 layouts/
   _default/baseof.html      ← shell: skip link, header, main, footer

@@ -170,6 +170,8 @@ html.wide .container { max-width: var(--container-wide); }
 .site-footer__recent .status-pill { margin-top: var(--space-6); }
 .site-footer__bottom { margin-top: var(--space-12); padding-block: var(--space-6); border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; line-height: 20px; }
 .site-footer__bottom a { color: var(--muted); }
+.site-footer .wordmark__flag { display: inline; }
+.heart { color: var(--danger); font-size: .85em; }
 
 /* ---------- 6. Componentes ---------- */
 /* Botones */
@@ -403,6 +405,9 @@ a.chip:hover { border-color: var(--primary); }
 /* ---------- 8. Blog ---------- */
 .tag-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-8); }
 .feature-card { position: relative; padding: var(--space-6); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); display: grid; gap: var(--space-3); transition: border-color var(--ease); }
+.feature-grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+@media (min-width: 768px) { .feature-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); } }
+.feature-grid .feature-card { align-content: start; }
 .feature-card:hover { border-color: var(--primary); }
 .feature-card:hover .card__link { color: var(--primary); }
 .feature-card .eyebrow { margin: 0; color: var(--accent); }

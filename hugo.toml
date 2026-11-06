@@ -1,7 +1,7 @@
 baseURL = "https://lucianodlf.com.ar/"
 title = "lucianodlf -v"
 
-copyright = "© {year} Luciano Delfino · hecho con [Hugo](https://gohugo.io/) · Santa Fe, Argentina"
+copyright = "© {year} Luciano Delfino · hecho con <i class=\"fa-solid fa-heart heart\" role=\"img\" aria-label=\"amor\"></i> y [Hugo](https://gohugo.io/) · Santa Fe, Argentina"
 locale = "es"
 DefaultContentLanguage = "es"
 enableInlineShortcodes = true
@@ -67,6 +67,11 @@ weight = 20
 name = "CV"
 pageRef = "/cv"
 weight = 30
+
+[[menus.main]]
+name = "Contacto"
+url = "/#contacto"
+weight = 40
 
 [taxonomies]
 category = "categories"

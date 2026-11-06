@@ -3,7 +3,7 @@ title: "Benchmarking de modelos de visión con Ollama: CPU local vs GPU en Colab
 date: 2026-07-21
 draft: false
 share: true
-featured: false
+featured: true
 toc: true
 tags:
   - ollama

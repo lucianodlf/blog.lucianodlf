@@ -4,11 +4,15 @@
 intro: "Desarrollo software para ayudar a las personas a resolver problemas y convertir ideas en herramientas simples."
 
 sections:
+  - eyebrow: "$ contacto"
+    items:
+      - { title: "Escribime", subtitle: "luciano.dlf@gmail.com", url: "mailto:luciano.dlf@gmail.com", icon: "fa-solid fa-envelope" }
+      - { title: "WhatsApp", subtitle: "Mensaje directo", url: "https://wa.me/5493425133628", icon: "fa-brands fa-whatsapp" }
+
   - eyebrow: ""
     items:
-      - { title: "Sitio y blog", subtitle: "lucianodlf.com.ar", url: "/", icon: "fa-solid fa-house", primary: true }
+      - { title: "Web y blog", subtitle: "lucianodlf.com.ar", url: "/", image: "brand/isotipo.svg", primary: true }
       - { title: "CV completo", subtitle: "Experiencia, skills y formación", url: "/cv/", icon: "fa-solid fa-file-lines" }
-      - { title: "Escribime", subtitle: "luciano.dlf@gmail.com", url: "mailto:luciano.dlf@gmail.com", icon: "fa-solid fa-envelope" }
 
   - eyebrow: "$ ls proyectos/"
     items:
@@ -16,8 +20,8 @@ sections:
       - { title: "Proyectos", subtitle: "Trabajo con clientes y proyectos propios", url: "/projects/", icon: "fa-solid fa-folder-open" }
       - { title: "GitHub", subtitle: "github.com/lucianodlf", url: "https://github.com/lucianodlf", icon: "fa-brands fa-github" }
 
-  - eyebrow: "$ ls -t posts/ | head -2"
-    posts: 2
+  # - eyebrow: "$ ls -t posts/ | head -2"
+  #   posts: 2
 
   - eyebrow: "$ ls redes/"
     items:

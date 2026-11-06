@@ -27,6 +27,7 @@
         {{- $thumb := "" }}
         {{- with .project }}{{ with site.GetPage (printf "/projects/%s" .) }}{{ with .Resources.GetMatch "cover.*" }}{{ $thumb = .Fill "80x80 webp" }}{{ end }}{{ end }}{{ end }}
         {{- if $thumb }}<img class="link-btn__thumb" src="{{ $thumb.Permalink }}" width="40" height="40" alt="">
+        {{- else if .image }}<img class="link-btn__thumb link-btn__thumb--mark" src="{{ .image | absURL }}" width="40" height="40" alt="">
         {{- else }}<span class="link-btn__icon" aria-hidden="true"><i class="{{ .icon | default "fa-solid fa-link" }}"></i></span>{{ end }}
         <span class="link-btn__text"><span class="link-btn__title">{{ .title }}</span>{{ with .subtitle }}<span class="link-btn__sub">{{ . }}</span>{{ end }}</span>
         <span class="link-btn__arrow" aria-hidden="true">{{ if and $external (hasPrefix .url "http") }}↗{{ else if hasPrefix .url "mailto:" }}<i class="fa-regular fa-envelope"></i>{{ else }}→{{ end }}</span>

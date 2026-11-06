@@ -21,14 +21,18 @@
   {{- end }}
 
   {{- $pages := .Pages }}
-  {{- $featured := first 1 (where (where $pages "Params.featured" true) "Params.author" "eq" nil) }}
-  {{- with index $featured 0 }}
-  <article class="feature-card">
-    <p class="eyebrow">destacado</p>
-    <h2 class="feature-card__title"><a class="card__link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-    <p class="card__excerpt">{{ .Summary | plainify | htmlUnescape | truncate 220 }}</p>
-    <p class="card__meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "fmt-date.html" (dict "date" .Date) }}</time> · {{ .ReadingTime }} min{{ with .Params.author }} · {{ . }}{{ end }}</p>
-  </article>
+  {{- $featured := first 2 (where (where $pages "Params.featured" true) "Params.author" "eq" nil) }}
+  {{- if $featured }}
+  <div class="feature-grid">
+    {{- range $featured }}
+    <article class="feature-card">
+      <p class="eyebrow">destacado</p>
+      <h2 class="feature-card__title"><a class="card__link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p class="card__excerpt">{{ .Summary | plainify | htmlUnescape | truncate 160 }}</p>
+      <p class="card__meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "fmt-date.html" (dict "date" .Date) }}</time> · {{ .ReadingTime }} min{{ with .Params.author }} · {{ . }}{{ end }}</p>
+    </article>
+    {{- end }}
+  </div>
   {{- end }}
 
   {{- range $pages.GroupByDate "2006" }}
