@@ -2,6 +2,15 @@
 <div class="container section-page">
   {{ partial "components/page-title.html" (dict "eyebrow" "$ ls posts/" "title" "Blog" "lead" (.Params.description | default "Write-ups técnicos, con sus desvíos y decisiones cuestionables, y escritura personal.")) }}
 
+  {{- with .Content }}
+  <section class="readme" aria-label="README">
+    <div class="terminal terminal--readme">
+      <p class="terminal__bar">~/readme.txt</p>
+      <div class="terminal__body">{{ . }}</div>
+    </div>
+  </section>
+  {{- end }}
+
   {{- with site.Taxonomies.tags }}
   <nav class="tag-bar" aria-label="Tags más usados">
     {{- range first 8 .ByCount }}

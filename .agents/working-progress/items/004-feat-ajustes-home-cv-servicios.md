@@ -12,7 +12,7 @@ ref: []
 sessions: 0             # sesiones reales; lo suma /wp-save
 futures:                # fecha del chequeo de futures, o "skip" (solo feat)
 created: 2026-11-05
-updated: 2026-11-05
+updated: 2026-11-06
 closed:
 ---
 
@@ -38,11 +38,14 @@ Primera ronda de ajustes sobre el rediseño integrado en [001]: el QR de las tar
 - [ ] C6 El usuario elige variante de servicios, lead y ubicación del readme.
 
 ## Fuera de alcance
-- Aplicar el lead nuevo y mover el readme.txt (esperan decisión).
+- Elegir la variante final de servicios (el usuario aún no las revisó completas).
 - Íconos en las tarjetas de servicios.
 
 ## Notas
 - 2026-11-05: la línea del timeline estaba mal porque `ol[class] { padding: 0 }` gana en especificidad a `.timeline`; se usa `ol.timeline`.
+
+- 2026-11-06: aplicado el lead L3 (`data/home.yaml`); el readme.txt se movió del home a la cabecera de `/posts/` (`content/posts/_index.md`, `layouts/_default/list.html`); nueva foto de perfil en `static/img/avatar.jpg` (recorte cuadrado 640x640 de `_scratch/Screenshot_2026-11-06_12-22-05.png`), usada en hero, `/links/` y tarjeta de autor; el avatar del hero pasó de 128x150 a 128x128 en `cover-svg.html`.
+- 2026-11-06: ajustes a las 4 variantes de servicios: intro de A sin "desde...hasta"; "Implementaciones" general (Odoo como skill, sin "19") e incluye puesta en marcha y soporte; "Estructura técnica" pasó a "Administración de sistemas" (C: `sysadmin`; D: "Acompañar" pasó a "Implementar"); fuera "Specs", "Criterios de aceptación", "Open Library" y "Google Books".
 
 ## Verificación
 Veredicto: partial

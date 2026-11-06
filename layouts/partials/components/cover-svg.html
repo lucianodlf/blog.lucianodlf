@@ -17,7 +17,7 @@
   </g>
   {{- with .avatar }}
   <circle class="cv-ring" cx="384" cy="168" r="68"/>
-  <image href="{{ . }}" x="320" y="96" width="128" height="150" preserveAspectRatio="xMidYMin slice" clip-path="url(#{{ $id }}-av)"/>
+  <image href="{{ . }}" x="320" y="104" width="128" height="128" preserveAspectRatio="xMidYMid slice" clip-path="url(#{{ $id }}-av)"/>
   {{- end }}
   <rect class="cv-accent" x="224" y="296" width="32" height="8"/>
   <rect class="cv-soft" x="48" y="320" width="464" height="96" rx="8"/>

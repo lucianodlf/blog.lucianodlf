@@ -764,3 +764,6 @@ ol.timeline { position: relative; list-style: none; padding: 0 0 0 var(--space-6
 }
 .highlight pre code[data-lang="fallback"]::before, .highlight pre code[data-lang="text"]::before, .terminal pre code[data-lang]::before { display: none; }
 .table-wrap th:last-child { padding-right: 44px; }
+
+/* README del blog (cabecera de /posts/) */
+.readme { margin-bottom: var(--space-8); }

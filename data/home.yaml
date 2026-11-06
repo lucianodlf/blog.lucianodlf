@@ -4,7 +4,7 @@
 hero:
   name: "Luciano Delfino"
   role: "Software Engineer | Backend & Full Stack | AI-Augmented"
-  lead: "Trabajo en IT desarrollando software para ayudar a las personas a resolver problemas, convertir ideas en procesos y herramientas simples que aporten claridad."
+  lead: "Trabajo en IT desarrollando software para ayudar a las personas a resolver problemas con herramientas simples y claras. Acá dejo el registro: proyectos, ideas y escritos sueltos de un proceso de pensamiento. Ya estás leyendo una versión desactualizada."
   ctas:
     - { label: "Ver proyectos", url: "/projects/", style: "primary" }
     - { label: "Escribime", url: "mailto:luciano.dlf@gmail.com", style: "link" }

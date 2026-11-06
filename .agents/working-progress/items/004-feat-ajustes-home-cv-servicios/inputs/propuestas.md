@@ -1,5 +1,7 @@
 # Propuestas de texto: lead del home, servicios y readme.txt
 
+Actualización 2026-11-06: aplicados L3 (lead del home) y el readme.txt en la cabecera de `/posts/`. Las cuatro variantes de servicios se ajustaron: Implementaciones general (incluye puesta en marcha y soporte), "Administración de sistemas" en lugar de "Estructura técnica", sin "Specs", "Criterios de aceptación", "Open Library" ni "Google Books". La variante activa sigue siendo la A. Las secciones de abajo son el registro original.
+
 Fuentes: `data/home.yaml` (lead actual), `content/_index.md` (bloques `whoami` y `readme.txt`), `~/Projects/desarrollo-profesional/mi-profile/piezas/` (identidad, pitch, skills, proyectos, descansos) y `~/Projects/desarrollo-profesional/mi-profile/pitch-servicios-it.es.md`.
 
 ## 1. Lead del home (3 versiones, sin aplicar)

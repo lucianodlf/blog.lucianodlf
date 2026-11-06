@@ -1,5 +1,6 @@
 # Página de enlaces (/links/ y /l/). Los posts se agregan solos (últimos 2).
 # icon: clase FontAwesome. image: ruta en static/. primary: botón principal.
+# hidden: true (en un item o en una sección) lo oculta sin borrarlo.
 intro: "Desarrollo software para ayudar a las personas a resolver problemas y convertir ideas en herramientas simples."
 
 sections:
@@ -9,9 +10,9 @@ sections:
       - { title: "CV completo", subtitle: "Experiencia, skills y formación", url: "/cv/", icon: "fa-solid fa-file-lines" }
       - { title: "Escribime", subtitle: "luciano.dlf@gmail.com", url: "mailto:luciano.dlf@gmail.com", icon: "fa-solid fa-envelope" }
 
-  - eyebrow: "$ ls trabajo/"
+  - eyebrow: "$ ls proyectos/"
     items:
-      - { title: "MiTarasca", subtitle: "Finanzas personales local-first · demo en vivo", url: "https://mitarasca.demo.lucianodlf.com.ar", project: "mitarasca" }
+      - { title: "MiTarasca", subtitle: "Finanzas personales local-first · demo en vivo", url: "https://mitarasca.demo.lucianodlf.com.ar", project: "mitarasca", hidden: true}
       - { title: "Proyectos", subtitle: "Trabajo con clientes y proyectos propios", url: "/projects/", icon: "fa-solid fa-folder-open" }
       - { title: "GitHub", subtitle: "github.com/lucianodlf", url: "https://github.com/lucianodlf", icon: "fa-brands fa-github" }
 

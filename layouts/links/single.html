@@ -7,7 +7,7 @@
 {{- $d := hugo.Data.links }}
 <button type="button" id="theme-toggle" class="links-theme" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
 <main class="links">
-  <div class="links__cover" aria-hidden="true">{{ partial "components/cover-svg.html" (dict "variant" "wide") }}</div>
+  <div class="links__cover"><img src="{{ "img/cover-links.png" | absURL }}" width="1584" height="396" alt="" aria-hidden="true"></div>
   <header class="links__head">
     <img class="links__avatar" src="{{ site.Params.avatar | absURL }}" width="96" height="96" alt="Luciano Delfino">
     <h1 class="links__name">lucianodlf<span class="cursor" aria-hidden="true">_</span></h1>
@@ -16,11 +16,11 @@
     {{ with site.Params.status }}<p class="status-pill"><span class="status-pill__dot" aria-hidden="true"></span>{{ . }}</p>{{ end }}
   </header>
 
-  {{- range $d.sections }}
+  {{- range $d.sections }}{{ if not .hidden }}
   <section class="links__section"{{ with .eyebrow }} aria-label="{{ . }}"{{ end }}>
     {{- with .eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
     <ul class="links__list">
-      {{- range .items }}
+      {{- range .items }}{{ if not .hidden }}
       {{- $external := not (hasPrefix .url "/") }}
       {{- $href := cond $external .url (absURL .url) }}
       <li><a class="link-btn{{ if .primary }} link-btn--primary{{ end }}" href="{{ $href }}"{{ if and $external (hasPrefix .url "http") }} rel="noopener"{{ end }}>
@@ -31,7 +31,7 @@
         <span class="link-btn__text"><span class="link-btn__title">{{ .title }}</span>{{ with .subtitle }}<span class="link-btn__sub">{{ . }}</span>{{ end }}</span>
         <span class="link-btn__arrow" aria-hidden="true">{{ if and $external (hasPrefix .url "http") }}↗{{ else if hasPrefix .url "mailto:" }}<i class="fa-regular fa-envelope"></i>{{ else }}→{{ end }}</span>
       </a></li>
-      {{- end }}
+      {{- end }}{{ end }}
       {{- with .posts }}
       {{- range first . (where site.RegularPages "Type" "posts") }}
       <li><a class="link-btn" href="{{ .Permalink }}">
@@ -43,7 +43,7 @@
       {{- end }}
     </ul>
   </section>
-  {{- end }}
+  {{- end }}{{ end }}
 
   <footer class="links__foot">
     <ul class="social">
