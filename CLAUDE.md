@@ -11,7 +11,7 @@ Repo: git@github.com:lucianodlf/blog.lucianodlf.git
 - **Design system lucianodlf**: IBM Plex Sans/Mono, verde + neutros cálidos + acento ámbar, dark por defecto y light con `html.light`
 - **Hosting**: GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)
 - **Búsqueda**: Pagefind — indexado en CI post-build, modal con `<dialog>`
-- **Escritura**: Obsidian vault en `/home/rafiki/obsidian/universo.digital/`
+- **Escritura**: Obsidian vault (ruta local en `CLAUDE.local.md`, no versionado)
 - **Publicación**: Plugin Enveloppe en Obsidian (`Ctrl+Shift+P`)
 - **Backup vault**: Plugin Obsidian Git (`Ctrl+Shift+S`)
 

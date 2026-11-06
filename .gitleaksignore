@@ -1,0 +1,4 @@
+# Falsos positivos: usuario publico de LinkedIn en docs/tarjetas/build.py
+39754931920f72ad1c00e9b00f0659e08a99e58b:docs/tarjetas/build.py:linkedin-client-id:18
+6827d62c5a140a23e6d0ba1c7082d11248e1e1b3:docs/tarjetas/build.py:linkedin-client-id:18
+docs/tarjetas/build.py:linkedin-client-id:19

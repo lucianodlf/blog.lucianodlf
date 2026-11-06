@@ -6,3 +6,8 @@ resources/
 .agents/working-progress/_scratch/*
 .agents/working-progress/_scratch/last-response.md
 
+
+# Local, sin versionar
+CLAUDE.local.md
+.agents/working-progress/items/_done/002-task-migracion-wp*
+.agents/working-progress/knowledge/migracion.md
