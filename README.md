@@ -61,10 +61,6 @@ links:
 
 Sin `cover.*`, la card usa la composición gráfica del design system con `coverLabel`.
 
-### PDF del CV
-
-Si existe `static/cv/luciano-delfino-cv.pdf`, `/cv/` muestra el botón "Descargar PDF". Sin archivo, queda el botón de imprimir (la hoja de impresión fuerza la paleta light y da un CV de 3 páginas).
-
 ## Uso
 
 ### Requisitos
@@ -85,7 +81,6 @@ make clean    # borra public/
 ## Agradecimientos
 
 - [Hugo](https://github.com/gohugoio/hugo), generador estático
-- [Risotto](https://github.com/joeroe/risotto), el theme que usó este sitio hasta el rediseño de 2026
 
 ---
 

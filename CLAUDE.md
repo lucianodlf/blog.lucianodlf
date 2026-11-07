@@ -161,7 +161,6 @@ No incluir credenciales ni datos sensibles en documentos de trabajo.
 
 ## Pendientes conocidos
 - Comentarios Giscus (opcional)
-- PDF del CV en `static/cv/luciano-delfino-cv.pdf` (el botón aparece solo si existe)
 - Si cambia el DS (artifact `1Cb555udMz1t4gBdSJczcs`), regenerar a mano `static/css/tokens.css` (hoy DS v2 + extensión glow)
 - Llevar los tokens glow y la medida 39rem al DS si se adoptan
 - og:image por post (opcional)

@@ -8,7 +8,7 @@ contact:
   - { label: "luciano.dlf@gmail.com", url: "mailto:luciano.dlf@gmail.com", icon: "fa-solid fa-envelope" }
   - { label: "in/lucianodelfino", url: "https://www.linkedin.com/in/lucianodelfino", icon: "fa-brands fa-linkedin" }
   - { label: "github.com/lucianodlf", url: "https://github.com/lucianodlf", icon: "fa-brands fa-github" }
-pdf: "cv/luciano-delfino-cv.pdf"
+pdf: "https://drive.google.com/file/d/1kzos31ogJ_ksXtjjwXjabDpJ737VMUlt/view?usp=sharing"
 
 # Métricas ocultas por ahora (showStats: true para volver a mostrarlas).
 showStats: false
