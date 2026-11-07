@@ -6,21 +6,16 @@
 {{- if eq $v "hero" -}}
 <svg class="cover cover--hero" viewBox="0 0 480 400" role="img" aria-label="Composición gráfica lucianodlf{{ with .avatar }} con retrato de Luciano Delfino{{ end }}" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <clipPath id="{{ $id }}-av"><circle cx="384" cy="168" r="64"/></clipPath>
+    <clipPath id="{{ $id }}-av"><circle cx="240" cy="200" r="88"/></clipPath>
   </defs>
   <rect class="cv-bg" width="480" height="400"/>
-  <rect class="cv-primary" x="48" y="-16" width="160" height="288" rx="8"/>
-  <rect class="cv-ink" x="224" y="56" width="272" height="224" rx="8"/>
-  <g class="cv-dot">
-    {{- range $y := slice 88 120 152 184 216 248 }}{{ range $x := slice 256 288 }}<circle cx="{{ $x }}" cy="{{ $y }}" r="2"/>{{ end }}{{ end }}
-    {{- range $x := slice 320 352 384 416 448 }}<circle cx="{{ $x }}" cy="88" r="2"/><circle cx="{{ $x }}" cy="248" r="2"/>{{ end }}
-  </g>
+  <rect class="cv-primary" x="64" y="-16" width="168" height="332" rx="8"/>
+  <rect class="cv-soft" x="168" y="352" width="256" height="16" rx="4"/>
   {{- with .avatar }}
-  <circle class="cv-ring" cx="384" cy="168" r="68"/>
-  <image href="{{ . }}" x="320" y="104" width="128" height="128" preserveAspectRatio="xMidYMid slice" clip-path="url(#{{ $id }}-av)"/>
+  <circle class="cv-knock" cx="240" cy="200" r="96"/>
+  <image href="{{ . }}" x="152" y="112" width="176" height="176" preserveAspectRatio="xMidYMid slice" clip-path="url(#{{ $id }}-av)"/>
   {{- end }}
-  <rect class="cv-accent" x="224" y="296" width="32" height="8"/>
-  <rect class="cv-soft" x="48" y="320" width="464" height="96" rx="8"/>
+  <rect class="cv-accent" x="136" y="356" width="32" height="8"/>
 </svg>
 {{- else if eq $v "wide" -}}
 <svg class="cover cover--wide" viewBox="0 0 960 288" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
