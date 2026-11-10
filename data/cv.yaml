@@ -71,7 +71,7 @@ experience:
       - "Implementé procesos en segundo plano con ARQ y Redis y configuré los entornos de QA con Docker Compose, Nginx, Caddy y certbot."
     stack: ["Python", "FastAPI", "SQLAlchemy", "Alembic", "Pydantic", "Poetry", "PostgreSQL", "Redis", "ARQ", "MinIO", "Pytest", "Playwright", "browser-use", "Ollama", "OCR", "Vue.js", "TypeScript", "Docker", "Nginx", "Caddy", "GitLab", "ARCA", "Claude Code"]
 
-  - role: "Ingeniero de Software Freelance"
+  - role: "Software Engineer Freelance"
     company: "Independiente"
     period: "01/2021 – actualidad"
     place: "Santa Fe, Argentina"
