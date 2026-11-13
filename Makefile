@@ -1,4 +1,8 @@
-.PHONY: dev build serve clean index fix-assets
+.PHONY: dev build serve clean index fix-assets cv-sync
+
+# Copia el último CV base (-v#-) como static/files/Luciano-Delfino-CV-latest-base.pdf
+cv-sync:
+	./scripts/sync-cv.sh
 
 # Normaliza paths de assets de Enveloppe (mismo fix que el CI)
 fix-assets:

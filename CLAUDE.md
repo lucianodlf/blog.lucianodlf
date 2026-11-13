@@ -76,6 +76,15 @@ docs/feat-brand-redesign/   ← propuesta, research y roadmap del rediseño
 5. Blog actualizado en ~2 minutos
 ```
 
+Cambios que no son posts (layouts, `data/*.yaml`, CSS, `static/`): commit y push a `main`; el mismo workflow despliega.
+
+### Actualizar el PDF del CV
+```
+make cv-sync   # copia el CV -v#-base.pdf más reciente a static/files/Luciano-Delfino-CV-latest-base.pdf
+git add static/files && git commit && git push
+```
+Origen: `~/Projects/desarrollo-profesional/mi-profile/cv/output/` (o `CV_SRC_DIR=...`). URL pública fija: `/files/Luciano-Delfino-CV-latest-base.pdf` (`data/cv.yaml`, campo `pdf`).
+
 ## Flujo de desarrollo local
 
 ```bash

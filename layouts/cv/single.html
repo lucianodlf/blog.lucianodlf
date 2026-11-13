@@ -12,7 +12,7 @@
     </ul>
     <p class="cv__download no-print" data-pagefind-ignore>
       {{- if $cv.pdf }}
-      <a class="text-link" href="{{ $cv.pdf }}" target="_blank" rel="noopener"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Descargar en PDF</a>
+      <a class="text-link" href="{{ $cv.pdf | relURL }}" target="_blank" rel="noopener"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Descargar en PDF</a>
       {{- else }}
       <button type="button" class="text-link link-btn" onclick="window.print()"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Descargar en PDF</button>
       {{- end }}
