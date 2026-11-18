@@ -24,6 +24,6 @@
     {{- with .Params.stack }}
     <p class="card__tags">{{ range first 4 . }}<span class="chip chip--neutral">{{ . }}</span>{{ end }}</p>
     {{- end }}
-    {{- with .Params.period }}<p class="card__meta">{{ . }}</p>{{ end }}
+    {{- if ne .Params.kind "propio" }}{{ with .Params.period }}<p class="card__meta">{{ . }}</p>{{ end }}{{ end }}
   </div>
 </article>
