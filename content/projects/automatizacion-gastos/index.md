@@ -4,7 +4,7 @@ summary: "Registro de gastos desde Telegram con n8n, OCR (Mistral Document AI) y
 kind: propio
 period: "2026"
 date: 2026-03-26
-status: en uso
+status: experimento completo
 featured: false
 weight: 7
 coverLabel: "gastos"
